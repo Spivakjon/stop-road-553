@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+    (function(){
+        var h='76ce328ac551588921a5ba6381b74ae0d5bd625370a43ffed526fd12ae0326ce';
+        if(sessionStorage.getItem('a553')==='1')return;
+        var p=prompt('הזינו סיסמה לכניסה לאתר:');
+        if(!p){document.documentElement.innerHTML='';return;}
+        async function c(s){var e=new TextEncoder().encode(s);var b=await crypto.subtle.digest('SHA-256',e);return Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,'0')).join('');}
+        c(p).then(function(r){if(r===h){sessionStorage.setItem('a553','1');}else{alert('סיסמה שגויה');document.documentElement.innerHTML='';}});
+    })();
+    </script>
+    <title>עצרו את כביש 553 — תיק חקירה | עיצוב עיתונאי</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Heebo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root{--paper:#f6f2ea;--ink:#1b1a17;--ink-soft:#4a463f;--muted:#8a8378;--red:#b1271b;--rule:#d9d1c2;}
+        *{margin:0;padding:0;box-sizing:border-box;}
+        html{scroll-behavior:smooth;}
+        body{font-family:'Frank Ruhl Libre',serif;background:var(--paper);color:var(--ink);line-height:1.75;}
+        .label{font-family:'Heebo',sans-serif;}
+        a{color:inherit;}
+        .wrap{max-width:1000px;margin:0 auto;padding:0 1.4rem;}
+
+        /* masthead */
+        .masthead{border-bottom:3px double var(--ink);}
+        .masthead .top{display:flex;justify-content:space-between;align-items:center;font-family:'Heebo',sans-serif;font-size:.78rem;letter-spacing:.12em;color:var(--muted);padding:.6rem 0;border-bottom:1px solid var(--rule);text-transform:uppercase;}
+        .masthead .top a{text-decoration:none;color:var(--red);font-weight:700;}
+        .nameplate{text-align:center;padding:1.4rem 0 1.1rem;}
+        .nameplate h1{font-weight:900;font-size:clamp(2.2rem,7vw,4rem);letter-spacing:-1px;line-height:1;}
+        .nameplate .sub{font-family:'Heebo',sans-serif;font-size:.85rem;letter-spacing:.3em;color:var(--red);margin-top:.5rem;text-transform:uppercase;font-weight:700;}
+
+        /* kicker */
+        .kicker{font-family:'Heebo',sans-serif;font-weight:800;font-size:.8rem;letter-spacing:.18em;color:var(--red);text-transform:uppercase;margin-bottom:.6rem;}
+
+        /* lead article */
+        .lead{padding:2.6rem 0;border-bottom:1px solid var(--rule);}
+        .lead h2{font-weight:900;font-size:clamp(2.2rem,6.5vw,4.2rem);line-height:1.02;letter-spacing:-1px;margin-bottom:1rem;}
+        .lead h2 .red{color:var(--red);}
+        .deck{font-size:1.3rem;color:var(--ink-soft);font-style:italic;max-width:760px;margin-bottom:1.6rem;}
+        .byline{font-family:'Heebo',sans-serif;font-size:.82rem;letter-spacing:.05em;color:var(--muted);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:.6rem 0;margin-bottom:1.8rem;}
+        .columns{column-count:2;column-gap:2.4rem;font-size:1.08rem;}
+        .columns p{margin-bottom:1rem;}
+        .columns p:first-of-type::first-letter{font-weight:900;font-size:3.4em;float:right;line-height:.72;margin:.05em .1em .02em 0;color:var(--red);}
+        @media(max-width:680px){.columns{column-count:1;}}
+
+        .actions{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.8rem;}
+        .btn{font-family:'Heebo',sans-serif;font-weight:800;text-decoration:none;padding:.85rem 1.6rem;border:2px solid var(--ink);transition:all .2s;display:inline-block;}
+        .btn-solid{background:var(--ink);color:var(--paper);}
+        .btn-solid:hover{background:var(--red);border-color:var(--red);}
+        .btn-ghost:hover{background:var(--ink);color:var(--paper);}
+
+        /* section */
+        .section{padding:2.6rem 0;border-bottom:1px solid var(--rule);}
+        .section h3{font-weight:900;font-size:1.9rem;margin-bottom:1.2rem;letter-spacing:-.5px;}
+        .feature-grid{display:grid;grid-template-columns:2fr 1fr;gap:2.4rem;}
+        @media(max-width:760px){.feature-grid{grid-template-columns:1fr;}}
+        .feature-grid .body p{margin-bottom:1rem;font-size:1.08rem;}
+        .pull{font-weight:900;font-size:1.7rem;line-height:1.25;border-top:3px solid var(--ink);border-bottom:3px solid var(--ink);padding:1.2rem 0;color:var(--ink);}
+        .pull .red{color:var(--red);}
+
+        /* sidebar facts */
+        .facts{background:#efe9dd;border:1px solid var(--rule);padding:1.4rem;}
+        .facts h4{font-family:'Heebo',sans-serif;font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;color:var(--red);margin-bottom:1rem;font-weight:800;}
+        .facts .row{display:flex;justify-content:space-between;gap:1rem;padding:.6rem 0;border-bottom:1px dashed var(--rule);}
+        .facts .row:last-child{border-bottom:none;}
+        .facts .row b{font-weight:900;font-size:1.4rem;}
+        .facts .row span{font-family:'Heebo',sans-serif;font-size:.9rem;color:var(--ink-soft);align-self:center;}
+
+        /* dispatches (arguments) */
+        .dispatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0;border-top:1px solid var(--rule);}
+        .disp{padding:1.5rem;border-left:1px solid var(--rule);border-bottom:1px solid var(--rule);}
+        .disp:last-child{border-left:none;}
+        .disp .src{font-family:'Heebo',sans-serif;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--red);font-weight:800;margin-bottom:.5rem;}
+        .disp p{font-size:1.05rem;}
+        .disp .who{font-family:'Heebo',sans-serif;font-size:.82rem;color:var(--muted);margin-top:.6rem;}
+
+        /* cta */
+        .cta{text-align:center;padding:3.4rem 1rem;background:var(--ink);color:var(--paper);}
+        .cta h3{font-weight:900;font-size:clamp(1.8rem,5vw,2.8rem);line-height:1.1;margin-bottom:1.4rem;}
+        .cta .btn-solid{background:var(--paper);color:var(--ink);border-color:var(--paper);}
+        .cta .btn-solid:hover{background:var(--red);color:#fff;border-color:var(--red);}
+
+        footer{text-align:center;font-family:'Heebo',sans-serif;padding:2rem 1rem;color:var(--muted);font-size:.85rem;}
+
+        .reveal{opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s;}
+        .reveal.in{opacity:1;transform:translateY(0);}
+        @media (prefers-reduced-motion:reduce){*{transition:none!important;}}
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <header class="masthead">
+            <div class="top label">
+                <span>גוש תל מונד · לב השרון</span>
+                <span>תיק חקירה ציבורי</span>
+                <a href="designs.html">← לגלריית העיצובים</a>
+            </div>
+            <div class="nameplate">
+                <h1>כביש 553 — מה לא סיפרו לכם</h1>
+                <div class="sub">שומרים על הבית · יחד נבטיח עתיד טוב יותר</div>
+            </div>
+        </header>
+
+        <!-- LEAD -->
+        <article class="lead">
+            <div class="kicker">הכתבה הראשית</div>
+            <h2>מתכננים להפוך את הכביש שלנו ל<span class="red">אוטוסטרדה ארצית</span></h2>
+            <p class="deck">6-8 נתיבים, עשרות אלפי רכבים ביום, בלב המושבים והשדות — בזמן שכביש 551 המתוכנן 2 ק"מ משם נותן את אותו מענה בדיוק.</p>
+            <div class="byline label">מאת מטה תושבי תל מונד ולב השרון · מבוסס על פרוטוקולים רשמיים של המועצה הארצית לתכנון ולבנייה</div>
+            <div class="columns">
+                <p>במקום כביש כפרי שמשרת אותנו, התושבים, מתוכנן כאן ציר רוחב ארצי ענק שיחבר בין כביש 4 לכביש 6. זה לא "שיפוץ כביש" — זהו שינוי דרמטי שיהפוך את האזור הכפרי שלנו למחלף אחד גדול ורועש, שיחצה את היישובים ויפריד ביניהם פיזית.</p>
+                <p>הטענה שהכביש "יקצר את הפקקים" אינה עומדת במבחן המקצועי: כבישים רחבים מייצרים "ביקוש מושרה" ומושכים אליהם תנועה מכל השרון. במקום נסיעה מהירה — נקבל את הפקק של כל המדינה בחצר האחורית שלנו.</p>
+                <p>אנחנו לא נגד פתרונות תחבורה. אנחנו דורשים את החזרת התוואי לכביש 551 המתוכנן במחלף הדרים — פתרון שנותן מענה ארצי בלי להחריב את הבית, את הביטחון ואת הנוף.</p>
+            </div>
+            <div class="actions">
+                <a href="index.html#signup" class="btn btn-solid">הצטרפו למאבק</a>
+                <a href="faq.html" class="btn btn-ghost">לשאלות ותשובות</a>
+            </div>
+        </article>
+
+        <!-- FEATURE -->
+        <section class="section">
+            <div class="kicker">ניתוח</div>
+            <h3>הפקקים: המיתוס מול המציאות</h3>
+            <div class="feature-grid">
+                <div class="body reveal">
+                    <p>"חיבור לכביש 6 זה לא דבר טוב?" זו השאלה הנפוצה ביותר, והתשובה המקצועית היא לא. הניסיון בעולם חד-משמעי: ככל שמרחיבים כביש, כך הוא מתמלא מהר יותר. כביש 553 יהפוך ל"פקק של המדינה".</p>
+                    <p>הפתרון אינו עוד אספלט אלא פתרונות של המאה ה-21: קידום המטרו, מתחמי "חנה וסע" וייעול קווי הרכבת — להוציא רכבים מהכביש, לא להוסיף עומס חדש.</p>
+                    <p>וכשהאוטוסטרדה תיפקק, אפליקציות הניווט ינתבו אלפי נהגים לתוך הרחובות הצרים של עין ורד, תל מונד ופורת — סכנה יומיומית לילדים שלנו.</p>
+                </div>
+                <aside>
+                    <div class="facts reveal">
+                        <h4>בקצרה</h4>
+                        <div class="row"><b>6-8</b><span>נתיבים מתוכננים</span></div>
+                        <div class="row"><b>עשרות אלפי</b><span>רכבים ביום</span></div>
+                        <div class="row"><b>2 ק"מ</b><span>מחלופת כביש 551</span></div>
+                        <div class="row"><b>12+</b><span>יישובים מושפעים</span></div>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <!-- PULL QUOTE -->
+        <section class="section">
+            <div class="pull reveal">"להפוך את 553 לדרך היחידה של עשרות אלפי תושבים זה לא תכנון — <span class="red">זה הימור מסוכן על החיים של כולנו.</span>"</div>
+        </section>
+
+        <!-- DISPATCHES -->
+        <section class="section">
+            <div class="kicker">מן הפרוטוקולים</div>
+            <h3>מה אמרו המומחים בדיונים</h3>
+            <div class="dispatches">
+                <div class="disp"><div class="src">ראש מועצה אזורית</div><p>"כביש 551 נמצא 2 ק"מ משם. צריך לבדוק את נחיצות 553 רק אחרי שיבוצע 551. זה בנפשנו."</p><div class="who">עמיר ריטוב · ישיבה 678</div></div>
+                <div class="disp"><div class="src">החברה להגנת הטבע</div><p>"כל מקום שפותחים בו כבישים חדשים — הם נסתמים הרבה יותר מהר. צריך תחבורה ציבורית בהיקפים אדירים."</p><div class="who">דרור בוימל · ישיבה 678</div></div>
+                <div class="disp"><div class="src">התסקיר הסביבתי</div><p>הצורך המהותי הוא דווקא בכביש 551 — אז למה דוחפים את 553 דרך האזור הכפרי שלנו?</p><div class="who">עמוד 25 לתסקיר</div></div>
+            </div>
+        </section>
+    </div>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="wrap">
+            <h3>זה הבית שלנו — ואנחנו לא מוותרים עליו</h3>
+            <a href="index.html#signup" class="btn btn-solid">הצטרפו למאבק עכשיו</a>
+        </div>
+    </section>
+
+    <footer>מטה תושבי תל מונד ולב השרון · כל המידע מבוסס על פרוטוקולים רשמיים של המועצה הארצית לתכנון ולבנייה</footer>
+
+    <script>
+        var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in');});},{threshold:.12});
+        document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+        document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var t=document.querySelector(this.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}});});
+    </script>
+</body>
+</html>

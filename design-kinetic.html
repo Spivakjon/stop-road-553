@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+    (function(){
+        var h='76ce328ac551588921a5ba6381b74ae0d5bd625370a43ffed526fd12ae0326ce';
+        if(sessionStorage.getItem('a553')==='1')return;
+        var p=prompt('הזינו סיסמה לכניסה לאתר:');
+        if(!p){document.documentElement.innerHTML='';return;}
+        async function c(s){var e=new TextEncoder().encode(s);var b=await crypto.subtle.digest('SHA-256',e);return Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,'0')).join('');}
+        c(p).then(function(r){if(r===h){sessionStorage.setItem('a553','1');}else{alert('סיסמה שגויה');document.documentElement.innerHTML='';}});
+    })();
+    </script>
+    <title>עצרו את כביש 553 — עיצוב קינטי</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root{--bg:#09090B;--fg:#FAFAFA;--muted:#8A8A92;--acid:#DFE104;--border:#3F3F46;}
+        *{margin:0;padding:0;box-sizing:border-box;}
+        html{scroll-behavior:smooth;}
+        body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--fg);line-height:1.5;overflow-x:hidden;}
+        .num{font-family:'Space Grotesk','Heebo',sans-serif;}
+        a{color:inherit;}
+        .wrap{max-width:1120px;margin:0 auto;padding:0 1.2rem;}
+
+        .bar{position:sticky;top:0;z-index:60;background:var(--bg);border-bottom:2px solid var(--border);}
+        .bar .wrap{display:flex;align-items:center;justify-content:space-between;height:58px;}
+        .brand{display:flex;align-items:center;gap:.55rem;font-weight:900;text-decoration:none;letter-spacing:1px;}
+        .brand .sq{background:var(--acid);color:#000;font-family:'Space Grotesk',sans-serif;font-weight:700;padding:.05rem .45rem;}
+        .bar a.back{text-decoration:none;font-weight:800;font-size:.8rem;letter-spacing:.1em;color:var(--muted);border:2px solid var(--border);padding:.35rem .8rem;}
+        .bar a.back:hover{color:var(--acid);border-color:var(--acid);}
+
+        /* hero */
+        .hero{padding:5rem 0 3rem;position:relative;}
+        .hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:60px 60px;opacity:.18;z-index:0;}
+        .hero .wrap{position:relative;z-index:1;}
+        .hero .ey{font-family:'Space Grotesk',sans-serif;letter-spacing:.35em;color:var(--acid);font-weight:700;font-size:.85rem;margin-bottom:1rem;}
+        .hero h1{font-weight:900;font-size:clamp(3rem,15vw,9rem);line-height:.9;letter-spacing:-2px;}
+        .hero h1 .ac{color:var(--acid);}
+        .hero h1 .out{color:transparent;-webkit-text-stroke:2px var(--fg);}
+        .hero p{font-size:1.25rem;color:var(--muted);max-width:560px;margin:1.6rem 0 2rem;}
+        .cta{display:flex;gap:1rem;flex-wrap:wrap;}
+        .btn{font-family:'Heebo',sans-serif;font-weight:900;font-size:1.05rem;text-decoration:none;padding:1rem 2rem;border:2px solid var(--fg);transition:all .12s;display:inline-block;letter-spacing:.02em;}
+        .btn-acid{background:var(--acid);color:#000;border-color:var(--acid);}
+        .btn-acid:hover{background:#000;color:var(--acid);}
+        .btn-out:hover{background:var(--fg);color:#000;}
+
+        /* marquee */
+        .marquee{direction:ltr;overflow:hidden;white-space:nowrap;border-top:2px solid var(--acid);border-bottom:2px solid var(--acid);background:var(--acid);}
+        .marquee .track{display:inline-block;animation:scroll 22s linear infinite;will-change:transform;}
+        .marquee.rev .track{animation-direction:reverse;}
+        .marquee span{font-family:'Space Grotesk','Heebo',sans-serif;font-weight:700;font-size:1.6rem;color:#000;padding:.6rem 0;}
+        .marquee span i{font-style:normal;opacity:.45;padding:0 1.2rem;}
+        @keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+        /* sections */
+        .sec{padding:4rem 0;border-bottom:2px solid var(--border);}
+        .lab{font-family:'Space Grotesk',sans-serif;letter-spacing:.3em;color:var(--acid);font-weight:700;font-size:.8rem;margin-bottom:1rem;}
+        h2.t{font-weight:900;font-size:clamp(2rem,6vw,3.4rem);line-height:1;letter-spacing:-1px;margin-bottom:2rem;}
+
+        /* big numbered list with flood */
+        .rows{border-top:2px solid var(--border);}
+        .row{display:grid;grid-template-columns:auto 1fr;gap:1.6rem;align-items:center;padding:1.6rem .8rem;border-bottom:2px solid var(--border);transition:background .12s,color .12s;cursor:default;}
+        .row:hover{background:var(--acid);color:#000;}
+        .row .nn{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:2.6rem;line-height:1;}
+        .row h3{font-weight:900;font-size:1.5rem;margin-bottom:.2rem;}
+        .row p{font-size:1.02rem;opacity:.8;}
+        .row:hover p{opacity:1;}
+
+        /* stats strip */
+        .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));border:2px solid var(--border);}
+        .st{padding:2rem 1rem;text-align:center;border-left:2px solid var(--border);}
+        .st:last-child{border-left:none;}
+        .st b{display:block;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:2.8rem;color:var(--acid);line-height:1;}
+        .st span{color:var(--muted);font-weight:600;font-size:.92rem;}
+
+        /* threats cards */
+        .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:0;border:2px solid var(--border);}
+        .cd{padding:1.8rem;border-left:2px solid var(--border);border-bottom:2px solid var(--border);transition:background .12s,color .12s;}
+        .cd:hover{background:var(--acid);color:#000;}
+        .cd .k{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.2em;opacity:.6;margin-bottom:.6rem;}
+        .cd h3{font-weight:900;font-size:1.35rem;margin-bottom:.5rem;}
+        .cd p{font-size:1rem;opacity:.82;}
+        .cd:hover p{opacity:1;}
+
+        /* cta */
+        .ctaband{background:var(--acid);color:#000;text-align:center;padding:4rem 1rem;}
+        .ctaband h2{font-weight:900;font-size:clamp(2rem,7vw,4rem);line-height:.95;letter-spacing:-1px;margin-bottom:1.6rem;}
+        .ctaband .btn{border-color:#000;background:#000;color:var(--acid);}
+        .ctaband .btn:hover{background:transparent;color:#000;}
+
+        footer{text-align:center;padding:2.5rem 1rem;color:var(--muted);font-weight:600;}
+        footer .sq{background:var(--acid);color:#000;font-family:'Space Grotesk',sans-serif;font-weight:700;padding:.05rem .45rem;}
+
+        @media(max-width:600px){.hero{padding:3rem 0 2rem;}.btn{width:100%;text-align:center;}.row .nn{font-size:1.8rem;}}
+        @media (prefers-reduced-motion:reduce){.marquee .track{animation:none;}*{transition:none!important;}}
+    </style>
+</head>
+<body>
+    <header class="bar">
+        <div class="wrap">
+            <a href="designs.html" class="brand"><span class="sq num">553</span>שומרים על הבית</a>
+            <a href="designs.html" class="back">← גלריית עיצובים</a>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="wrap">
+            <div class="ey num">STOP ROAD 553 · עכשיו</div>
+            <h1><span class="out">לא לכביש</span> <span class="ac num">553</span><br>עוצרים את זה.</h1>
+            <p>אוטוסטרדה של 6-8 נתיבים ועשרות אלפי רכבים ביום — בלב המושבים שלנו. לא מחכים לדחפורים.</p>
+            <div class="cta">
+                <a href="index.html#signup" class="btn btn-acid">הצטרפו למאבק</a>
+                <a href="faq.html" class="btn btn-out">שאלות ותשובות</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee">
+        <div class="track">
+            <span>לא לכביש 553<i>◆</i>שומרים על הבית<i>◆</i>חוצה לנו את הלב<i>◆</i>לב השרון הוא בית, לא מסדרון<i>◆</i></span><span>לא לכביש 553<i>◆</i>שומרים על הבית<i>◆</i>חוצה לנו את הלב<i>◆</i>לב השרון הוא בית, לא מסדרון<i>◆</i></span>
+        </div>
+    </div>
+
+    <!-- WHAT -->
+    <section class="sec">
+        <div class="wrap">
+            <div class="lab num">01 / מה מתוכנן</div>
+            <h2 class="t">הכביש שלנו הופך למסדרון של המדינה</h2>
+            <div class="rows">
+                <div class="row"><div class="nn">01</div><div><h3>אוטוסטרדה בלב השדות</h3><p>6-8 נתיבים שיחצו את הגוש, יבטלו את הצביון הכפרי ויקרעו את הקהילה לשניים.</p></div></div>
+                <div class="row"><div class="nn">02</div><div><h3>כביש מיותר</h3><p>כביש 551 מתוכנן 2 ק"מ משם ונותן את אותו חיבור ארצי בדיוק — בלי להחריב את הבית.</p></div></div>
+                <div class="row"><div class="nn">03</div><div><h3>פקק של המדינה</h3><p>כביש רחב מושך עוד תנועה. במקום נסיעה מהירה — תור ארוך של רכבים מכל השרון בחצר שלנו.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="sec">
+        <div class="wrap">
+            <div class="stats">
+                <div class="st"><b class="num">עשרות אלפי</b><span>רכבים ביום</span></div>
+                <div class="st"><b class="num">6-8</b><span>נתיבים</span></div>
+                <div class="st"><b class="num">2 ק"מ</b><span>מחלופת 551</span></div>
+                <div class="st"><b class="num">0</b><span>פעמים נשאלנו</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- THREATS -->
+    <section class="sec">
+        <div class="wrap">
+            <div class="lab num">02 / האיומים</div>
+            <h2 class="t">מה זה עושה לחיים שלנו</h2>
+            <div class="cards">
+                <div class="cd"><div class="k num">ביטחון</div><h3>דלת פתוחה לבית</h3><p>ציר מהיר מקו התפר ישירות לתוך היישובים — בלי החיץ החקלאי שהגן עלינו.</p></div>
+                <div class="cd"><div class="k num">תנועה</div><h3>איום ה-Waze</h3><p>כשהאוטוסטרדה תיפקק, אלפי נהגים ינותבו לרחובות הצרים של עין ורד, תל מונד ופורת.</p></div>
+                <div class="cd"><div class="k num">בריאות</div><h3>רעש וזיהום 24/7</h3><p>משאיות, זיהום אוויר וקירות אקוסטיים בגובה 5 מטר — סוף לאוויר הנקי.</p></div>
+                <div class="cd"><div class="k num">חירום</div><h3>חסימה = נצורים</h3><p>תאונה אחת משתקת את כל האזור. כוחות הצלה לא יגיעו, ואנחנו בלי דרך החוצה.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MARQUEE 2 -->
+    <div class="marquee rev">
+        <div class="track">
+            <span>זה הזמן להשפיע<i>◆</i>החלון נסגר<i>◆</i>הצטרפו למאבק<i>◆</i>553<i>◆</i></span><span>זה הזמן להשפיע<i>◆</i>החלון נסגר<i>◆</i>הצטרפו למאבק<i>◆</i>553<i>◆</i></span>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="ctaband">
+        <h2>לא מחכים לדחפורים.<br>עוצרים את זה עכשיו.</h2>
+        <a href="index.html#signup" class="btn">אני מצטרף/ת למאבק</a>
+    </div>
+
+    <footer>
+        <span class="sq num">553</span> &nbsp; מטה תושבי תל מונד ולב השרון · יחד נבטיח עתיד טוב יותר
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var t=document.querySelector(this.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}});});
+    </script>
+</body>
+</html>

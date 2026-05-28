@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+    (function(){
+        var h='76ce328ac551588921a5ba6381b74ae0d5bd625370a43ffed526fd12ae0326ce';
+        if(sessionStorage.getItem('a553')==='1')return;
+        var p=prompt('הזינו סיסמה לכניסה לאתר:');
+        if(!p){document.documentElement.innerHTML='';return;}
+        async function c(s){var e=new TextEncoder().encode(s);var b=await crypto.subtle.digest('SHA-256',e);return Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,'0')).join('');}
+        c(p).then(function(r){if(r===h){sessionStorage.setItem('a553','1');}else{alert('סיסמה שגויה');document.documentElement.innerHTML='';}});
+    })();
+    </script>
+    <title>עצרו את כביש 553 — עיצוב פוסטר אקטיביסטי</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root{
+            --cream:#FFFDF5; --ink:#0c0c0c; --red:#FF4438; --yellow:#FFD43B; --blue:#2B59FF;
+            --shadow:6px 6px 0 var(--ink);
+        }
+        *{margin:0;padding:0;box-sizing:border-box;}
+        html{scroll-behavior:smooth;}
+        body{font-family:'Heebo',sans-serif;background:var(--cream);color:var(--ink);line-height:1.6;
+            background-image:radial-gradient(var(--ink) 1px, transparent 1px);background-size:22px 22px;}
+        .num{font-family:'Space Grotesk','Heebo',sans-serif;}
+        .wrap{max-width:1100px;margin:0 auto;padding:0 1.2rem;}
+        a{color:inherit;}
+
+        /* top bar */
+        .bar{position:sticky;top:0;z-index:50;background:var(--yellow);border-bottom:4px solid var(--ink);}
+        .bar .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;}
+        .brand{display:flex;align-items:center;gap:.6rem;font-weight:900;font-size:1.1rem;text-decoration:none;}
+        .sign{background:var(--ink);color:#fff;border:3px solid var(--ink);padding:.1rem .5rem;font-family:'Space Grotesk',sans-serif;font-weight:700;box-shadow:3px 3px 0 var(--red);}
+        .bar a.back{text-decoration:none;font-weight:800;font-size:.9rem;background:var(--cream);border:3px solid var(--ink);padding:.35rem .8rem;box-shadow:3px 3px 0 var(--ink);}
+        .bar a.back:hover{transform:translate(3px,3px);box-shadow:none;}
+
+        /* hero */
+        .hero{padding:4rem 0 3rem;}
+        .tag{display:inline-block;background:var(--red);color:#fff;font-weight:800;padding:.4rem 1rem;border:3px solid var(--ink);box-shadow:var(--shadow);transform:rotate(-2deg);margin-bottom:1.4rem;}
+        .hero h1{font-size:clamp(2.6rem,9vw,5.5rem);font-weight:900;line-height:.98;letter-spacing:-1px;}
+        .hero h1 .hl{background:var(--yellow);border:3px solid var(--ink);box-shadow:var(--shadow);padding:0 .3rem;display:inline-block;transform:rotate(-1deg);}
+        .hero h1 .red{color:var(--red);}
+        .hero p.lead{font-size:1.2rem;font-weight:500;max-width:620px;margin:1.6rem 0 2rem;border-right:6px solid var(--red);padding-right:1rem;}
+        .cta{display:flex;gap:1rem;flex-wrap:wrap;}
+        .btn{font-family:'Heebo',sans-serif;font-weight:900;font-size:1.05rem;text-decoration:none;padding:1rem 1.8rem;border:4px solid var(--ink);box-shadow:var(--shadow);cursor:pointer;transition:transform .1s,box-shadow .1s;display:inline-block;}
+        .btn:active,.btn:hover{transform:translate(6px,6px);box-shadow:none;}
+        .btn-red{background:var(--red);color:#fff;}
+        .btn-cream{background:var(--cream);color:var(--ink);}
+
+        /* section frame */
+        section.block{padding:3.5rem 0;}
+        .kicker{display:inline-block;background:var(--ink);color:var(--yellow);font-weight:800;padding:.3rem .9rem;transform:rotate(-1deg);margin-bottom:1rem;font-size:.95rem;}
+        h2.big{font-size:clamp(2rem,5vw,3rem);font-weight:900;line-height:1.05;margin-bottom:1.8rem;letter-spacing:-.5px;}
+
+        /* cards grid */
+        .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.6rem;}
+        .card{background:#fff;border:4px solid var(--ink);box-shadow:var(--shadow);padding:1.6rem;}
+        .card:nth-child(2){transform:rotate(-1deg);} .card:nth-child(3){transform:rotate(1deg);}
+        .card .ic{width:52px;height:52px;display:grid;place-items:center;border:3px solid var(--ink);background:var(--yellow);margin-bottom:1rem;}
+        .card .ic svg{width:26px;height:26px;}
+        .card h3{font-size:1.3rem;font-weight:900;margin-bottom:.5rem;}
+        .card p{font-weight:500;}
+
+        /* stats */
+        .stats{background:var(--ink);border-top:4px solid var(--ink);border-bottom:4px solid var(--ink);}
+        .stats .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0;}
+        .stat{padding:2rem 1rem;text-align:center;color:var(--cream);border-left:3px dashed rgba(255,255,255,.25);}
+        .stat:last-child{border-left:none;}
+        .stat b{display:block;font-family:'Space Grotesk','Heebo',sans-serif;font-size:2.6rem;font-weight:700;color:var(--yellow);line-height:1;}
+        .stat span{font-weight:600;font-size:.95rem;opacity:.85;}
+
+        /* impacts list */
+        .impacts{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem;}
+        .imp{display:flex;gap:1rem;background:#fff;border:4px solid var(--ink);box-shadow:var(--shadow);padding:1.2rem;}
+        .imp .n{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.4rem;background:var(--red);color:#fff;min-width:46px;height:46px;display:grid;place-items:center;border:3px solid var(--ink);}
+        .imp h4{font-weight:900;font-size:1.1rem;margin-bottom:.2rem;}
+        .imp p{font-weight:500;font-size:.95rem;}
+
+        /* quote */
+        .quote{background:var(--yellow);border:4px solid var(--ink);box-shadow:var(--shadow);padding:2rem;transform:rotate(-.5deg);}
+        .quote p{font-size:1.5rem;font-weight:800;line-height:1.3;}
+        .quote .who{margin-top:1rem;font-weight:700;}
+
+        /* cta band */
+        .ctaband{background:var(--red);border-top:4px solid var(--ink);border-bottom:4px solid var(--ink);color:#fff;text-align:center;padding:3.5rem 1rem;}
+        .ctaband h2{font-size:clamp(1.8rem,5vw,3rem);font-weight:900;line-height:1.1;margin-bottom:1.5rem;}
+
+        footer{background:var(--ink);color:var(--cream);text-align:center;padding:2.5rem 1rem;}
+        footer .sign{box-shadow:3px 3px 0 var(--yellow);}
+        footer p{font-weight:600;margin-top:.7rem;opacity:.85;}
+
+        .reveal{opacity:0;transform:translateY(24px);transition:opacity .5s,transform .5s;}
+        .reveal.in{opacity:1;transform:translateY(0);}
+
+        @media (max-width:600px){
+            .hero{padding:2.6rem 0 2rem;}
+            .card:nth-child(n){transform:none;}
+            .quote{transform:none;}
+            .btn{width:100%;text-align:center;}
+        }
+        @media (prefers-reduced-motion:reduce){*{transition:none!important;}}
+    </style>
+</head>
+<body>
+    <header class="bar">
+        <div class="wrap">
+            <a href="designs.html" class="brand"><span class="sign num">553</span>שומרים על הבית</a>
+            <a href="designs.html" class="back">← לגלריית העיצובים</a>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="wrap">
+            <span class="tag">⚠ זה הזמן להשפיע</span>
+            <h1>לא לכביש <span class="red">553</span><br><span class="hl">חוצה לנו את הלב</span></h1>
+            <p class="lead">רוצים להפוך את הכביש המקומי שלנו לאוטוסטרדה ארצית של <strong>6-8 נתיבים</strong> עם עשרות אלפי רכבים ביום — בלב המושבים והשדות של גוש תל מונד ולב השרון. אנחנו אומרים לא.</p>
+            <div class="cta">
+                <a href="index.html#signup" class="btn btn-red">✊ הצטרפו למאבק</a>
+                <a href="faq.html" class="btn btn-cream">❓ שאלות ותשובות</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <div class="stats">
+        <div class="wrap">
+            <div class="stat"><b class="num">עשרות אלפי</b><span>רכבים ביום דרך הכפר</span></div>
+            <div class="stat"><b class="num">6-8</b><span>נתיבים בלב השדות</span></div>
+            <div class="stat"><b class="num">2 ק"מ</b><span>מכביש 551 שנותן מענה</span></div>
+            <div class="stat"><b class="num">0</b><span>פעמים שאלו אותנו</span></div>
+        </div>
+    </div>
+
+    <!-- WHAT -->
+    <section class="block">
+        <div class="wrap">
+            <span class="kicker">מה מתכננים לנו?</span>
+            <h2 class="big reveal">אזור כפרי הופך למחלף ארצי</h2>
+            <div class="grid3">
+                <div class="card reveal">
+                    <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#0c0c0c" stroke-width="2"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/></svg></div>
+                    <h3>הכפר הופך לכיכר דיזנגוף</h3>
+                    <p>מושבים, שדות ושקט — מול כביש של 6-8 נתיבים שיחצה את היישובים ויפריד ביניהם פיזית.</p>
+                </div>
+                <div class="card reveal">
+                    <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#0c0c0c" stroke-width="2"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="9"/></svg></div>
+                    <h3>כביש מיותר — 551 כבר מתוכנן</h3>
+                    <p>כביש 551 נמצא 2 ק"מ משם ונותן את אותו חיבור. גם התסקיר עצמו מודה שהצורך הקריטי הוא ב-551.</p>
+                </div>
+                <div class="card reveal">
+                    <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#0c0c0c" stroke-width="2"><path d="M12 2 2 7v6c0 5 4 8 10 9 6-1 10-4 10-9V7z"/></svg></div>
+                    <h3>איום ביטחוני אמיתי</h3>
+                    <p>ציר מהיר מקו התפר ישירות לתוך היישובים שלנו — מסלול מילוט ופגיעה בחיץ שהגן עלינו.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- IMPACTS -->
+    <section class="block">
+        <div class="wrap">
+            <span class="kicker">ההשפעות עלינו</span>
+            <h2 class="big reveal">איך זה נוגע לכל אחד מאיתנו</h2>
+            <div class="impacts">
+                <div class="imp reveal"><div class="n">1</div><div><h4>פקקים — לא פתרון</h4><p>כביש רחב מושך עוד תנועה ("ביקוש מושרה"). נקבל את הפקק של המדינה בחצר האחורית.</p></div></div>
+                <div class="imp reveal"><div class="n">2</div><div><h4>ביטחון אישי</h4><p>גישה מהירה מקו התפר, בלי החיץ החקלאי שהגן עלינו שנים.</p></div></div>
+                <div class="imp reveal"><div class="n">3</div><div><h4>איום ה-Waze</h4><p>כשהכביש ייפקק, אלפי נהגים ינותבו לרחובות הצרים של עין ורד, תל מונד ופורת.</p></div></div>
+                <div class="imp reveal"><div class="n">4</div><div><h4>רעש, זיהום, בריאות</h4><p>תנועה 24/7, משאיות, קירות אקוסטיים בגובה 5 מ' — סוף לאוויר הנקי.</p></div></div>
+                <div class="imp reveal"><div class="n">5</div><div><h4>סוף לחקלאות</h4><p>הרציפות החקלאית תיקטע. בלי מעבר טרקטורים — אין גישה לשדות.</p></div></div>
+                <div class="imp reveal"><div class="n">6</div><div><h4>ערך הבתים</h4><p>"הפרמיה הכפרית" שעבורה השקענו פשוט נמחקת ליד אוטוסטרדה.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUOTE -->
+    <section class="block">
+        <div class="wrap">
+            <div class="quote reveal">
+                <p>"כביש 551 נמצא 2 ק"מ משם ונותן מענה דומה. צריך לבדוק את נחיצות 553 רק אחרי שיבוצע 551."</p>
+                <div class="who">— עמיר ריטוב, ראש מועצה אזורית לב השרון · ישיבה 678</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="ctaband">
+        <h2>זה הבית שלנו.<br>ואנחנו לא מוותרים עליו.</h2>
+        <a href="index.html#signup" class="btn btn-cream">✊ אני מצטרף/ת למאבק</a>
+    </div>
+
+    <footer>
+        <span class="sign num">553</span>
+        <p>מטה תושבי תל מונד ולב השרון · יחד נבטיח עתיד טוב יותר</p>
+    </footer>
+
+    <script>
+        var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in');});},{threshold:.12});
+        document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+        document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var t=document.querySelector(this.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}});});
+    </script>
+</body>
+</html>

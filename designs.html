@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+    (function(){
+        var h='76ce328ac551588921a5ba6381b74ae0d5bd625370a43ffed526fd12ae0326ce';
+        if(sessionStorage.getItem('a553')==='1')return;
+        var p=prompt('הזינו סיסמה לכניסה לאתר:');
+        if(!p){document.documentElement.innerHTML='';return;}
+        async function c(s){var e=new TextEncoder().encode(s);var b=await crypto.subtle.digest('SHA-256',e);return Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,'0')).join('');}
+        c(p).then(function(r){if(r===h){sessionStorage.setItem('a553','1');}else{alert('סיסמה שגויה');document.documentElement.innerHTML='';}});
+    })();
+    </script>
+    <title>גלריית עיצובים | עצרו את כביש 553</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@700;900&family=Heebo:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root{--bg:#0f1115;--bg2:#161922;--card:#1b1f29;--line:#2a2f3b;--ink:#f3f1ec;--ink-soft:#aeb4c0;--muted:#7c8290;--accent:#f4c01e;--red:#e0322a;}
+        *{margin:0;padding:0;box-sizing:border-box;}
+        html{scroll-behavior:smooth;}
+        body{font-family:'Heebo',sans-serif;background:radial-gradient(900px 500px at 80% -10%,rgba(244,192,30,.08),transparent 60%),var(--bg);color:var(--ink);line-height:1.6;min-height:100vh;}
+        .num{font-family:'Space Grotesk','Heebo',sans-serif;}
+        a{color:inherit;}
+        .wrap{max-width:1120px;margin:0 auto;padding:0 1.2rem;}
+
+        .bar{border-bottom:1px solid var(--line);}
+        .bar .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;}
+        .brand{display:flex;align-items:center;gap:.6rem;font-weight:800;text-decoration:none;}
+        .brand .sq{background:#fff;color:#000;border:2px solid #fff;border-radius:6px;font-family:'Space Grotesk',sans-serif;font-weight:700;padding:.05rem .45rem;}
+        .brand .sq.b{} .brand b span{color:var(--accent);}
+        .bar a.faq{text-decoration:none;font-weight:700;font-size:.88rem;color:var(--ink-soft);border:1px solid var(--line);padding:.45rem .9rem;border-radius:999px;}
+        .bar a.faq:hover{border-color:var(--accent);color:var(--accent);}
+
+        .hero{text-align:center;padding:3.4rem 0 1.5rem;}
+        .hero .ey{display:inline-block;background:rgba(244,192,30,.12);border:1px solid rgba(244,192,30,.4);color:var(--accent);font-weight:800;font-size:.85rem;padding:.35rem 1rem;border-radius:999px;margin-bottom:1rem;}
+        .hero h1{font-size:clamp(2rem,5.5vw,3.2rem);font-weight:900;letter-spacing:-.5px;}
+        .hero p{color:var(--ink-soft);max-width:600px;margin:.7rem auto 0;}
+        .note{margin:1.4rem auto 0;max-width:640px;background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:1rem 1.2rem;color:var(--ink-soft);font-size:.95rem;}
+        .note b{color:var(--ink);}
+
+        .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;padding:2rem 0 3rem;}
+        .dcard{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,border-color .25s,box-shadow .25s;}
+        .dcard:hover{transform:translateY(-5px);border-color:var(--accent);box-shadow:0 20px 50px rgba(0,0,0,.4);}
+        .prev{height:170px;overflow:hidden;position:relative;border-bottom:1px solid var(--line);}
+        .dbody{padding:1.3rem 1.4rem 1.5rem;display:flex;flex-direction:column;flex:1;}
+        .dbody .tag{font-family:'Space Grotesk',sans-serif;font-size:.72rem;letter-spacing:.15em;color:var(--accent);font-weight:700;margin-bottom:.4rem;text-transform:uppercase;}
+        .dbody h3{font-size:1.3rem;font-weight:900;margin-bottom:.4rem;}
+        .dbody p{color:var(--ink-soft);font-size:.95rem;flex:1;}
+        .open{margin-top:1.1rem;text-align:center;background:var(--accent);color:#1a1206;font-weight:800;text-decoration:none;padding:.7rem 1rem;border-radius:999px;transition:filter .2s;}
+        .open:hover{filter:brightness(1.08);}
+
+        /* mini previews */
+        .p-classic{background:linear-gradient(135deg,#14110d,#1d1813);display:flex;align-items:center;justify-content:center;gap:.5rem;}
+        .p-classic .dot{width:26px;height:26px;border-radius:50%;border:2px solid #000;}
+        .p-brutal{background:#FFFDF5;background-image:radial-gradient(#0c0c0c 1px,transparent 1px);background-size:14px 14px;display:flex;align-items:center;justify-content:center;}
+        .p-brutal .blk{background:#FFD43B;border:3px solid #0c0c0c;box-shadow:5px 5px 0 #0c0c0c;padding:.5rem .9rem;font-weight:900;color:#0c0c0c;transform:rotate(-3deg);}
+        .p-brutal .blk b{color:#FF4438;}
+        .p-mag{background:#f6f2ea;padding:1rem 1.2rem;color:#1b1a17;font-family:'Frank Ruhl Libre',serif;}
+        .p-mag .k{font-family:'Heebo',sans-serif;color:#b1271b;font-size:.6rem;letter-spacing:.2em;font-weight:800;}
+        .p-mag h4{font-weight:900;font-size:1.25rem;line-height:1;margin:.2rem 0 .4rem;}
+        .p-mag .ln{height:4px;background:#1b1a17;margin:.25rem 0;} .p-mag .ln.s{width:70%;background:#d9d1c2;}
+        .p-kin{background:#09090B;display:flex;flex-direction:column;justify-content:center;align-items:center;}
+        .p-kin h4{color:transparent;-webkit-text-stroke:1.5px #FAFAFA;font-weight:900;font-size:2rem;letter-spacing:-1px;}
+        .p-kin h4 span{color:#DFE104;-webkit-text-stroke:0;}
+        .p-kin .mq{margin-top:.6rem;background:#DFE104;color:#000;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.7rem;width:100%;text-align:center;padding:.2rem 0;letter-spacing:.1em;}
+        .p-bento{background:#f1eee7;display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr;gap:6px;padding:12px;}
+        .p-bento i{background:#fff;border:1px solid #e6e0d5;border-radius:8px;}
+        .p-bento i.r{background:#e0273a;} .p-bento i.d{background:#16130f;} .p-bento i.y{background:#f4c01e;}
+        .p-bento i.big{grid-column:span 2;grid-row:span 2;}
+
+        footer{text-align:center;padding:2.2rem 1rem 3rem;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);}
+        footer .sq{background:#fff;color:#000;font-family:'Space Grotesk',sans-serif;font-weight:700;border-radius:6px;padding:.1rem .45rem;}
+        @media (prefers-reduced-motion:reduce){*{transition:none!important;}}
+    </style>
+</head>
+<body>
+    <header class="bar">
+        <div class="wrap">
+            <a href="index.html" class="brand"><span class="sq num">553</span><b>שומרים על <span>הבית</span></b></a>
+            <a href="faq.html" class="faq">❓ שאלות ותשובות</a>
+        </div>
+    </header>
+
+    <div class="wrap">
+        <section class="hero">
+            <span class="ey">לעיניי חברי המטה</span>
+            <h1>גלריית עיצובים — בחרו את הכיוון</h1>
+            <p>ריכזנו כאן חמישה כיווני עיצוב שונים לאתר הקמפיין. היכנסו לכל אחד, התרשמו, ותנו לנו חוות דעת איזה מדבר אליכם.</p>
+            <div class="note">💬 <b>איך נותנים חוות דעת:</b> פתחו כל עיצוב, גללו עד הסוף, ורשמו לעצמכם מה אהבתם / מה לא. בסוף נצביע ונבחר כיוון אחד לפרסום הציבורי.</div>
+        </section>
+
+        <div class="grid">
+            <!-- Classic -->
+            <div class="dcard">
+                <div class="prev p-classic">
+                    <span class="dot" style="background:#f4c01e"></span>
+                    <span class="dot" style="background:#e23b32"></span>
+                    <span class="dot" style="background:#fff"></span>
+                    <span class="dot" style="background:#ffd400"></span>
+                </div>
+                <div class="dbody">
+                    <div class="tag">קלאסי · בורר צבעים</div>
+                    <h3>האתר הראשי</h3>
+                    <p>הפריסה המקורית עם בורר 4 ערכות צבע (כהה-צהוב, כהה-אדום, בהיר, פוסטר). מלא ומפורט: ציר זמן, מומחים, טופס הצטרפות.</p>
+                    <a href="index.html" class="open">פתחו עיצוב →</a>
+                </div>
+            </div>
+
+            <!-- Brutalist -->
+            <div class="dcard">
+                <div class="prev p-brutal"><div class="blk">הכביש הזה <b>חוצה לנו את הלב</b></div></div>
+                <div class="dbody">
+                    <div class="tag">נועז · אקטיביסטי</div>
+                    <h3>פוסטר ניאו-ברוטליסטי</h3>
+                    <p>מסגרות שחורות עבות, צללים קשיחים, כרטיסים מסובבים וטיפוגרפיה ענקית. אנרגיית מחאה — הכי קרוב למיתוג שלכם.</p>
+                    <a href="design-brutalist.html" class="open">פתחו עיצוב →</a>
+                </div>
+            </div>
+
+            <!-- Magazine -->
+            <div class="dcard">
+                <div class="prev p-mag">
+                    <div class="k">תיק חקירה</div>
+                    <h4>מה לא סיפרו לכם</h4>
+                    <div class="ln"></div><div class="ln s"></div><div class="ln s"></div>
+                </div>
+                <div class="dbody">
+                    <div class="tag">רציני · אמין</div>
+                    <h3>מגזין עיתונאי-חוקר</h3>
+                    <p>גריד אסימטרי, כותרות סריף, אות פתיח וציטוטי ענק. תחושת "חשיפה" ומסמך — משדר אמינות ועומק.</p>
+                    <a href="design-magazine.html" class="open">פתחו עיצוב →</a>
+                </div>
+            </div>
+
+            <!-- Kinetic -->
+            <div class="dcard">
+                <div class="prev p-kin">
+                    <h4>לא לכביש <span>553</span></h4>
+                    <div class="mq num">שומרים על הבית ◆ זה הזמן להשפיע ◆</div>
+                </div>
+                <div class="dbody">
+                    <div class="tag">דרמטי · נע</div>
+                    <h3>ברוטליזם קינטי כהה</h3>
+                    <p>צהוב-אקריל על שחור, טקסט נע (marquee), אותיות ענק והיפוך צבע בכרטיסים. בולט מאוד וצעיר.</p>
+                    <a href="design-kinetic.html" class="open">פתחו עיצוב →</a>
+                </div>
+            </div>
+
+            <!-- Bento -->
+            <div class="dcard">
+                <div class="prev p-bento">
+                    <i class="d big"></i><i class="r"></i><i></i><i class="y"></i><i></i><i></i>
+                </div>
+                <div class="dbody">
+                    <div class="tag">מודרני · נקי</div>
+                    <h3>בנטו / אינפוגרפיקה</h3>
+                    <p>כרטיסים מודולריים בגדלים משתנים, פינות מעוגלות והצגת נתונים ויזואלית. קריא, נקי ומסודר.</p>
+                    <a href="design-bento.html" class="open">פתחו עיצוב →</a>
+                </div>
+            </div>
+
+            <!-- FAQ -->
+            <div class="dcard">
+                <div class="prev" style="background:linear-gradient(135deg,#14110d,#241a0d);display:flex;align-items:center;justify-content:center;">
+                    <span style="font-size:3rem;font-weight:900;color:#f4c01e;font-family:'Heebo'">?</span>
+                </div>
+                <div class="dbody">
+                    <div class="tag">עמוד תוכן</div>
+                    <h3>שאלות ותשובות</h3>
+                    <p>עמוד ה-FAQ הנפרד (עם בורר עיצובים משלו) שמתייחס לכל ההתנגדויות — בעיקר שאלת הפקקים.</p>
+                    <a href="faq.html" class="open">פתחו עמוד →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer><span class="sq num">553</span> &nbsp; מטה תושבי תל מונד ולב השרון · יחד נבטיח עתיד טוב יותר</footer>
+</body>
+</html>
