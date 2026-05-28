@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+    (function(){
+        var h='76ce328ac551588921a5ba6381b74ae0d5bd625370a43ffed526fd12ae0326ce';
+        if(sessionStorage.getItem('a553')==='1')return;
+        var p=prompt('הזינו סיסמה לכניסה לאתר:');
+        if(!p){document.documentElement.innerHTML='';return;}
+        async function c(s){var e=new TextEncoder().encode(s);var b=await crypto.subtle.digest('SHA-256',e);return Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,'0')).join('');}
+        c(p).then(function(r){if(r===h){sessionStorage.setItem('a553','1');}else{alert('סיסמה שגויה');document.documentElement.innerHTML='';}});
+    })();
+    </script>
+    <title>שאלות ותשובות | עצרו את כביש 553 — שומרים על הבית</title>
+    <meta name="description" content="כל מה שצריך לדעת על תוכנית כביש 553 — מה מתוכנן, מה עם הפקקים, הביטחון, הבריאות והסביבה, ולמה חלופת כביש 551 עדיפה. יש לכם שאלות? יש לנו תשובות.">
+    <meta property="og:title" content="שאלות ותשובות | עצרו את כביש 553">
+    <meta property="og:description" content="אם עוצרים את 553 — מה יהיה עם הפקקים? וכל יתר השאלות שמטרידות את תושבי לב השרון ותל מונד, עם תשובות מסודרות.">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&family=Heebo:wght@400;500;700;800;900&family=Rubik:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ===== Theme tokens ===== */
+        body[data-theme="brand"] {
+            --accent: #f4c01e; --accent-rgb: 244,192,30; --accent-ink: #1a1206;
+            --accent2: #e0322a; --accent2-rgb: 224,50,42;
+            --bg: #0e0d0b; --bg-2: #161310; --card: #1b1814; --card-2: #211d18;
+            --line: #312b23; --ink: #f6f1e7; --ink-soft: #c9c0b1; --muted: #8c8275;
+            --topbar-bg: rgba(14,13,11,0.86); --cta-btn-bg: #15110b; --cta-btn-fg: #f4c01e;
+        }
+        body[data-theme="crimson"] {
+            --accent: #e23b32; --accent-rgb: 226,59,50; --accent-ink: #ffffff;
+            --accent2: #f4c01e; --accent2-rgb: 244,192,30;
+            --bg: #0c0b0c; --bg-2: #141012; --card: #1a1514; --card-2: #211917;
+            --line: #322724; --ink: #f6efed; --ink-soft: #cdbfbb; --muted: #8c7f7a;
+            --topbar-bg: rgba(12,11,12,0.86); --cta-btn-bg: #140d0d; --cta-btn-fg: #f4c01e;
+        }
+        body[data-theme="light"] {
+            --accent: #d4322c; --accent-rgb: 212,50,44; --accent-ink: #ffffff;
+            --accent2: #d99a0f; --accent2-rgb: 217,154,15;
+            --bg: #faf7f3; --bg-2: #fffdf9; --card: #ffffff; --card-2: #fff7f4;
+            --line: #ece5dd; --ink: #2b2622; --ink-soft: #5b524b; --muted: #8a7f76;
+            --topbar-bg: rgba(250,247,243,0.9); --cta-btn-bg: #19120a; --cta-btn-fg: #ffffff;
+        }
+        body[data-theme="poster"] {
+            --accent: #ffd400; --accent-rgb: 255,212,0; --accent-ink: #000000;
+            --accent2: #ff2e2e; --accent2-rgb: 255,46,46;
+            --bg: #000000; --bg-2: #0a0a0a; --card: #121212; --card-2: #181818;
+            --line: #2b2b2b; --ink: #ffffff; --ink-soft: #d6d6d6; --muted: #8f8f8f;
+            --topbar-bg: rgba(0,0,0,0.9); --cta-btn-bg: #000000; --cta-btn-fg: #ffd400;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Assistant', 'Heebo', sans-serif;
+            color: var(--ink);
+            background:
+                radial-gradient(1100px 520px at 80% -8%, rgba(var(--accent-rgb),0.12), transparent 60%),
+                radial-gradient(900px 480px at -5% 8%, rgba(var(--accent2-rgb),0.10), transparent 55%),
+                linear-gradient(180deg, var(--bg-2), var(--bg) 42%);
+            background-attachment: fixed;
+            line-height: 1.78;
+            -webkit-font-smoothing: antialiased;
+            transition: background 0.35s, color 0.35s;
+        }
+
+        h1, h2, h3, .display { font-family: 'Rubik', 'Heebo', sans-serif; }
+        a { color: inherit; }
+        .wrap { max-width: 880px; margin: 0 auto; padding: 0 1.25rem; }
+
+        /* route sign */
+        .route {
+            display: inline-grid; place-items: center;
+            background: #0c0b0a; color: #fff; border: 2px solid #fff; border-radius: 8px;
+            font-family: 'Rubik', sans-serif; font-weight: 900; line-height: 1; letter-spacing: .5px;
+        }
+
+        /* ===== Top bar ===== */
+        .topbar {
+            position: sticky; top: 0; z-index: 50;
+            background: var(--topbar-bg); backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--line); transition: background 0.35s;
+        }
+        .topbar .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: .6rem; }
+        .brand { display: flex; align-items: center; gap: .65rem; text-decoration: none; color: var(--ink); }
+        .brand .route { width: 46px; height: 30px; font-size: .95rem; }
+        .brand b { font-family: 'Rubik', sans-serif; font-weight: 800; font-size: 1.02rem; }
+        .brand b span { color: var(--accent); }
+        .topbar .links { display: flex; align-items: center; gap: .5rem; }
+        .topbar .lnk {
+            text-decoration: none; color: var(--ink-soft); font-weight: 700; font-size: .85rem;
+            padding: .42rem .85rem; border-radius: 999px; border: 1px solid var(--line);
+            transition: all .2s; white-space: nowrap;
+        }
+        .topbar .lnk:hover { border-color: var(--accent); color: var(--accent); }
+        .topbar .lnk.web { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+        .topbar .lnk.web:hover { filter: brightness(1.06); }
+
+        /* ===== Theme switcher ===== */
+        .theme-switch {
+            display: flex; align-items: center; flex-wrap: wrap; gap: .45rem;
+            padding: .7rem 0; justify-content: center;
+            border-bottom: 1px solid var(--line);
+        }
+        .theme-switch .ts-label { font-size: .82rem; color: var(--muted); font-weight: 700; margin-inline-end: .2rem; }
+        .theme-switch button {
+            all: unset; cursor: pointer; font-family: 'Rubik', sans-serif; font-weight: 700;
+            font-size: .82rem; color: var(--ink-soft);
+            padding: .35rem .85rem; border-radius: 999px; border: 1px solid var(--line);
+            transition: all .2s; display: inline-flex; align-items: center; gap: .35rem;
+        }
+        .theme-switch button .dot { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+        .theme-switch button:hover { border-color: var(--accent); color: var(--ink); }
+        .theme-switch button.active { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+        .theme-switch button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+        /* ===== Hero ===== */
+        .hero { padding: 3.4rem 0 1.5rem; text-align: center; }
+        .eyebrow {
+            display: inline-block; transform: rotate(-2deg);
+            background: var(--accent); color: var(--accent-ink);
+            padding: .35rem 1.05rem; border-radius: 6px;
+            font-family: 'Rubik', sans-serif; font-weight: 800; font-size: .9rem;
+            margin-bottom: 1.3rem; box-shadow: 0 6px 18px rgba(var(--accent-rgb),0.22);
+        }
+        .hero h1 {
+            font-weight: 900; line-height: 1.08; letter-spacing: -1px;
+            font-size: clamp(2.4rem, 8vw, 4rem);
+        }
+        .hero h1 .y { color: var(--accent); }
+        .hero .sub { color: var(--ink-soft); font-size: clamp(1.05rem, 2.6vw, 1.25rem); max-width: 600px; margin: 1.1rem auto 0; }
+        .tagline { margin: 1.4rem auto 0; max-width: 640px; color: var(--muted); font-size: .95rem; font-weight: 600; letter-spacing: .2px; }
+
+        /* ===== Highlight (traffic) ===== */
+        .highlight {
+            background: linear-gradient(135deg, var(--card-2), rgba(var(--accent-rgb),0.10));
+            border: 1px solid rgba(var(--accent-rgb),0.5);
+            border-radius: 18px; padding: 1.7rem 1.5rem; margin: 2.2rem 0 .5rem;
+            display: flex; gap: 1rem; align-items: flex-start;
+            box-shadow: 0 18px 50px rgba(0,0,0,.28);
+        }
+        .highlight .ic { font-size: 1.9rem; line-height: 1; flex-shrink: 0; }
+        .highlight h2 { font-size: 1.3rem; font-weight: 800; margin-bottom: .35rem; color: var(--accent); }
+        .highlight p { color: var(--ink-soft); font-size: 1.02rem; }
+        .highlight a { color: var(--accent); font-weight: 800; text-decoration: none; white-space: nowrap; }
+        .highlight a:hover { text-decoration: underline; }
+
+        /* ===== Chips ===== */
+        .chips { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; margin: 2.4rem 0 .5rem; }
+        .chips a {
+            text-decoration: none; background: var(--card); border: 1px solid var(--line);
+            color: var(--ink-soft); font-weight: 700; font-size: .88rem;
+            padding: .42rem 1rem; border-radius: 999px; transition: all .2s;
+        }
+        .chips a:hover { border-color: var(--accent); color: var(--accent); }
+
+        /* ===== Categories / FAQ ===== */
+        .cat { margin-top: 2.8rem; }
+        .cat-head { display: flex; align-items: center; gap: .75rem; margin-bottom: 1rem; padding-bottom: .65rem; border-bottom: 2px solid var(--line); }
+        .cat-head .badge { background: var(--accent); color: var(--accent-ink); width: 38px; height: 38px; border-radius: 10px; display: grid; place-items: center; font-size: 1.2rem; flex-shrink: 0; }
+        .cat-head h2 { font-size: 1.4rem; font-weight: 800; }
+
+        .qa { background: var(--card); border: 1px solid var(--line); border-radius: 16px; margin-bottom: .75rem; overflow: hidden; transition: border-color .2s, box-shadow .2s, background .2s; }
+        .qa.open { border-color: rgba(var(--accent-rgb),0.6); background: var(--card-2); box-shadow: 0 14px 40px rgba(0,0,0,.28); }
+        .qa button.q {
+            all: unset; display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+            width: 100%; box-sizing: border-box; cursor: pointer; padding: 1.15rem 1.3rem;
+            font-family: 'Rubik', 'Heebo', sans-serif; font-weight: 600; font-size: 1.08rem; color: var(--ink); line-height: 1.5;
+        }
+        .qa button.q:focus-visible { outline: 2px solid var(--accent); outline-offset: -4px; border-radius: 12px; }
+        .qa .plus {
+            flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%;
+            background: rgba(var(--accent-rgb),0.16); color: var(--accent);
+            display: grid; place-items: center; font-size: 1.4rem; font-weight: 700;
+            transition: transform .3s ease, background .2s, color .2s;
+        }
+        .qa.open .plus { transform: rotate(45deg); background: var(--accent); color: var(--accent-ink); }
+        .qa .a { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+        .qa .a-inner { padding: 0 1.3rem 1.3rem; color: var(--ink-soft); font-size: 1.03rem; }
+        .qa .a-inner strong { color: var(--ink); font-weight: 700; }
+        .qa .a-inner .tip {
+            display: block; margin-top: .85rem; padding: .75rem .95rem;
+            background: rgba(var(--accent-rgb),0.10); border-right: 3px solid var(--accent);
+            border-radius: 8px; font-size: .97rem; color: var(--ink);
+        }
+
+        /* ===== Heart strip ===== */
+        .heartstrip { margin-top: 3rem; text-align: center; padding: 2rem 1.2rem; border: 1px dashed var(--line); border-radius: 18px; background: rgba(var(--accent2-rgb),0.06); }
+        .heartstrip .big { font-family: 'Rubik', sans-serif; font-weight: 900; font-size: clamp(1.4rem,4.5vw,2rem); line-height: 1.25; }
+        .heartstrip .big .heart { color: var(--accent2); }
+
+        /* ===== CTA ===== */
+        .cta { margin: 2.2rem 0 0; background: var(--accent); color: var(--accent-ink); border-radius: 22px; padding: 2.8rem 1.8rem; text-align: center; }
+        .cta h2 { font-size: clamp(1.6rem, 4.6vw, 2.25rem); font-weight: 900; line-height: 1.2; }
+        .cta p { margin: .65rem auto 1.7rem; max-width: 470px; font-weight: 600; opacity: .85; }
+        .cta-btns { display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; }
+        .btn { text-decoration: none; font-weight: 800; font-family: 'Rubik', sans-serif; padding: .9rem 2.1rem; border-radius: 999px; font-size: 1.05rem; transition: transform .2s, box-shadow .2s, background .2s, color .2s; display: inline-block; }
+        .btn-dark { background: var(--cta-btn-bg); color: var(--cta-btn-fg); }
+        .btn-dark:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,.3); }
+        .btn-out { background: transparent; color: var(--accent-ink); border: 2px solid var(--accent-ink); }
+        .btn-out:hover { background: var(--accent-ink); color: var(--accent); }
+
+        /* ===== Footer ===== */
+        footer { text-align: center; padding: 2.6rem 1rem 3.2rem; color: var(--muted); font-size: .9rem; }
+        footer .fbrand { display: inline-flex; align-items: center; gap: .55rem; color: var(--ink-soft); font-family: 'Rubik', sans-serif; font-weight: 800; margin-bottom: .5rem; }
+        footer .fbrand .route { width: 42px; height: 27px; font-size: .85rem; }
+        footer .fbrand span { color: var(--accent); }
+
+        @media (max-width: 560px) {
+            .hero { padding: 2.6rem 0 1.2rem; }
+            .highlight { flex-direction: column; gap: .6rem; }
+            .qa button.q { font-size: 1rem; padding: 1rem 1.05rem; }
+            .qa .a-inner { padding: 0 1.05rem 1.05rem; }
+            .cat-head h2 { font-size: 1.22rem; }
+            .topbar .lnk:not(.web) { display: none; }
+        }
+    </style>
+</head>
+<body data-theme="brand">
+
+    <!-- Top bar -->
+    <header class="topbar">
+        <div class="wrap">
+            <a href="index.html" class="brand"><span class="route">553</span><b>שומרים על <span>הבית</span></b></a>
+            <div class="links">
+                <a href="index.html" class="lnk">חזרה לאתר</a>
+                <a href="index.html#signup" class="lnk web">הצטרפו למאבק</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="wrap">
+        <!-- Design switcher -->
+        <nav class="theme-switch" aria-label="בחירת עיצוב">
+            <span class="ts-label">עיצוב:</span>
+            <button data-set="brand" type="button"><span class="dot" style="background:#f4c01e"></span>כהה־צהוב</button>
+            <button data-set="crimson" type="button"><span class="dot" style="background:#e23b32"></span>כהה־אדום</button>
+            <button data-set="light" type="button"><span class="dot" style="background:#d4322c;outline:2px solid #fff;outline-offset:-2px"></span>בהיר</button>
+            <button data-set="poster" type="button"><span class="dot" style="background:#ffd400;outline:2px solid #000;outline-offset:-2px"></span>פוסטר</button>
+        </nav>
+    </div>
+
+    <main class="wrap">
+
+        <!-- Hero -->
+        <section class="hero">
+            <span class="eyebrow">זה הזמן להשפיע</span>
+            <h1>יש לכם שאלות?<br><span class="y">יש לנו תשובות.</span></h1>
+            <p class="sub">ריכזנו את כל מה שמטריד את תושבי תל מונד ולב השרון לגבי תוכנית כביש 553 — עם תשובות מסודרות, בלי סיסמאות.</p>
+            <p class="tagline">שומרים על הצביון · על הבריאות · על הביטחון · על הבית</p>
+        </section>
+
+        <!-- Traffic highlight -->
+        <section class="highlight">
+            <div class="ic">🚗</div>
+            <div>
+                <h2>"אבל אם עוצרים את 553 — מה יהיה עם הפקקים?"</h2>
+                <p>זו השאלה הכי נפוצה, והיא לגיטימית. התשובה הקצרה: כביש רחב יותר לא פותר פקקים — הוא מושך אליו עוד תנועה. הפתרון האמיתי קיים, והוא לא דורש להחריב את הבית שלנו. <a href="#traffic">לתשובה המלאה ↓</a></p>
+            </div>
+        </section>
+
+        <!-- Chips -->
+        <nav class="chips">
+            <a href="#about">מה מתוכנן</a>
+            <a href="#traffic">פקקים ותחבורה</a>
+            <a href="#security">ביטחון</a>
+            <a href="#health">בריאות וסביבה</a>
+            <a href="#community">קהילה, חקלאות ונדל"ן</a>
+            <a href="#action">מה אפשר לעשות</a>
+        </nav>
+
+        <!-- About -->
+        <section class="cat" id="about">
+            <div class="cat-head"><span class="badge">📋</span><h2>מה בעצם מתוכנן</h2></div>
+
+            <div class="qa">
+                <button class="q">מה בעצם מתוכנן בכביש 553?<span class="plus">+</span></button>
+                <div class="a"><div class="a-inner">
+                    התוכנית הנוכחית היא להפוך את כביש 553 — הכביש המקומי והשקט שלנו — ל<strong>אוטוסטרדה ארצית של 6–8 נתיבים</strong> שתחבר בין כביש 4 לכביש 6. זה לא "שיפוץ כביש" או הוספת נתיב, אלא שינוי דרמטי שיהפוך את האזור הכפרי שלנו למחלף אחד גדול ורועש, שיחצה את היישובים ויפריד ביניהם פיזית.
+                </div></div>
+            </div>
+
+            <div class="qa">
+                <button class="q">למה דווקא עכשיו הקמנו קמפיין? התוכנית כבר אושרה?<span class="plus">+</span></button>
+                <div class="a"><div class="a-inner">
+                    לא — ובדיוק בגלל זה זה הזמן. אנחנו ב<strong>שלב שלפני ההפקדה</strong>, שהוא חלון ההתנגדויות האחרון. השלב הבא הוא שלב קריטי בתהליך האישור, ואחריו יהיה הרבה יותר קשה לעצור או לשנות את המסלול. כל עוד הטרקטורים לא עלו על הקרקע — אפשר להשפיע.
+                </div></div>
+            </div>
+        </section>
+
+        <!-- Traffic -->
+        <section class="cat" id="traffic">
+            <div class="cat-head"><span class="badge">🚗</span><h2>פקקים ותחבורה</h2></div>
+
+            <div class="qa">
+                <button class="q">חיבור לכביש 6 זה לא דבר טוב? זה לא יקצר לנו את הפקקים?<span class="plus">+</span></button>
+                <div class="a"><div class="a-inner">
+                    זו השאלה הכי חשובה, והתשובה המקצועית היא: <strong>לא</strong>. הניסיון בעולם מוכיח שכבישים רחבים כל כך מייצרים "ביקוש מושרה" (Induced Demand) — הם פשוט מושכים אליהם נהגים מכל רחבי השרון שמחפשים לעקוף פקקים אחרים. כביש 553 יהפוך ל"פקק של המדינה", ואנחנו נמצא את עצמנו תקועים בתור ארוך מאחורי רכבים מכל האזור, שישתמשו ב"חצר האחורית" שלנו כמעקף בדרך לכביש 6.
+                    <span class="tip">בקיצור: לא מקבלים נסיעה מהירה — מקבלים את הפקק של כולם בתוך הבית שלנו.</span>
+                </div></div>
+            </div>
+
+            <div class="qa">
+                <button class="q">אז אם עוצרים את 553 — נישאר בפקק לנצח?<span class="plus">+</span></button>
+                <div class="a"><div class="a-inner">
+                    ממש לא. אנחנו דורשים מהמדינה להשקיע ב<strong>פתרונות של המאה ה-21</strong> ולא בבטון של המאה הקודמת. המדינה כבר הציעה פתרונות מעולים: קידום המטרו, מתחמי "חנה וסע", וייעול קווי הרכבת. הפתרון האמיתי הוא לא באוטוסטרדות ענק שמביאות עומס חדש, אלא בייעול הניידות שלנו ובמתן חלופות חכמות שיוציאו רכבים מהכביש. מה שנותר הוא לחבר אותנו לפתרונות האלה — לא לשפוך עוד אספלט.
+                </div></div>
+            </div>
+
+            <div class="qa">
+                <button class="q">למה אתם דורשים את כביש 551 במקום?<span class="plus">+</span></button>
+                <div class="a"><div class="a-inner">
+                    כי כביש 551 תוכנן מלכתחילה כ<strong>פתרון חיצוני ליישובים</strong>. הוא יכול לתת מענה תחבורתי ארצי — חיבור בין הכבישים הארציים — מבלי להחריב את יישובי הגוש, בלי לנתק חקלאים משדותיהם, ובלי לחנוק את תל מונד, עין ורד והסביבה בקירות אקוסטיים ובזיהום אוויר. אנחנו בעד תכנון שפוי ששומר על הבית: להחזיר את התוכנית לתוואי 551 המתוכנן במחלף הדרים.
+                </div></div>
+            </div>
+
+            <div class="qa">
+                <button class="q">מה זה "איום ה-Waze" שמדברים עליו?<span class="plus">+</span></button>
+                <div class="a"><div class="a-inner">
+                    ברגע שהאוטוסטרדה תהיה פקוקה (והיא תהיה), אפליקציות הניווט יפנו אלפי נהגים עצבניים <strong>לתוך הרחובות הצרים</strong> של תל מונד, עין ורד ופורת. השכונות השקטות שלנו יהפכו לנתיבי עוקף מסוכנים — מה שיסכן את הילדים שלנו בדרך לבית הספר וימנע מאיתנו פשוט לצאת מהחניה בבוקר.
+                </div></div>
+            </div>
+        </section>
+
+        <!-- Security -->
+        <section class="cat" id="security">
+            <div class="cat-head"><span class="badge">🛡️</span><h2>ביטחון אישי וחירום</h2></div>
+
+            <div class="qa">
+                <button class="q">איך כביש פוגע בביטחון האישי שלנו?<span class="plus">+</span></button>
+                <div class="a"><div class="a-inner">
+                    כביש מהיר הוא גם <strong>מסלול מילוט מושלם</strong>. הפיכת הכביש לאוטוסטרדה מפרקת את החיץ החקלאי והטבעי שהגן עלינו שנים, ומאפשרת גישה מהירה ונוחה מקו התפר ישירות לתוך היישובים שלנו תוך דקות ספורות. בנוסף, בשיטפון של עשרות אלפי רכבים אנונימיים, כוחות הביטחון יתקשו מאוד לזהות חריגים או למנוע פשיעה. אנחנו הופכים מקהילה כפרית ששומרת אחד על השני לתחנת מעבר ארצית ופרוצה.
+                </div></div>
+            </div>
+
+            <div class="qa">
+                <button class="q">מה קורה במצב חירום אם ציר אחד נחסם?<span class="plus">+</span></button>
+                <div class="a"><div class="a-inner">
+                    הפיכת הכביש ל-8 נתיבים אומרת שכל תאונה או חפץ חשוד יכולים <strong>לשתק את כל האזור</strong>. במצב חירום, כשכל שנייה קובעת, כוחות ההצלה עלולים פשוט לא להצליח להגיע ליישובים שלנו. להפוך את 553 לדרך היחידה של עשרות אלפי תושבים זה הימור מסוכן: חסימה אחת — וכולנו נצורים, בלי דרך החוצה ובלי עזרה פנימה.
+                </div></div>
+            </div>
+        </section>
+
+        <!-- Health -->
+        <section class="cat" id="health">
+            <div class="cat-head"><span class="badge">🌿</span><h2>בריאות וסביבה</h2></div>
+
+            <div class="qa">
+                <button class="q">ומה לגבי הרעש, זיהום האוויר והבריאות?<span class="plus">+</span></button>
+                <div class="a"><div class="a-inner">
+                    אוטוסטרדה בסדר גודל כזה מביאה איתה <strong>זיהום אוויר כבד, רעש בלתי פוסק וזיהום אור</strong> שיחדור לכל חדר שינה — 24/7, כולל רכבת בלתי פוסקת של משאיות. קירות אקוסטיים בגובה 5 מטרים הם לא פתרון: הם חומה שתסגור עלינו ותהרוס סופית את הנוף ואת האוויר הנקי שעבורם בחרנו לחיות כאן.
+                </div></div>
+            </div>
+
+            <div class="qa">
+                <button class="q">מה הנזק לסביבה ולנוף הכפרי?<span class="plus">+</span></button>
+                <div class="a"><div class="a-inner">
+                    שדות ופרדסים יוחלפו בנתיבי אספלט ובחומות בטון. מדובר ב<strong>נזק בלתי הפיך</strong> לחי, לצומח ולמרחבים הפתוחים האחרונים בלב השרון. האוטוסטרדה תהפוך למחסום פיזי שיקרע את הקהילה לשניים, ינתק אותנו מהשכנים ומהטבע המוכר, ויהפוך את המושבים השקטים לתחנת מעבר רועשת ומזוהמת של רכבים מכל המדינה.
+                </div></div>
+            </div>
+        </section>
+
+        <!-- Community -->
+        <section class="cat" id="community">
+            <div class="cat-head"><span class="badge">🏡</span><h2>קהילה, חקלאות וערך נכסים</h2></div>
+
+            <div class="qa">
+                <button class="q">איך זה משפיע על החקלאות בגוש?<span class="plus">+</span></button>
+                <div class="a"><div class="a-inner">
+                    הרחבת הכביש ל-8 נתיבים תקטע את <strong>הרציפות החקלאית</strong> של הגוש ותהפוך את המעבר בין החלקות לבלתי אפשרי. בלי יכולת לחצות עם טרקטור ובלי גישה לשדות — החקלאות של גוש תל מונד פשוט תיעלם מהמפה. עבור ותיקי המושבים שבנו כאן חיים בעשר אצבעות, זה סוף עידן.
+                </div></div>
+            </div>
+
+            <div class="qa">
+                <button class="q">מה יקרה לערך הבתים שלנו?<span class="plus">+</span></button>
+                <div class="a"><div class="a-inner">
+                    כולנו השקענו כדי לגור כאן בזכות השקט והמרחבים הירוקים — מה שאפשר לכנות "הפרמיה הכפרית". ברגע שהשדות יוחלפו בבטון ובחומות אקוסטיות, וכשהשכונה הכי מבוקשת תהפוך לנתיב עוקף Waze מזהם, <strong>היתרון הכלכלי של הבית פשוט יימחק</strong>. אף אחד לא רוצה לגור ליד אוטוסטרדה.
+                </div></div>
+            </div>
+
+            <div class="qa">
+                <button class="q">אילו יישובים מושפעים מהתוכנית?<span class="plus">+</span></button>
+                <div class="a"><div class="a-inner">
+                    התוכנית פוגעת בלב השרון ובגוש תל מונד כולו: <strong>עין ורד, עין שריד, תל מונד, פורת, יעף, יעבץ, עזריאל, בני דרור, כפר הס, חרות, משמרת וקדימה</strong>. כל מי שבחר לגור באזור כפרי ושקט ירגיש את ההשפעה — בנוף, ברעש, בביטחון ובערך הבית.
+                </div></div>
+            </div>
+        </section>
+
+        <!-- Action -->
+        <section class="cat" id="action">
+            <div class="cat-head"><span class="badge">✊</span><h2>מה אפשר לעשות</h2></div>
+
+            <div class="qa">
+                <button class="q">האם באמת עוד אפשר להשפיע?<span class="plus">+</span></button>
+                <div class="a"><div class="a-inner">
+                    כן. התוכנית עדיין לא הופקדה — אנחנו בחלון ההזדמנויות היחיד להשפיע ולדרוש את העתקת התוואי לכביש 551. ברגע שהטרקטורים יעלו על הקרקע והבטון הראשון יישפך, לא תהיה דרך חזרה. <strong>כל יום קובע</strong>, וככל שנהיה יותר אנשים, מאורגנים ונחושים — כך גדל הכוח הציבורי שיכול לעצור את זה.
+                </div></div>
+            </div>
+
+            <div class="qa">
+                <button class="q">איך אני יכול/ה לעזור למאבק?<span class="plus">+</span></button>
+                <div class="a"><div class="a-inner">
+                    הכוח שלנו הוא בקהילה. אתם יכולים לעזור בכמה דרכים פשוטות:
+                    <span class="tip">
+                        1. הצטרפו לקבוצת העדכונים השקטה לקבלת מידע מהשטח.<br>
+                        2. חיתמו על העצומה והפיצו אותה לכל שכן וחבר.<br>
+                        3. תלו שלט "הבית שלנו הוא לא מחלף" על הגדר — הנראות שלנו היא ההרתעה שלנו.<br>
+                        4. כשתיפתח תקופת ההתנגדויות — הגישו התנגדות רשמית (נעזור לכם!).
+                    </span>
+                </div></div>
+            </div>
+        </section>
+
+        <!-- Heart strip -->
+        <section class="heartstrip">
+            <p class="big">הכביש הזה <span class="heart">חוצה לנו את הלב</span>.</p>
+            <p class="tagline" style="margin-top:.5rem;">לב השרון הוא בית, לא מסדרון תחבורה.</p>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta">
+            <h2>זה הבית שלנו —<br>ואנחנו לא מוותרים עליו</h2>
+            <p>כדי לעצור את התוכנית צריך כוח ציבורי. הצטרפו עכשיו ועזרו לנו לשמור על הבית.</p>
+            <div class="cta-btns">
+                <a href="index.html#signup" class="btn btn-dark">✍ הצטרפו למאבק</a>
+                <a href="index.html" class="btn btn-out">← לאתר הקמפיין</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="fbrand"><span class="route">553</span>שומרים על <span>הבית</span></div>
+        <p>מטה תושבי תל מונד ולב השרון · יחד נבטיח עתיד טוב יותר</p>
+    </footer>
+
+    <script>
+        // FAQ accordion
+        document.querySelectorAll('.qa .q').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var item = btn.closest('.qa');
+                var ans = item.querySelector('.a');
+                var isOpen = item.classList.toggle('open');
+                ans.style.maxHeight = isOpen ? (ans.scrollHeight + 40) + 'px' : '0';
+            });
+        });
+
+        // Open first item of a category when its chip is clicked
+        function openFromHash() {
+            var id = location.hash.replace('#', '');
+            if (!id) return;
+            var sec = document.getElementById(id);
+            if (sec && sec.classList.contains('cat')) {
+                var first = sec.querySelector('.qa');
+                if (first && !first.classList.contains('open')) first.querySelector('.q').click();
+            }
+        }
+        window.addEventListener('hashchange', openFromHash);
+        openFromHash();
+
+        // Design / theme switcher
+        var THEME_KEY = 'faq553_theme';
+        var btns = document.querySelectorAll('.theme-switch button');
+        function setTheme(t) {
+            document.body.setAttribute('data-theme', t);
+            try { localStorage.setItem(THEME_KEY, t); } catch (e) {}
+            btns.forEach(function (b) { b.classList.toggle('active', b.dataset.set === t); });
+            // re-measure any open answers (font metrics differ between themes)
+            document.querySelectorAll('.qa.open .a').forEach(function (a) {
+                a.style.maxHeight = (a.scrollHeight + 40) + 'px';
+            });
+        }
+        btns.forEach(function (b) { b.addEventListener('click', function () { setTheme(b.dataset.set); }); });
+        var saved = 'brand';
+        try { saved = localStorage.getItem(THEME_KEY) || 'brand'; } catch (e) {}
+        setTheme(saved);
+    </script>
+</body>
+</html>

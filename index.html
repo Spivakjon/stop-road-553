@@ -16,868 +16,315 @@
     <title>עצרו את כביש 553 | המאבק על הבית שלנו</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&family=Heebo:wght@300;400;500;700;800;900&family=Rubik:wght@500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --red: #c0392b;
-            --dark-red: #962d22;
-            --green: #27ae60;
-            --dark: #1a1a2e;
-            --darker: #16213e;
-            --light: #f8f9fa;
-            --gray: #6c757d;
-            --orange: #e67e22;
+        /* ===== Theme tokens ===== */
+        body[data-theme="brand"] {
+            --accent:#f4c01e; --accent-rgb:244,192,30; --accent-ink:#1a1206; --accent-dark:#d9a90f;
+            --accent2:#e0322a; --accent2-rgb:224,50,42;
+            --bg:#0e0d0b; --section-alt:#141210; --card:#1b1814; --line:#2a251f;
+            --ink:#f6f1e7; --ink-soft:#c9c0b1; --muted:#8c8275;
+            --band:#14110d; --band-2:#1d1813; --band-ink:#f6f1e7; --band-ink-soft:rgba(246,241,231,0.72);
+        }
+        body[data-theme="crimson"] {
+            --accent:#e23b32; --accent-rgb:226,59,50; --accent-ink:#ffffff; --accent-dark:#bd2c25;
+            --accent2:#f4c01e; --accent2-rgb:244,192,30;
+            --bg:#0c0b0c; --section-alt:#141012; --card:#1a1514; --line:#2b2421;
+            --ink:#f6efed; --ink-soft:#cdbfbb; --muted:#8c7f7a;
+            --band:#141012; --band-2:#1d1715; --band-ink:#f6efed; --band-ink-soft:rgba(246,239,237,0.72);
+        }
+        body[data-theme="light"] {
+            --accent:#d4322c; --accent-rgb:212,50,44; --accent-ink:#ffffff; --accent-dark:#b3251f;
+            --accent2:#d99a0f; --accent2-rgb:217,154,15;
+            --bg:#faf7f3; --section-alt:#f3ede5; --card:#ffffff; --line:#e8e0d6;
+            --ink:#2b2622; --ink-soft:#5b524b; --muted:#8a7f76;
+            --band:#1d1a16; --band-2:#262019; --band-ink:#f6f1e7; --band-ink-soft:rgba(246,241,231,0.72);
+        }
+        body[data-theme="poster"] {
+            --accent:#ffd400; --accent-rgb:255,212,0; --accent-ink:#000000; --accent-dark:#e6bf00;
+            --accent2:#ff2e2e; --accent2-rgb:255,46,46;
+            --bg:#000000; --section-alt:#0c0c0c; --card:#141414; --line:#262626;
+            --ink:#ffffff; --ink-soft:#d6d6d6; --muted:#8f8f8f;
+            --band:#0a0a0a; --band-2:#151515; --band-ink:#ffffff; --band-ink-soft:rgba(255,255,255,0.72);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Heebo', sans-serif;
-            color: #333;
+            font-family: 'Assistant', 'Heebo', sans-serif;
+            color: var(--ink);
             line-height: 1.7;
-            background: #fff;
+            background: var(--bg);
+            transition: background 0.35s, color 0.35s;
         }
 
-        /* Hero Section */
+        h1, h2, h3, .display { font-family: 'Rubik', 'Heebo', sans-serif; }
+
+        /* ===== Theme switcher bar ===== */
+        .theme-switch {
+            position: sticky; top: 0; z-index: 1100;
+            display: flex; align-items: center; flex-wrap: wrap; gap: .45rem;
+            justify-content: center; padding: .55rem 1rem;
+            background: var(--band); border-bottom: 1px solid var(--line);
+        }
+        .theme-switch .ts-label { font-size: .8rem; color: var(--band-ink-soft); font-weight: 700; margin-inline-end: .2rem; }
+        .theme-switch button {
+            cursor: pointer; font-family: 'Rubik', sans-serif; font-weight: 700; font-size: .8rem;
+            color: var(--band-ink-soft); background: transparent;
+            padding: .32rem .8rem; border-radius: 999px; border: 1px solid rgba(255,255,255,0.18);
+            transition: all .2s; display: inline-flex; align-items: center; gap: .35rem;
+        }
+        .theme-switch button .dot { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+        .theme-switch button:hover { border-color: var(--accent); color: var(--band-ink); }
+        .theme-switch button.active { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+
+        /* ===== Hero ===== */
         .hero {
-            background: linear-gradient(135deg, rgba(26,26,46,0.92), rgba(22,33,62,0.88)),
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23c0392b" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,208C1248,224,1344,192,1392,176L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            padding: 2rem;
-            position: relative;
+            background:
+                radial-gradient(900px 520px at 80% 0%, rgba(var(--accent-rgb),0.16), transparent 60%),
+                radial-gradient(700px 420px at 0% 100%, rgba(var(--accent2-rgb),0.12), transparent 55%),
+                linear-gradient(135deg, var(--band), var(--band-2));
+            min-height: calc(100vh - 46px);
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; color: var(--band-ink); padding: 2rem; position: relative;
         }
-
-        .hero-content {
-            max-width: 900px;
-            z-index: 2;
-        }
-
+        .hero-content { max-width: 900px; z-index: 2; }
         .hero-badge {
-            display: inline-block;
-            background: var(--red);
-            color: white;
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            font-size: 0.95rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            animation: pulse 2s infinite;
+            display: inline-block; background: var(--accent); color: var(--accent-ink);
+            padding: 0.5rem 1.5rem; border-radius: 50px; font-size: 0.95rem; font-weight: 700;
+            margin-bottom: 1.5rem; animation: pulse 2s infinite;
         }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            font-weight: 900;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-
-        .hero h1 span {
-            color: var(--red);
-            display: block;
-        }
-
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900; margin-bottom: 1rem; line-height: 1.2; }
+        .hero h1 span { color: var(--accent); display: block; }
         .hero p.subtitle {
-            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-            opacity: 0.9;
-            margin-bottom: 2rem;
-            font-weight: 300;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem); opacity: 0.9; margin-bottom: 2rem;
+            font-weight: 300; max-width: 700px; margin-left: auto; margin-right: auto;
         }
-
-        .hero-cta {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
+        .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
         .btn {
-            padding: 1rem 2.5rem;
-            border: none;
-            border-radius: 50px;
-            font-family: 'Heebo', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
+            padding: 1rem 2.5rem; border: none; border-radius: 50px;
+            font-family: 'Rubik', 'Heebo', sans-serif; font-size: 1.1rem; font-weight: 700;
+            cursor: pointer; transition: all 0.3s; text-decoration: none; display: inline-block;
         }
+        .btn-primary { background: var(--accent); color: var(--accent-ink); }
+        .btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(var(--accent-rgb),0.3); }
+        .btn-outline { background: transparent; color: var(--band-ink); border: 2px solid var(--band-ink); }
+        .btn-outline:hover { background: var(--band-ink); color: var(--band); }
 
-        .btn-primary {
-            background: var(--red);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: var(--dark-red);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(192,57,43,0.3);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-
-        .btn-outline:hover {
-            background: white;
-            color: var(--dark);
-        }
-
-        /* Stats Bar */
-        .stats-bar {
-            background: var(--dark);
-            padding: 2rem 0;
-        }
-
+        /* ===== Stats Bar ===== */
+        .stats-bar { background: var(--band); padding: 2rem 0; }
         .stats-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            padding: 0 2rem;
-            text-align: center;
-            color: white;
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem; padding: 0 2rem; text-align: center; color: var(--band-ink);
         }
+        .stat-item h3 { font-size: 2.5rem; font-weight: 900; color: var(--accent); }
+        .stat-item p { font-size: 0.95rem; color: var(--band-ink-soft); }
 
-        .stat-item h3 {
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: var(--red);
-        }
-
-        .stat-item p {
-            font-size: 0.95rem;
-            opacity: 0.8;
-        }
-
-        /* Sections */
-        .section {
-            padding: 5rem 2rem;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: var(--dark);
-            margin-bottom: 0.5rem;
-        }
-
-        .section-title .line {
-            width: 60px;
-            height: 4px;
-            background: var(--red);
-            margin: 0.8rem auto;
-            border-radius: 2px;
-        }
-
-        .section-title p {
-            color: var(--gray);
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
+        /* ===== Sections ===== */
+        .section { padding: 5rem 2rem; }
+        .container { max-width: 1100px; margin: 0 auto; }
+        .section-title { text-align: center; margin-bottom: 3rem; }
+        .section-title h2 { font-size: 2.2rem; font-weight: 800; color: var(--ink); margin-bottom: 0.5rem; }
+        .section-title .line { width: 60px; height: 4px; background: var(--accent); margin: 0.8rem auto; border-radius: 2px; }
+        .section-title p { color: var(--muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
 
         /* What's Happening */
-        .what-section {
-            background: var(--light);
-        }
-
-        .what-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
+        .what-section { background: var(--section-alt); }
+        .what-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
         .what-card {
-            background: white;
-            border-radius: 16px;
-            padding: 2rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-            border-top: 4px solid var(--red);
-            transition: transform 0.3s;
+            background: var(--card); border-radius: 16px; padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.18); border-top: 4px solid var(--accent); transition: transform 0.3s;
         }
+        .what-card:hover { transform: translateY(-5px); }
+        .what-card .icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .what-card h3 { font-size: 1.3rem; margin-bottom: 0.8rem; color: var(--ink); }
+        .what-card p { color: var(--ink-soft); font-size: 0.95rem; }
 
-        .what-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .what-card .icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .what-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.8rem;
-            color: var(--dark);
-        }
-
-        .what-card p {
-            color: #555;
-            font-size: 0.95rem;
-        }
-
-        /* Impact Section */
-        .impact-section {
-            background: white;
-        }
-
-        .impact-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-
+        /* Impact */
+        .impact-section { background: var(--bg); }
+        .impact-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
         .impact-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            padding: 1.5rem;
-            background: #fff5f5;
-            border-radius: 12px;
-            border-right: 4px solid var(--red);
+            display: flex; align-items: flex-start; gap: 1rem; padding: 1.5rem;
+            background: rgba(var(--accent2-rgb),0.07); border-radius: 12px; border-right: 4px solid var(--accent2);
         }
-
         .impact-item .num {
-            background: var(--red);
-            color: white;
-            min-width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 1.1rem;
+            background: var(--accent); color: var(--accent-ink); min-width: 40px; height: 40px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem;
         }
-
-        .impact-item h4 {
-            font-size: 1.1rem;
-            color: var(--dark);
-            margin-bottom: 0.3rem;
-        }
-
-        .impact-item p {
-            font-size: 0.9rem;
-            color: #666;
-        }
+        .impact-item h4 { font-size: 1.1rem; color: var(--ink); margin-bottom: 0.3rem; }
+        .impact-item p { font-size: 0.9rem; color: var(--ink-soft); }
 
         /* Timeline */
-        .timeline-section {
-            background: var(--light);
-        }
-
-        .timeline {
-            position: relative;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            right: 20px;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: var(--red);
-        }
-
-        .timeline-item {
-            padding-right: 60px;
-            margin-bottom: 2rem;
-            position: relative;
-        }
-
+        .timeline-section { background: var(--section-alt); }
+        .timeline { position: relative; max-width: 700px; margin: 0 auto; }
+        .timeline::before { content: ''; position: absolute; right: 20px; top: 0; bottom: 0; width: 3px; background: var(--accent); }
+        .timeline-item { padding-right: 60px; margin-bottom: 2rem; position: relative; }
         .timeline-item::before {
-            content: '';
-            position: absolute;
-            right: 12px;
-            top: 5px;
-            width: 18px;
-            height: 18px;
-            background: var(--red);
-            border-radius: 50%;
-            border: 3px solid white;
-            box-shadow: 0 0 0 3px var(--red);
+            content: ''; position: absolute; right: 12px; top: 5px; width: 18px; height: 18px;
+            background: var(--accent); border-radius: 50%; border: 3px solid var(--card); box-shadow: 0 0 0 3px var(--accent);
         }
-
-        .timeline-item .date {
-            font-size: 0.85rem;
-            color: var(--red);
-            font-weight: 700;
-        }
-
-        .timeline-item h4 {
-            font-size: 1.1rem;
-            color: var(--dark);
-            margin: 0.3rem 0;
-        }
-
-        .timeline-item p {
-            font-size: 0.9rem;
-            color: #666;
-        }
+        .timeline-item .date { font-size: 0.85rem; color: var(--accent); font-weight: 700; }
+        .timeline-item h4 { font-size: 1.1rem; color: var(--ink); margin: 0.3rem 0; }
+        .timeline-item p { font-size: 0.9rem; color: var(--ink-soft); }
 
         /* Arguments */
-        .arguments-section {
-            background: var(--dark);
-            color: white;
-        }
+        .arguments-section { background: var(--band); color: var(--band-ink); }
+        .arguments-section .section-title h2 { color: var(--band-ink); }
+        .arguments-section .section-title p { color: var(--band-ink-soft); }
+        .arg-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .arg-card { background: rgba(255,255,255,0.07); border-radius: 16px; padding: 2rem; border: 1px solid rgba(255,255,255,0.12); }
+        .arg-card .tag { display: inline-block; background: var(--accent); color: var(--accent-ink); padding: 0.2rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 700; margin-bottom: 1rem; }
+        .arg-card h3 { font-size: 1.2rem; margin-bottom: 0.8rem; color: var(--band-ink); }
+        .arg-card p { color: var(--band-ink-soft); font-size: 0.95rem; }
+        .arg-card .source { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.12); font-size: 0.8rem; color: rgba(255,255,255,0.5); }
 
-        .arguments-section .section-title h2 {
-            color: white;
+        /* Form */
+        .form-section { background: var(--accent); color: var(--accent-ink); padding: 5rem 2rem; }
+        .form-container { max-width: 600px; margin: 0 auto; text-align: center; }
+        .form-container h2 { font-size: 2.2rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--accent-ink); }
+        .form-container > p { opacity: 0.85; margin-bottom: 2rem; font-size: 1.1rem; color: var(--accent-ink); }
+        .signup-form { background: var(--card); border-radius: 20px; padding: 2.5rem; color: var(--ink); text-align: right; }
+        .form-group { margin-bottom: 1.2rem; }
+        .form-group label { display: block; margin-bottom: 0.4rem; font-weight: 600; font-size: 0.95rem; color: var(--ink); }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%; padding: 0.8rem 1rem; border: 2px solid var(--line); border-radius: 10px;
+            font-family: 'Assistant', 'Heebo', sans-serif; font-size: 1rem; transition: border-color 0.3s;
+            direction: rtl; background: var(--bg); color: var(--ink);
         }
-
-        .arguments-section .section-title p {
-            color: rgba(255,255,255,0.7);
-        }
-
-        .arg-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .arg-card {
-            background: rgba(255,255,255,0.08);
-            border-radius: 16px;
-            padding: 2rem;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .arg-card .tag {
-            display: inline-block;
-            background: var(--red);
-            color: white;
-            padding: 0.2rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .arg-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .arg-card p {
-            color: rgba(255,255,255,0.75);
-            font-size: 0.95rem;
-        }
-
-        .arg-card .source {
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.8rem;
-            color: rgba(255,255,255,0.5);
-        }
-
-        /* Form Section */
-        .form-section {
-            background: linear-gradient(135deg, var(--red), var(--dark-red));
-            color: white;
-            padding: 5rem 2rem;
-        }
-
-        .form-container {
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .form-container h2 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-        }
-
-        .form-container p {
-            opacity: 0.9;
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-        }
-
-        .signup-form {
-            background: white;
-            border-radius: 20px;
-            padding: 2.5rem;
-            color: #333;
-            text-align: right;
-        }
-
-        .form-group {
-            margin-bottom: 1.2rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.4rem;
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-family: 'Heebo', sans-serif;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-            direction: rtl;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--red);
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .checkbox-group input[type="checkbox"] {
-            width: auto;
-            accent-color: var(--red);
-        }
-
-        .checkbox-group label {
-            margin-bottom: 0;
-            font-weight: 400;
-            font-size: 0.9rem;
-        }
-
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--accent); }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .checkbox-group { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; }
+        .checkbox-group input[type="checkbox"] { width: auto; accent-color: var(--accent); }
+        .checkbox-group label { margin-bottom: 0; font-weight: 400; font-size: 0.9rem; }
         .submit-btn {
-            width: 100%;
-            padding: 1rem;
-            background: var(--red);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-family: 'Heebo', sans-serif;
-            font-size: 1.15rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-top: 1rem;
+            width: 100%; padding: 1rem; background: var(--band); color: var(--band-ink); border: none;
+            border-radius: 10px; font-family: 'Rubik', 'Heebo', sans-serif; font-size: 1.15rem; font-weight: 700;
+            cursor: pointer; transition: all 0.3s; margin-top: 1rem;
         }
-
-        .submit-btn:hover {
-            background: var(--dark-red);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-        }
-
-        .form-note {
-            font-size: 0.8rem;
-            color: #999;
-            margin-top: 1rem;
-            text-align: center;
-        }
+        .submit-btn:hover { background: var(--band-2); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
+        .form-note { font-size: 0.8rem; color: var(--muted); margin-top: 1rem; text-align: center; }
 
         /* Quotes */
-        .quotes-section {
-            background: var(--light);
-        }
-
-        .quotes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .quote-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 16px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            position: relative;
-        }
-
-        .quote-card::before {
-            content: '\201F';
-            font-size: 4rem;
-            color: var(--red);
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            opacity: 0.2;
-            font-weight: 900;
-        }
-
-        .quote-card p {
-            font-style: italic;
-            color: #555;
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
-        }
-
-        .quote-card .author {
-            font-weight: 700;
-            color: var(--dark);
-            font-style: normal;
-            font-size: 0.9rem;
-        }
-
-        .quote-card .role {
-            font-size: 0.8rem;
-            color: var(--gray);
-        }
+        .quotes-section { background: var(--section-alt); }
+        .quotes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .quote-card { background: var(--card); padding: 2rem; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); position: relative; }
+        .quote-card::before { content: '\201F'; font-size: 4rem; color: var(--accent); position: absolute; top: 10px; right: 20px; opacity: 0.25; font-weight: 900; }
+        .quote-card p { font-style: italic; color: var(--ink-soft); margin-bottom: 1rem; font-size: 0.95rem; }
+        .quote-card .author { font-weight: 700; color: var(--ink); font-style: normal; font-size: 0.9rem; }
+        .quote-card .role { font-size: 0.8rem; color: var(--muted); }
 
         /* FAQ */
-        .faq-section {
-            background: white;
-        }
-
-        .faq-item {
-            border-bottom: 1px solid #eee;
-            padding: 1.5rem 0;
-        }
-
-        .faq-question {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--dark);
-        }
-
-        .faq-question::after {
-            content: '+';
-            font-size: 1.5rem;
-            color: var(--red);
-            transition: transform 0.3s;
-        }
-
-        .faq-item.active .faq-question::after {
-            transform: rotate(45deg);
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-            color: #666;
-            font-size: 0.95rem;
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 500px;
-            padding-top: 1rem;
-        }
+        .faq-section { background: var(--bg); }
+        .faq-item { border-bottom: 1px solid var(--line); padding: 1.5rem 0; }
+        .faq-question { display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-size: 1.1rem; font-weight: 600; color: var(--ink); font-family: 'Rubik', 'Heebo', sans-serif; }
+        .faq-question::after { content: '+'; font-size: 1.5rem; color: var(--accent); transition: transform 0.3s; }
+        .faq-item.active .faq-question::after { transform: rotate(45deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; color: var(--ink-soft); font-size: 0.95rem; }
+        .faq-item.active .faq-answer { max-height: 600px; padding-top: 1rem; }
 
         /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 3rem 2rem;
-            text-align: center;
-        }
-
-        footer p {
-            opacity: 0.7;
-            font-size: 0.9rem;
-        }
-
-        footer .footer-links {
-            margin-top: 1rem;
-        }
-
-        footer a {
-            color: rgba(255,255,255,0.7);
-            text-decoration: none;
-            margin: 0 1rem;
-            font-size: 0.9rem;
-        }
-
-        footer a:hover {
-            color: white;
-        }
+        footer { background: var(--band); color: var(--band-ink); padding: 3rem 2rem; text-align: center; }
+        footer p { opacity: 0.75; font-size: 0.9rem; }
+        footer .footer-links { margin-top: 1rem; }
+        footer a { color: var(--band-ink-soft); text-decoration: none; margin: 0 1rem; font-size: 0.9rem; }
+        footer a:hover { color: var(--band-ink); }
 
         /* Success Message */
-        .success-message {
-            display: none;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .success-message .check {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .success-message h3 {
-            font-size: 1.5rem;
-            color: var(--green);
-            margin-bottom: 0.5rem;
-        }
+        .success-message { display: none; text-align: center; padding: 2rem; }
+        .success-message .check { font-size: 3rem; margin-bottom: 1rem; }
+        .success-message h3 { font-size: 1.5rem; color: #2fbf71; margin-bottom: 0.5rem; }
 
         /* Mobile Nav */
         .mobile-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: white;
-            box-shadow: 0 -4px 20px rgba(0,0,0,0.12);
-            display: none;
-            z-index: 1000;
-            padding: 0.4rem 0.2rem;
-            padding-bottom: calc(0.4rem + env(safe-area-inset-bottom, 0px));
+            position: fixed; bottom: 0; left: 0; right: 0; background: var(--card);
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.25); display: none; z-index: 1000;
+            padding: 0.4rem 0.2rem; padding-bottom: calc(0.4rem + env(safe-area-inset-bottom, 0px));
+            border-top: 1px solid var(--line);
         }
-
-        .mobile-nav a {
-            flex: 1;
-            text-align: center;
-            padding: 0.4rem 0.2rem;
-            text-decoration: none;
-            color: var(--gray);
-            font-size: 0.7rem;
-            font-weight: 600;
-            transition: color 0.2s;
-            line-height: 1.3;
-        }
-
-        .mobile-nav a:active {
-            color: var(--red);
-        }
-
-        .mobile-nav a .nav-icon {
-            font-size: 1.4rem;
-            display: block;
-            margin-bottom: 2px;
-        }
-
-        .mobile-nav a.cta-nav {
-            color: var(--red);
-            font-weight: 800;
-        }
+        .mobile-nav a { flex: 1; text-align: center; padding: 0.4rem 0.2rem; text-decoration: none; color: var(--muted); font-size: 0.7rem; font-weight: 600; transition: color 0.2s; line-height: 1.3; }
+        .mobile-nav a:active { color: var(--accent); }
+        .mobile-nav a .nav-icon { font-size: 1.4rem; display: block; margin-bottom: 2px; }
+        .mobile-nav a.cta-nav { color: var(--accent); font-weight: 800; }
 
         @media (max-width: 768px) {
-            .mobile-nav {
-                display: flex;
-            }
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-            body {
-                padding-bottom: 70px;
-            }
-            .hero {
-                min-height: auto;
-                padding: 4rem 1.2rem 3rem;
-            }
-            .hero h1 {
-                font-size: 2rem;
-            }
-            .hero p.subtitle {
-                font-size: 1rem;
-            }
-            .hero-badge {
-                font-size: 0.8rem;
-                padding: 0.4rem 1rem;
-            }
-            .hero-cta {
-                flex-direction: column;
-                align-items: center;
-            }
-            .hero-cta .btn {
-                width: 100%;
-                max-width: 300px;
-                text-align: center;
-                padding: 0.9rem 1.5rem;
-                font-size: 1rem;
-            }
-            .stats-bar {
-                padding: 1.5rem 0;
-            }
-            .stats-container {
-                grid-template-columns: 1fr 1fr;
-                gap: 1rem;
-                padding: 0 1rem;
-            }
-            .stat-item h3 {
-                font-size: 1.6rem;
-            }
-            .stat-item p {
-                font-size: 0.8rem;
-            }
-            .section {
-                padding: 3rem 1rem;
-            }
-            .section-title h2 {
-                font-size: 1.6rem;
-            }
-            .section-title p {
-                font-size: 0.95rem;
-            }
-            .what-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-            .what-card {
-                padding: 1.5rem;
-            }
-            .what-card .icon {
-                font-size: 2rem;
-            }
-            .what-card h3 {
-                font-size: 1.15rem;
-            }
-            .impact-list {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-            .impact-item {
-                padding: 1.2rem;
-            }
-            .arg-grid {
-                grid-template-columns: 1fr;
-                gap: 1.2rem;
-            }
-            .arg-card {
-                padding: 1.5rem;
-            }
-            .arg-card h3 {
-                font-size: 1.05rem;
-            }
-            .quotes-grid {
-                grid-template-columns: 1fr;
-                gap: 1.2rem;
-            }
-            .quote-card {
-                padding: 1.5rem;
-            }
-            .timeline::before {
-                right: 15px;
-            }
-            .timeline-item {
-                padding-right: 45px;
-            }
-            .timeline-item::before {
-                right: 8px;
-                width: 14px;
-                height: 14px;
-            }
-            .form-section {
-                padding: 3rem 1rem;
-            }
-            .form-container h2 {
-                font-size: 1.6rem;
-            }
-            .signup-form {
-                padding: 1.5rem;
-                border-radius: 14px;
-            }
-            .form-group input,
-            .form-group select,
-            .form-group textarea {
-                padding: 0.7rem 0.8rem;
-                font-size: 0.95rem;
-            }
-            .submit-btn {
-                font-size: 1.05rem;
-                padding: 0.9rem;
-            }
-            .faq-question {
-                font-size: 1rem;
-            }
-            footer {
-                padding: 2rem 1rem;
-                margin-bottom: 0;
-            }
+            .mobile-nav { display: flex; }
+            .form-row { grid-template-columns: 1fr; }
+            body { padding-bottom: 70px; }
+            .hero { min-height: auto; padding: 4rem 1.2rem 3rem; }
+            .hero h1 { font-size: 2rem; }
+            .hero p.subtitle { font-size: 1rem; }
+            .hero-badge { font-size: 0.8rem; padding: 0.4rem 1rem; }
+            .hero-cta { flex-direction: column; align-items: center; }
+            .hero-cta .btn { width: 100%; max-width: 300px; text-align: center; padding: 0.9rem 1.5rem; font-size: 1rem; }
+            .stats-bar { padding: 1.5rem 0; }
+            .stats-container { grid-template-columns: 1fr 1fr; gap: 1rem; padding: 0 1rem; }
+            .stat-item h3 { font-size: 1.6rem; }
+            .stat-item p { font-size: 0.8rem; }
+            .section { padding: 3rem 1rem; }
+            .section-title h2 { font-size: 1.6rem; }
+            .section-title p { font-size: 0.95rem; }
+            .what-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .what-card { padding: 1.5rem; }
+            .what-card .icon { font-size: 2rem; }
+            .what-card h3 { font-size: 1.15rem; }
+            .impact-list { grid-template-columns: 1fr; gap: 1rem; }
+            .impact-item { padding: 1.2rem; }
+            .arg-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+            .arg-card { padding: 1.5rem; }
+            .arg-card h3 { font-size: 1.05rem; }
+            .quotes-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+            .quote-card { padding: 1.5rem; }
+            .timeline::before { right: 15px; }
+            .timeline-item { padding-right: 45px; }
+            .timeline-item::before { right: 8px; width: 14px; height: 14px; }
+            .form-section { padding: 3rem 1rem; }
+            .form-container h2 { font-size: 1.6rem; }
+            .signup-form { padding: 1.5rem; border-radius: 14px; }
+            .form-group input, .form-group select, .form-group textarea { padding: 0.7rem 0.8rem; font-size: 0.95rem; }
+            .submit-btn { font-size: 1.05rem; padding: 0.9rem; }
+            .faq-question { font-size: 1rem; }
+            footer { padding: 2rem 1rem; margin-bottom: 0; }
+            .theme-switch { gap: .35rem; padding: .5rem .6rem; }
+            .theme-switch .ts-label { width: 100%; text-align: center; margin: 0 0 .1rem; }
         }
 
         @media (max-width: 380px) {
-            .hero h1 {
-                font-size: 1.7rem;
-            }
-            .stats-container {
-                grid-template-columns: 1fr;
-            }
-            .signup-form {
-                padding: 1.2rem;
-            }
+            .hero h1 { font-size: 1.7rem; }
+            .stats-container { grid-template-columns: 1fr; }
+            .signup-form { padding: 1.2rem; }
         }
 
         /* Scroll animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s, transform 0.6s;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Counter animation */
-        .counter {
-            display: inline-block;
-        }
+        .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s, transform 0.6s; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .counter { display: inline-block; }
     </style>
 </head>
-<body>
+<body data-theme="brand">
+
+    <!-- Design switcher -->
+    <nav class="theme-switch" aria-label="בחירת עיצוב">
+        <span class="ts-label">בחרו עיצוב לחוות דעת:</span>
+        <button data-set="brand" type="button"><span class="dot" style="background:#f4c01e"></span>כהה־צהוב</button>
+        <button data-set="crimson" type="button"><span class="dot" style="background:#e23b32"></span>כהה־אדום</button>
+        <button data-set="light" type="button"><span class="dot" style="background:#d4322c;outline:2px solid #fff;outline-offset:-2px"></span>בהיר</button>
+        <button data-set="poster" type="button"><span class="dot" style="background:#ffd400;outline:2px solid #000;outline-offset:-2px"></span>פוסטר</button>
+    </nav>
 
     <!-- Hero -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <div class="hero-badge">&#9888; 100,000 רכבים ביום דרך הכפר שלנו? לא בשקט.</div>
+            <div class="hero-badge">&#9888; עשרות אלפי רכבים ביום דרך הכפר שלנו? לא בשקט.</div>
             <h1>
                 לא לכביש 553
-                <span>שמרו על הכפר שלנו</span>
+                <span>שמרו על הבית שלנו</span>
             </h1>
             <p class="subtitle">
-                רוצים לסלול כביש ארצי של 6 נתיבים עם 100,000 רכבים ביום בלב האזור הכפרי שלנו.
+                רוצים לסלול כביש ארצי של 6-8 נתיבים עם עשרות אלפי רכבים ביום בלב האזור הכפרי שלנו.
                 זה יהרוס את אורח החיים, יפגע בביטחון האישי ויחסל את מה שנשאר מהשרון הירוק.
                 אנחנו אומרים: הכביש הזה לא צריך להיות כאן. נקודה.
             </p>
@@ -892,11 +339,11 @@
     <div class="stats-bar">
         <div class="stats-container">
             <div class="stat-item">
-                <h3>100,000</h3>
+                <h3>עשרות אלפי</h3>
                 <p>רכבים ביום יעברו דרך האזור הכפרי שלנו</p>
             </div>
             <div class="stat-item">
-                <h3>6</h3>
+                <h3>6-8</h3>
                 <p>נתיבים של כביש ארצי בלב מושבים וכפרים</p>
             </div>
             <div class="stat-item">
@@ -916,13 +363,13 @@
             <div class="section-title fade-in">
                 <h2>מה מתכננים לנו?</h2>
                 <div class="line"></div>
-                <p>תכנית תמ"א 31/א/15/1 - הרחבה והארכה של כביש 553 עד כביש 6</p>
+                <p>הרחבת כביש 553 לאוטוסטרדה ארצית שתחבר בין כביש 4 לכביש 6</p>
             </div>
             <div class="what-grid">
                 <div class="what-card fade-in">
                     <div class="icon">&#127793;</div>
                     <h3>אזור כפרי הופך לצומת ארצי</h3>
-                    <p>אנחנו גרים באזור כפרי - מושבים, שדות, שקט. התכנית רוצה לדחוף דרכנו כביש של 6 נתיבים עם 100,000 רכבים ביום. זה יהפוך את הכפר שלנו לכיכר דיזנגוף.</p>
+                    <p>אנחנו גרים באזור כפרי - מושבים, שדות, שקט. התכנית רוצה לדחוף דרכנו כביש של 6-8 נתיבים עם עשרות אלפי רכבים ביום. זה יהפוך את הכפר שלנו לכיכר דיזנגוף.</p>
                 </div>
                 <div class="what-card fade-in">
                     <div class="icon">&#128296;</div>
@@ -951,7 +398,7 @@
                     <div class="num">1</div>
                     <div>
                         <h4>סוף לאזור הכפרי</h4>
-                        <p>100,000 רכבים ביום בכביש של 6 נתיבים. המושבים והכפרים השקטים שלנו יהפכו לשוליים של כביש מהיר. אורח החיים הכפרי ייעלם לנצח.</p>
+                        <p>עשרות אלפי רכבים ביום בכביש של 6-8 נתיבים. המושבים והכפרים השקטים שלנו יהפכו לשוליים של כביש מהיר. אורח החיים הכפרי ייעלם לנצח.</p>
                     </div>
                 </div>
                 <div class="impact-item fade-in">
@@ -972,21 +419,21 @@
                     <div class="num">4</div>
                     <div>
                         <h4>רעש, זיהום ופגיעה בבריאות</h4>
-                        <p>100 אלף רכבים ביום, משאיות, אוטובוסים. רעש 24/7, זיהום אוויר, חלקיקים עדינים. המחקרים ברורים: מגורים בסמוך לכביש ארצי פוגעים בבריאות.</p>
+                        <p>עשרות אלפי רכבים ביום, משאיות, אוטובוסים. רעש 24/7, זיהום אוויר, חלקיקים עדינים. המחקרים ברורים: מגורים בסמוך לכביש ארצי פוגעים בבריאות.</p>
                     </div>
                 </div>
                 <div class="impact-item fade-in">
                     <div class="num">5</div>
                     <div>
                         <h4>הרס שטחים פתוחים ונחלים</h4>
-                        <p>70 דונם ממסדרון אקולוגי ארצי ייגרעו. נחל אלכסנדר ונחל טירה ייפגעו. השטחים הירוקים האחרונים של השרון יוקרבו על מזבח כביש מיותר.</p>
+                        <p>שטחים ממסדרון אקולוגי ארצי ייגרעו. נחל אלכסנדר ונחל טירה ייפגעו. השטחים הירוקים האחרונים של השרון יוקרבו על מזבח כביש מיותר.</p>
                     </div>
                 </div>
                 <div class="impact-item fade-in">
                     <div class="num">6</div>
                     <div>
                         <h4>ירידת ערך נכסים</h4>
-                        <p>אנשים בחרו לגור כאן בגלל השקט, הירוק, הכפריות. כביש ארצי עם 100 אלף רכבים יהרוס את הערך של הנכס שלכם - ההשקעה של חייכם.</p>
+                        <p>אנשים בחרו לגור כאן בגלל השקט, הירוק, הכפריות. כביש ארצי עם עשרות אלפי רכבים יהרוס את הערך של הנכס שלכם - ההשקעה של חייכם.</p>
                     </div>
                 </div>
             </div>
@@ -1110,7 +557,19 @@
             <div class="faq-list">
                 <div class="faq-item" onclick="this.classList.toggle('active')">
                     <div class="faq-question">למה אתם מתנגדים לכביש ולא רק מבקשים מנהרה?</div>
-                    <div class="faq-answer">כי הכביש הזה מיותר. כביש 551 מתוכנן 2 ק"מ מכאן ונותן את אותו חיבור בדיוק. גם התסקיר הסביבתי של התכנית עצמה מודה שהצורך הקריטי הוא ב-551. מעבר לכך, הכביש מהווה איום ביטחוני אמיתי - הוא מקצר את הנסיעה מאזור המשולש ליישובים שלנו לדקות ספורות. ומנהרה? גם היא לא פותרת את בעיית 100,000 הרכבים שיעברו דרך האזור הכפרי שלנו.</div>
+                    <div class="faq-answer">כי הכביש הזה מיותר. כביש 551 מתוכנן 2 ק"מ מכאן ונותן את אותו חיבור בדיוק. גם התסקיר הסביבתי של התכנית עצמה מודה שהצורך הקריטי הוא ב-551. מעבר לכך, הכביש מהווה איום ביטחוני אמיתי - הוא מקצר את הנסיעה מאזור המשולש ליישובים שלנו לדקות ספורות. ומנהרה? גם היא לא פותרת את בעיית עשרות אלפי הרכבים שיעברו דרך האזור הכפרי שלנו.</div>
+                </div>
+                <div class="faq-item" onclick="this.classList.toggle('active')">
+                    <div class="faq-question">חיבור לכביש 6 זה לא דבר טוב? זה לא יקצר לנו את הפקקים?</div>
+                    <div class="faq-answer">זו השאלה הכי חשובה - והתשובה המקצועית היא: לא. כביש רחב כל כך מייצר "ביקוש מושרה" - הוא מושך אליו נהגים מכל רחבי השרון שמחפשים לעקוף פקקים אחרים. במקום חיבור מהיר, נקבל את "הפקק של המדינה" בלב האזור הכפרי שלנו - ונמצא את עצמנו תקועים מאחורי רכבים מכל האזור שמשתמשים ב"חצר האחורית" שלנו כמעקף בדרך לכביש 6. כביש רחב יותר לא פותר פקקים - הוא רק מושך אליו עוד תנועה.</div>
+                </div>
+                <div class="faq-item" onclick="this.classList.toggle('active')">
+                    <div class="faq-question">אז אם עוצרים את 553 - נישאר בפקק לנצח?</div>
+                    <div class="faq-answer">ממש לא. אנחנו דורשים מהמדינה להשקיע בפתרונות של המאה ה-21 ולא בבטון של המאה הקודמת - קידום המטרו, מתחמי "חנה וסע" וייעול קווי הרכבת. הפתרון האמיתי הוא להוציא רכבים מהכביש, לא להוסיף עוד אספלט שמביא עומס חדש. וכביש 551, המתוכנן 2 ק"מ מכאן, נותן את המענה התחבורתי הארצי - בלי להחריב את הבית שלנו.</div>
+                </div>
+                <div class="faq-item" onclick="this.classList.toggle('active')">
+                    <div class="faq-question">מה זה "איום ה-Waze" בתוך היישובים?</div>
+                    <div class="faq-answer">ברגע שהכביש המורחב ייפקק (והוא ייפקק), אפליקציות הניווט ינתבו אלפי נהגים עצבניים לתוך הרחובות הצרים של עין ורד, תל מונד ופורת. השכונות השקטות שלנו יהפכו לנתיבי עוקף מסוכנים - סכנה לילדים בדרך לבית הספר, וקושי יומיומי פשוט לצאת מהחניה בבוקר.</div>
                 </div>
                 <div class="faq-item" onclick="this.classList.toggle('active')">
                     <div class="faq-question">מה הבעיה הביטחונית?</div>
@@ -1122,7 +581,7 @@
                 </div>
                 <div class="faq-item" onclick="this.classList.toggle('active')">
                     <div class="faq-question">מה זה יעשה לאופי הכפרי של האזור?</div>
-                    <div class="faq-answer">יהרוס אותו. אנשים בחרו לגור כאן בגלל השקט, השדות, האוויר הנקי, הקהילה. כביש ארצי של 6 נתיבים עם 100,000 רכבים ביום זה הקץ לכל זה. אי אפשר לגור ליד אבן גבירול ולקרוא לזה כפר. ערך הנכסים יצנח, האנשים יעזבו, הקהילה תתפרק.</div>
+                    <div class="faq-answer">יהרוס אותו. אנשים בחרו לגור כאן בגלל השקט, השדות, האוויר הנקי, הקהילה. כביש ארצי של 6-8 נתיבים עם עשרות אלפי רכבים ביום זה הקץ לכל זה. אי אפשר לגור ליד אבן גבירול ולקרוא לזה כפר. ערך הנכסים יצנח, האנשים יעזבו, הקהילה תתפרק.</div>
                 </div>
                 <div class="faq-item" onclick="this.classList.toggle('active')">
                     <div class="faq-question">האם עוד אפשר להשפיע?</div>
@@ -1130,12 +589,15 @@
                 </div>
                 <div class="faq-item" onclick="this.classList.toggle('active')">
                     <div class="faq-question">אילו יישובים מושפעים?</div>
-                    <div class="faq-answer">עין ורד (תיחצה לשניים), תל מונד (כביש צמוד לבתים), כל מושבי וכפרי מועצה אזורית לב השרון, קדימה צורן ותושבי האזור כולו. כל מי שבחר לגור באזור כפרי ושקט ירגיש את ההשפעה.</div>
+                    <div class="faq-answer">עין ורד, עין שריד, תל מונד, פורת, יעף, יעבץ, עזריאל, בני דרור, כפר הס, חרות, משמרת וקדימה. כל מושבי וכפרי גוש תל מונד ולב השרון. כל מי שבחר לגור באזור כפרי ושקט ירגיש את ההשפעה.</div>
                 </div>
                 <div class="faq-item" onclick="this.classList.toggle('active')">
                     <div class="faq-question">מה אני יכול/ה לעשות?</div>
                     <div class="faq-answer">1) הירשמו למאגר שלנו כאן למטה - זה הצעד הראשון. 2) שתפו את האתר עם כל שכן, חבר ומכר באזור. 3) הגיעו למפגשי המידע שנקיים. 4) כשתיפתח תקופת ההתנגדויות - הגישו התנגדות (נכין טפסים מוכנים). 5) דברו עם חברי מועצה, ראשי רשויות ונבחרי ציבור. 6) אם יש לכם מומחיות רלוונטית - צרו קשר!</div>
                 </div>
+            </div>
+            <div style="text-align:center; margin-top:2.5rem;">
+                <a href="faq.html" class="btn btn-primary">&#10067; לעמוד השאלות והתשובות המלא</a>
             </div>
         </div>
     </section>
@@ -1227,12 +689,13 @@
 
     <!-- Footer -->
     <footer>
-        <p><strong>המאבק נגד כביש 553</strong> | יוזמה של תושבי האזור</p>
+        <p><strong>המאבק נגד כביש 553</strong> | מטה תושבי תל מונד ולב השרון</p>
         <p style="margin-top: 0.5rem;">כל המידע באתר מבוסס על פרוטוקולים רשמיים של המועצה הארצית לתכנון ולבנייה</p>
         <div class="footer-links">
             <a href="#home">ראשי</a>
             <a href="#what">מה קורה?</a>
             <a href="#arguments">מה אומרים המומחים</a>
+            <a href="faq.html">שאלות ותשובות</a>
             <a href="#signup">הצטרפות</a>
         </div>
     </footer>
@@ -1242,7 +705,7 @@
         <a href="#home"><span class="nav-icon">&#127968;</span>ראשי</a>
         <a href="#what"><span class="nav-icon">&#9888;</span>מה קורה</a>
         <a href="#impact"><span class="nav-icon">&#128308;</span>השפעות</a>
-        <a href="#faq"><span class="nav-icon">&#10067;</span>שאלות</a>
+        <a href="faq.html"><span class="nav-icon">&#10067;</span>שאלות</a>
         <a href="#signup" class="cta-nav"><span class="nav-icon">&#9997;</span>הצטרפות</a>
     </nav>
 
@@ -1261,41 +724,46 @@
         // Form handling
         function handleSubmit(e) {
             e.preventDefault();
-
             const form = document.getElementById('contactForm');
             const formData = new FormData(form);
             const data = {};
             formData.forEach((value, key) => data[key] = value);
-
-            // Collect checkboxes
             data.help = [];
             document.querySelectorAll('input[type="checkbox"]:checked').forEach(cb => {
                 data.help.push(cb.id);
             });
-
-            // Store locally for now (replace with actual backend)
             const submissions = JSON.parse(localStorage.getItem('r553_signups') || '[]');
             data.timestamp = new Date().toISOString();
             submissions.push(data);
             localStorage.setItem('r553_signups', JSON.stringify(submissions));
-
-            // Show success
             form.style.display = 'none';
             document.getElementById('successMessage').style.display = 'block';
-
             console.log('New signup:', data);
         }
 
-        // Smooth scrolling
+        // Smooth scrolling for in-page anchors
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
+                    e.preventDefault();
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
         });
+
+        // Design / theme switcher
+        var THEME_KEY = 'faq553_theme';
+        var btns = document.querySelectorAll('.theme-switch button');
+        function setTheme(t) {
+            document.body.setAttribute('data-theme', t);
+            try { localStorage.setItem(THEME_KEY, t); } catch (e) {}
+            btns.forEach(function (b) { b.classList.toggle('active', b.dataset.set === t); });
+        }
+        btns.forEach(function (b) { b.addEventListener('click', function () { setTheme(b.dataset.set); }); });
+        var saved = 'brand';
+        try { saved = localStorage.getItem(THEME_KEY) || 'brand'; } catch (e) {}
+        setTheme(saved);
     </script>
 </body>
 </html>
