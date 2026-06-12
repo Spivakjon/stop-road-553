@@ -136,7 +136,7 @@
         ולמלא את כתובתו ב-<code>js/api-config.js</code>. ראו הוראות מלאות בקובץ <code>ADMIN-SETUP.md</code>.
       </div>
       <form id="loginForm">
-        <div class="field"><label for="loginEmail">אימייל</label><input type="email" id="loginEmail" autocomplete="username" required></div>
+        <div class="field"><label for="loginEmail">שם משתמש</label><input type="text" id="loginEmail" autocomplete="username" required></div>
         <div class="field"><label for="loginPass">סיסמה</label><input type="password" id="loginPass" autocomplete="current-password" required></div>
         <button type="submit" class="btn btn-primary" id="loginBtn">התחברות</button>
         <div class="err" id="loginErr"></div>
@@ -196,7 +196,7 @@
           <div class="grp-label">➕ הוספת מנהל חדש</div>
           <form id="addUserForm" class="row3">
             <div class="fld" style="margin:0;"><label>שם</label><input type="text" id="nuName" placeholder="שם מלא"></div>
-            <div class="fld" style="margin:0;"><label>אימייל</label><input type="email" id="nuEmail" required></div>
+            <div class="fld" style="margin:0;"><label>שם משתמש</label><input type="text" id="nuEmail" required></div>
             <div class="fld" style="margin:0;"><label>סיסמה ראשונית</label><input type="text" id="nuPass" placeholder="לפחות 6 תווים" required></div>
             <button type="submit" class="add-btn" style="height:42px;">הוספה</button>
           </form>
@@ -546,7 +546,7 @@
         const admins = await listAdmins();
         if (!admins.length) { area.innerHTML = '<p class="empty">אין מנהלים רשומים. (ראו ADMIN-SETUP.md ליצירת המנהל הראשון.)</p>'; return; }
         const table = el('table');
-        table.innerHTML = `<thead><tr><th>שם</th><th>אימייל</th><th>הרשאה</th><th></th></tr></thead>`;
+        table.innerHTML = `<thead><tr><th>שם</th><th>שם משתמש</th><th>הרשאה</th><th></th></tr></thead>`;
         const tb = el('tbody');
         admins.forEach((u) => {
           const tr = el('tr');
