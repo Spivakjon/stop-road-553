@@ -3,16 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script>
-    (function(){
-        var h='76ce328ac551588921a5ba6381b74ae0d5bd625370a43ffed526fd12ae0326ce';
-        if(sessionStorage.getItem('a553')==='1')return;
-        var p=prompt('הזינו סיסמה לכניסה לאתר:');
-        if(!p){document.documentElement.innerHTML='';return;}
-        async function c(s){var e=new TextEncoder().encode(s);var b=await crypto.subtle.digest('SHA-256',e);return Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,'0')).join('');}
-        c(p).then(function(r){if(r===h){sessionStorage.setItem('a553','1');}else{alert('סיסמה שגויה');document.documentElement.innerHTML='';}});
-    })();
-    </script>
     <title>שאלות ותשובות | עצרו את כביש 553 — שומרים על הבית</title>
     <meta name="description" content="כל מה שצריך לדעת על תוכנית כביש 553 — מה מתוכנן, מה עם הפקקים, הביטחון, הבריאות והסביבה, ולמה חלופת כביש 551 עדיפה. יש לכם שאלות? יש לנו תשובות.">
     <meta property="og:title" content="שאלות ותשובות | עצרו את כביש 553">
