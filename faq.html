@@ -246,190 +246,23 @@
 
     <main class="wrap">
 
-        <!-- Hero -->
-        <section class="hero">
-            <span class="eyebrow">זה הזמן להשפיע</span>
-            <h1>יש לכם שאלות?<br><span class="y">יש לנו תשובות.</span></h1>
-            <p class="sub">ריכזנו את כל מה שמטריד את תושבי תל מונד ולב השרון לגבי תוכנית כביש 553 — עם תשובות מסודרות, בלי סיסמאות.</p>
-            <p class="tagline">שומרים על הצביון · על הבריאות · על הביטחון · על הבית</p>
-        </section>
+        <!-- Hero (נטען דינמית מ-js/render-faq.js) -->
+        <section class="hero" id="faqHero"></section>
 
         <!-- Traffic highlight -->
-        <section class="highlight">
-            <div class="ic">🚗</div>
-            <div>
-                <h2>"אבל אם עוצרים את 553 — מה יהיה עם הפקקים?"</h2>
-                <p>זו השאלה הכי נפוצה, והיא לגיטימית. התשובה הקצרה: כביש רחב יותר לא פותר פקקים — הוא מושך אליו עוד תנועה. הפתרון האמיתי קיים, והוא לא דורש להחריב את הבית שלנו. <a href="#traffic">לתשובה המלאה ↓</a></p>
-            </div>
-        </section>
+        <section class="highlight" id="faqHighlight"></section>
 
         <!-- Chips -->
-        <nav class="chips">
-            <a href="#about">מה מתוכנן</a>
-            <a href="#traffic">פקקים ותחבורה</a>
-            <a href="#security">ביטחון</a>
-            <a href="#health">בריאות וסביבה</a>
-            <a href="#community">קהילה, חקלאות ונדל"ן</a>
-            <a href="#action">מה אפשר לעשות</a>
-        </nav>
+        <nav class="chips" id="faqChips"></nav>
 
-        <!-- About -->
-        <section class="cat" id="about">
-            <div class="cat-head"><span class="badge">📋</span><h2>מה בעצם מתוכנן</h2></div>
-
-            <div class="qa">
-                <button class="q">מה בעצם מתוכנן בכביש 553?<span class="plus">+</span></button>
-                <div class="a"><div class="a-inner">
-                    התוכנית הנוכחית היא להפוך את כביש 553 — הכביש המקומי והשקט שלנו — ל<strong>אוטוסטרדה ארצית של 6–8 נתיבים</strong> שתחבר בין כביש 4 לכביש 6. זה לא "שיפוץ כביש" או הוספת נתיב, אלא שינוי דרמטי שיהפוך את האזור הכפרי שלנו למחלף אחד גדול ורועש, שיחצה את היישובים ויפריד ביניהם פיזית.
-                </div></div>
-            </div>
-
-            <div class="qa">
-                <button class="q">למה דווקא עכשיו הקמנו קמפיין? התוכנית כבר אושרה?<span class="plus">+</span></button>
-                <div class="a"><div class="a-inner">
-                    לא — ובדיוק בגלל זה זה הזמן. אנחנו ב<strong>שלב שלפני ההפקדה</strong>, שהוא חלון ההתנגדויות האחרון. השלב הבא הוא שלב קריטי בתהליך האישור, ואחריו יהיה הרבה יותר קשה לעצור או לשנות את המסלול. כל עוד הטרקטורים לא עלו על הקרקע — אפשר להשפיע.
-                </div></div>
-            </div>
-        </section>
-
-        <!-- Traffic -->
-        <section class="cat" id="traffic">
-            <div class="cat-head"><span class="badge">🚗</span><h2>פקקים ותחבורה</h2></div>
-
-            <div class="qa">
-                <button class="q">חיבור לכביש 6 זה לא דבר טוב? זה לא יקצר לנו את הפקקים?<span class="plus">+</span></button>
-                <div class="a"><div class="a-inner">
-                    זו השאלה הכי חשובה, והתשובה המקצועית היא: <strong>לא</strong>. הניסיון בעולם מוכיח שכבישים רחבים כל כך מייצרים "ביקוש מושרה" (Induced Demand) — הם פשוט מושכים אליהם נהגים מכל רחבי השרון שמחפשים לעקוף פקקים אחרים. כביש 553 יהפוך ל"פקק של המדינה", ואנחנו נמצא את עצמנו תקועים בתור ארוך מאחורי רכבים מכל האזור, שישתמשו ב"חצר האחורית" שלנו כמעקף בדרך לכביש 6.
-                    <span class="tip">בקיצור: לא מקבלים נסיעה מהירה — מקבלים את הפקק של כולם בתוך הבית שלנו.</span>
-                </div></div>
-            </div>
-
-            <div class="qa">
-                <button class="q">אז אם עוצרים את 553 — נישאר בפקק לנצח?<span class="plus">+</span></button>
-                <div class="a"><div class="a-inner">
-                    ממש לא. אנחנו דורשים מהמדינה להשקיע ב<strong>פתרונות של המאה ה-21</strong> ולא בבטון של המאה הקודמת. המדינה כבר הציעה פתרונות מעולים: קידום המטרו, מתחמי "חנה וסע", וייעול קווי הרכבת. הפתרון האמיתי הוא לא באוטוסטרדות ענק שמביאות עומס חדש, אלא בייעול הניידות שלנו ובמתן חלופות חכמות שיוציאו רכבים מהכביש. מה שנותר הוא לחבר אותנו לפתרונות האלה — לא לשפוך עוד אספלט.
-                </div></div>
-            </div>
-
-            <div class="qa">
-                <button class="q">למה אתם דורשים את כביש 551 במקום?<span class="plus">+</span></button>
-                <div class="a"><div class="a-inner">
-                    כי כביש 551 תוכנן מלכתחילה כ<strong>פתרון חיצוני ליישובים</strong>. הוא יכול לתת מענה תחבורתי ארצי — חיבור בין הכבישים הארציים — מבלי להחריב את יישובי הגוש, בלי לנתק חקלאים משדותיהם, ובלי לחנוק את תל מונד, עין ורד והסביבה בקירות אקוסטיים ובזיהום אוויר. אנחנו בעד תכנון שפוי ששומר על הבית: להחזיר את התוכנית לתוואי 551 המתוכנן במחלף הדרים.
-                </div></div>
-            </div>
-
-            <div class="qa">
-                <button class="q">מה זה "איום ה-Waze" שמדברים עליו?<span class="plus">+</span></button>
-                <div class="a"><div class="a-inner">
-                    ברגע שהאוטוסטרדה תהיה פקוקה (והיא תהיה), אפליקציות הניווט יפנו אלפי נהגים עצבניים <strong>לתוך הרחובות הצרים</strong> של תל מונד, עין ורד ופורת. השכונות השקטות שלנו יהפכו לנתיבי עוקף מסוכנים — מה שיסכן את הילדים שלנו בדרך לבית הספר וימנע מאיתנו פשוט לצאת מהחניה בבוקר.
-                </div></div>
-            </div>
-        </section>
-
-        <!-- Security -->
-        <section class="cat" id="security">
-            <div class="cat-head"><span class="badge">🛡️</span><h2>ביטחון אישי וחירום</h2></div>
-
-            <div class="qa">
-                <button class="q">איך כביש פוגע בביטחון האישי שלנו?<span class="plus">+</span></button>
-                <div class="a"><div class="a-inner">
-                    כביש מהיר הוא גם <strong>מסלול מילוט מושלם</strong>. הפיכת הכביש לאוטוסטרדה מפרקת את החיץ החקלאי והטבעי שהגן עלינו שנים, ומאפשרת גישה מהירה ונוחה מקו התפר ישירות לתוך היישובים שלנו תוך דקות ספורות. בנוסף, בשיטפון של עשרות אלפי רכבים אנונימיים, כוחות הביטחון יתקשו מאוד לזהות חריגים או למנוע פשיעה. אנחנו הופכים מקהילה כפרית ששומרת אחד על השני לתחנת מעבר ארצית ופרוצה.
-                </div></div>
-            </div>
-
-            <div class="qa">
-                <button class="q">מה קורה במצב חירום אם ציר אחד נחסם?<span class="plus">+</span></button>
-                <div class="a"><div class="a-inner">
-                    הפיכת הכביש ל-8 נתיבים אומרת שכל תאונה או חפץ חשוד יכולים <strong>לשתק את כל האזור</strong>. במצב חירום, כשכל שנייה קובעת, כוחות ההצלה עלולים פשוט לא להצליח להגיע ליישובים שלנו. להפוך את 553 לדרך היחידה של עשרות אלפי תושבים זה הימור מסוכן: חסימה אחת — וכולנו נצורים, בלי דרך החוצה ובלי עזרה פנימה.
-                </div></div>
-            </div>
-        </section>
-
-        <!-- Health -->
-        <section class="cat" id="health">
-            <div class="cat-head"><span class="badge">🌿</span><h2>בריאות וסביבה</h2></div>
-
-            <div class="qa">
-                <button class="q">ומה לגבי הרעש, זיהום האוויר והבריאות?<span class="plus">+</span></button>
-                <div class="a"><div class="a-inner">
-                    אוטוסטרדה בסדר גודל כזה מביאה איתה <strong>זיהום אוויר כבד, רעש בלתי פוסק וזיהום אור</strong> שיחדור לכל חדר שינה — 24/7, כולל רכבת בלתי פוסקת של משאיות. קירות אקוסטיים בגובה 5 מטרים הם לא פתרון: הם חומה שתסגור עלינו ותהרוס סופית את הנוף ואת האוויר הנקי שעבורם בחרנו לחיות כאן.
-                </div></div>
-            </div>
-
-            <div class="qa">
-                <button class="q">מה הנזק לסביבה ולנוף הכפרי?<span class="plus">+</span></button>
-                <div class="a"><div class="a-inner">
-                    שדות ופרדסים יוחלפו בנתיבי אספלט ובחומות בטון. מדובר ב<strong>נזק בלתי הפיך</strong> לחי, לצומח ולמרחבים הפתוחים האחרונים בלב השרון. האוטוסטרדה תהפוך למחסום פיזי שיקרע את הקהילה לשניים, ינתק אותנו מהשכנים ומהטבע המוכר, ויהפוך את המושבים השקטים לתחנת מעבר רועשת ומזוהמת של רכבים מכל המדינה.
-                </div></div>
-            </div>
-        </section>
-
-        <!-- Community -->
-        <section class="cat" id="community">
-            <div class="cat-head"><span class="badge">🏡</span><h2>קהילה, חקלאות וערך נכסים</h2></div>
-
-            <div class="qa">
-                <button class="q">איך זה משפיע על החקלאות בגוש?<span class="plus">+</span></button>
-                <div class="a"><div class="a-inner">
-                    הרחבת הכביש ל-8 נתיבים תקטע את <strong>הרציפות החקלאית</strong> של הגוש ותהפוך את המעבר בין החלקות לבלתי אפשרי. בלי יכולת לחצות עם טרקטור ובלי גישה לשדות — החקלאות של גוש תל מונד פשוט תיעלם מהמפה. עבור ותיקי המושבים שבנו כאן חיים בעשר אצבעות, זה סוף עידן.
-                </div></div>
-            </div>
-
-            <div class="qa">
-                <button class="q">מה יקרה לערך הבתים שלנו?<span class="plus">+</span></button>
-                <div class="a"><div class="a-inner">
-                    כולנו השקענו כדי לגור כאן בזכות השקט והמרחבים הירוקים — מה שאפשר לכנות "הפרמיה הכפרית". ברגע שהשדות יוחלפו בבטון ובחומות אקוסטיות, וכשהשכונה הכי מבוקשת תהפוך לנתיב עוקף Waze מזהם, <strong>היתרון הכלכלי של הבית פשוט יימחק</strong>. אף אחד לא רוצה לגור ליד אוטוסטרדה.
-                </div></div>
-            </div>
-
-            <div class="qa">
-                <button class="q">אילו יישובים מושפעים מהתוכנית?<span class="plus">+</span></button>
-                <div class="a"><div class="a-inner">
-                    התוכנית פוגעת בלב השרון ובגוש תל מונד כולו: <strong>עין ורד, עין שריד, תל מונד, פורת, יעף, יעבץ, עזריאל, בני דרור, כפר הס, חרות, משמרת וקדימה</strong>. כל מי שבחר לגור באזור כפרי ושקט ירגיש את ההשפעה — בנוף, ברעש, בביטחון ובערך הבית.
-                </div></div>
-            </div>
-        </section>
-
-        <!-- Action -->
-        <section class="cat" id="action">
-            <div class="cat-head"><span class="badge">✊</span><h2>מה אפשר לעשות</h2></div>
-
-            <div class="qa">
-                <button class="q">האם באמת עוד אפשר להשפיע?<span class="plus">+</span></button>
-                <div class="a"><div class="a-inner">
-                    כן. התוכנית עדיין לא הופקדה — אנחנו בחלון ההזדמנויות היחיד להשפיע ולדרוש את העתקת התוואי לכביש 551. ברגע שהטרקטורים יעלו על הקרקע והבטון הראשון יישפך, לא תהיה דרך חזרה. <strong>כל יום קובע</strong>, וככל שנהיה יותר אנשים, מאורגנים ונחושים — כך גדל הכוח הציבורי שיכול לעצור את זה.
-                </div></div>
-            </div>
-
-            <div class="qa">
-                <button class="q">איך אני יכול/ה לעזור למאבק?<span class="plus">+</span></button>
-                <div class="a"><div class="a-inner">
-                    הכוח שלנו הוא בקהילה. אתם יכולים לעזור בכמה דרכים פשוטות:
-                    <span class="tip">
-                        1. הצטרפו לקבוצת העדכונים השקטה לקבלת מידע מהשטח.<br>
-                        2. חיתמו על העצומה והפיצו אותה לכל שכן וחבר.<br>
-                        3. תלו שלט "הבית שלנו הוא לא מחלף" על הגדר — הנראות שלנו היא ההרתעה שלנו.<br>
-                        4. כשתיפתח תקופת ההתנגדויות — הגישו התנגדות רשמית (נעזור לכם!).
-                    </span>
-                </div></div>
-            </div>
-        </section>
+        <!-- קטגוריות השאלות (נטענות דינמית) -->
+        <div id="faqCats"></div>
 
         <!-- Heart strip -->
-        <section class="heartstrip">
-            <p class="big">הכביש הזה <span class="heart">חוצה לנו את הלב</span>.</p>
-            <p class="tagline" style="margin-top:.5rem;">לב השרון הוא בית, לא מסדרון תחבורה.</p>
-        </section>
+        <section class="heartstrip" id="faqHeart"></section>
 
         <!-- CTA -->
-        <section class="cta">
-            <h2>זה הבית שלנו —<br>ואנחנו לא מוותרים עליו</h2>
-            <p>כדי לעצור את התוכנית צריך כוח ציבורי. הצטרפו עכשיו ועזרו לנו לשמור על הבית.</p>
-            <div class="cta-btns">
-                <a href="index.html#signup" class="btn btn-dark">✍ הצטרפו למאבק</a>
-                <a href="index.html" class="btn btn-out">← לאתר הקמפיין</a>
-            </div>
-        </section>
+        <section class="cta" id="faqCta"></section>
 
     </main>
 
@@ -438,46 +271,7 @@
         <p>מטה תושבי תל מונד ולב השרון · יחד נבטיח עתיד טוב יותר</p>
     </footer>
 
-    <script>
-        // FAQ accordion
-        document.querySelectorAll('.qa .q').forEach(function (btn) {
-            btn.addEventListener('click', function () {
-                var item = btn.closest('.qa');
-                var ans = item.querySelector('.a');
-                var isOpen = item.classList.toggle('open');
-                ans.style.maxHeight = isOpen ? (ans.scrollHeight + 40) + 'px' : '0';
-            });
-        });
-
-        // Open first item of a category when its chip is clicked
-        function openFromHash() {
-            var id = location.hash.replace('#', '');
-            if (!id) return;
-            var sec = document.getElementById(id);
-            if (sec && sec.classList.contains('cat')) {
-                var first = sec.querySelector('.qa');
-                if (first && !first.classList.contains('open')) first.querySelector('.q').click();
-            }
-        }
-        window.addEventListener('hashchange', openFromHash);
-        openFromHash();
-
-        // Design / theme switcher
-        var THEME_KEY = 'faq553_theme';
-        var btns = document.querySelectorAll('.theme-switch button');
-        function setTheme(t) {
-            document.body.setAttribute('data-theme', t);
-            try { localStorage.setItem(THEME_KEY, t); } catch (e) {}
-            btns.forEach(function (b) { b.classList.toggle('active', b.dataset.set === t); });
-            // re-measure any open answers (font metrics differ between themes)
-            document.querySelectorAll('.qa.open .a').forEach(function (a) {
-                a.style.maxHeight = (a.scrollHeight + 40) + 'px';
-            });
-        }
-        btns.forEach(function (b) { b.addEventListener('click', function () { setTheme(b.dataset.set); }); });
-        var saved = 'brand';
-        try { saved = localStorage.getItem(THEME_KEY) || 'brand'; } catch (e) {}
-        setTheme(saved);
-    </script>
+    <!-- רינדור התוכן, אקורדיון ובורר עיצוב — במודול -->
+    <script type="module" src="js/render-faq.js"></script>
 </body>
 </html>

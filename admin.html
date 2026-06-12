@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>ניהול תוכן | עצרו את כביש 553</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&family=Rubik:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --accent:#d4322c; --accent2:#f4c01e; --ink:#1f2430; --ink-soft:#566; --muted:#8a93a3;
+      --bg:#eef1f6; --panel:#fff; --line:#e2e7ef; --line2:#eef1f6; --ok:#1f9d57; --danger:#d23;
+      --shadow:0 10px 30px rgba(20,30,55,.08);
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Assistant',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;}
+    h1,h2,h3,.display{font-family:'Rubik',sans-serif;}
+    button{font-family:inherit;cursor:pointer;}
+    input,textarea,select{font-family:inherit;font-size:.95rem;}
+    .hidden{display:none !important;}
+
+    /* ---- Login ---- */
+    .login-wrap{min-height:100vh;display:grid;place-items:center;padding:1.5rem;
+      background:radial-gradient(800px 500px at 80% -10%,rgba(244,192,30,.18),transparent 60%),var(--bg);}
+    .login-card{background:var(--panel);border-radius:20px;box-shadow:var(--shadow);padding:2.4rem;max-width:400px;width:100%;}
+    .login-card .route{display:inline-grid;place-items:center;background:#0c0b0a;color:#fff;border:2px solid #fff;border-radius:8px;
+      width:54px;height:34px;font-family:'Rubik';font-weight:900;margin-bottom:1rem;}
+    .login-card h1{font-size:1.5rem;margin-bottom:.3rem;}
+    .login-card p{color:var(--muted);font-size:.9rem;margin-bottom:1.5rem;}
+    .field{margin-bottom:1rem;}
+    .field label{display:block;font-weight:700;font-size:.85rem;margin-bottom:.35rem;}
+    .field input,.field textarea,.field select{width:100%;padding:.7rem .85rem;border:1.5px solid var(--line);
+      border-radius:10px;background:#fbfcfe;transition:border-color .2s;}
+    .field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--accent);}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;border:none;border-radius:10px;
+      font-weight:700;padding:.7rem 1.2rem;transition:filter .15s,transform .15s,background .15s;}
+    .btn-primary{background:var(--accent);color:#fff;width:100%;font-size:1rem;padding:.85rem;}
+    .btn-primary:hover{filter:brightness(1.07);}
+    .btn-ghost{background:var(--line2);color:var(--ink);}
+    .btn-ghost:hover{background:#e3e8f0;}
+    .btn-sm{padding:.4rem .7rem;font-size:.82rem;border-radius:8px;}
+    .err{color:var(--danger);font-size:.85rem;margin-top:.6rem;min-height:1.1em;}
+
+    /* ---- App shell ---- */
+    .topbar{position:sticky;top:0;z-index:30;background:var(--panel);border-bottom:1px solid var(--line);
+      display:flex;align-items:center;gap:1rem;padding:.7rem 1.2rem;box-shadow:0 2px 12px rgba(20,30,55,.04);}
+    .topbar .route{display:inline-grid;place-items:center;background:#0c0b0a;color:#fff;border:2px solid #fff;border-radius:7px;
+      width:44px;height:28px;font-family:'Rubik';font-weight:900;font-size:.85rem;}
+    .topbar .title{font-family:'Rubik';font-weight:800;font-size:1.05rem;}
+    .topbar .spacer{flex:1;}
+    .topbar .who{font-size:.85rem;color:var(--muted);}
+    .dirty-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent2);margin-inline-start:.3rem;}
+
+    .tabs{display:flex;gap:.4rem;flex-wrap:wrap;padding:0 1.2rem;background:var(--panel);border-bottom:1px solid var(--line);position:sticky;top:49px;z-index:20;}
+    .tabs button{all:unset;cursor:pointer;padding:.75rem 1rem;font-weight:700;font-size:.92rem;color:var(--ink-soft);
+      border-bottom:3px solid transparent;}
+    .tabs button:hover{color:var(--ink);}
+    .tabs button.active{color:var(--accent);border-bottom-color:var(--accent);}
+
+    .wrap{max-width:920px;margin:0 auto;padding:1.6rem 1.2rem 6rem;}
+    .panel-intro{color:var(--muted);font-size:.9rem;margin-bottom:1.2rem;}
+
+    /* ---- Schema editor ---- */
+    .sec{background:var(--panel);border:1px solid var(--line);border-radius:14px;margin-bottom:1.1rem;overflow:hidden;}
+    .sec>.sec-head{display:flex;align-items:center;gap:.6rem;padding:.9rem 1.1rem;background:#f7f9fc;border-bottom:1px solid var(--line);cursor:pointer;}
+    .sec>.sec-head h3{font-size:1.02rem;}
+    .sec>.sec-head .chev{margin-inline-start:auto;color:var(--muted);transition:transform .2s;}
+    .sec.collapsed>.sec-head .chev{transform:rotate(-90deg);}
+    .sec.collapsed>.sec-body{display:none;}
+    .sec-body{padding:1.1rem;}
+
+    .fld{margin-bottom:.9rem;}
+    .fld>label{display:block;font-weight:700;font-size:.82rem;margin-bottom:.3rem;color:var(--ink-soft);}
+    .fld input,.fld textarea{width:100%;padding:.6rem .75rem;border:1.5px solid var(--line);border-radius:9px;background:#fbfcfe;}
+    .fld input:focus,.fld textarea:focus{outline:none;border-color:var(--accent);}
+    .fld textarea{resize:vertical;min-height:74px;}
+    .fld .hint{font-size:.72rem;color:var(--muted);margin-top:.2rem;}
+
+    .grp{border:1px solid var(--line2);border-radius:11px;padding:.9rem;margin-bottom:.9rem;background:#fcfdff;}
+    .grp>.grp-label{font-weight:800;font-size:.86rem;margin-bottom:.7rem;color:var(--ink);}
+
+    .list{border:1px dashed var(--line);border-radius:11px;padding:.8rem;margin-bottom:.9rem;background:#fbfcff;}
+    .list>.list-label{font-weight:800;font-size:.86rem;margin-bottom:.6rem;display:flex;align-items:center;gap:.5rem;}
+    .list>.list-label .count{background:var(--line2);color:var(--ink-soft);border-radius:999px;padding:.05rem .55rem;font-size:.72rem;}
+    .item{border:1px solid var(--line);border-radius:10px;padding:.8rem;margin-bottom:.7rem;background:var(--panel);position:relative;}
+    .item .item-bar{display:flex;align-items:center;gap:.35rem;margin-bottom:.6rem;}
+    .item .item-bar .ix{font-weight:800;font-size:.8rem;color:var(--muted);}
+    .item .item-bar .sp{flex:1;}
+    .iconbtn{all:unset;cursor:pointer;width:28px;height:28px;display:grid;place-items:center;border-radius:7px;color:var(--ink-soft);background:var(--line2);font-size:.9rem;}
+    .iconbtn:hover{background:#e3e8f0;color:var(--ink);}
+    .iconbtn.del:hover{background:#fde7e7;color:var(--danger);}
+    .add-btn{background:var(--ink);color:#fff;border:none;border-radius:9px;padding:.5rem .9rem;font-weight:700;font-size:.85rem;}
+    .add-btn:hover{filter:brightness(1.15);}
+
+    /* sticky save bar */
+    .savebar{position:fixed;bottom:0;left:0;right:0;background:var(--panel);border-top:1px solid var(--line);
+      box-shadow:0 -6px 24px rgba(20,30,55,.08);padding:.8rem 1.2rem;display:flex;align-items:center;gap:1rem;z-index:40;}
+    .savebar .status{font-size:.86rem;color:var(--muted);flex:1;}
+    .savebar .btn-save{background:var(--ok);color:#fff;padding:.7rem 1.6rem;font-size:.98rem;}
+    .savebar .btn-save:hover{filter:brightness(1.08);}
+    .savebar .btn-save:disabled{opacity:.5;cursor:not-allowed;filter:none;}
+
+    /* tables (signups) */
+    .toolbar{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin-bottom:1rem;}
+    .toolbar .grow{flex:1;}
+    table{width:100%;border-collapse:collapse;background:var(--panel);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);font-size:.86rem;}
+    th,td{padding:.6rem .7rem;text-align:right;border-bottom:1px solid var(--line2);vertical-align:top;}
+    th{background:#f7f9fc;font-weight:800;font-size:.78rem;color:var(--ink-soft);white-space:nowrap;}
+    tr:hover td{background:#fafbfe;}
+    .tag-pill{display:inline-block;background:var(--line2);border-radius:999px;padding:.05rem .5rem;font-size:.72rem;margin:0 .15rem .15rem 0;}
+    .empty{text-align:center;color:var(--muted);padding:3rem 1rem;}
+    .toast{position:fixed;bottom:5.5rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;
+      padding:.7rem 1.3rem;border-radius:10px;font-weight:600;font-size:.9rem;z-index:60;box-shadow:var(--shadow);opacity:0;transition:opacity .25s,transform .25s;pointer-events:none;}
+    .toast.show{opacity:1;transform:translateX(-50%) translateY(-6px);}
+    .toast.err{background:var(--danger);}
+
+    .notice{background:#fff7e6;border:1px solid #f4d384;border-radius:12px;padding:1rem 1.2rem;font-size:.9rem;margin-bottom:1.2rem;}
+    .notice code{background:#fff;border:1px solid var(--line);padding:.05rem .4rem;border-radius:6px;font-size:.82rem;}
+    .users-add{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:1.1rem;margin-bottom:1.4rem;}
+    .row3{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:.6rem;align-items:end;}
+    @media(max-width:640px){.row3{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+
+  <!-- ============ מסך התחברות ============ -->
+  <div class="login-wrap" id="loginScreen">
+    <div class="login-card">
+      <div class="route">553</div>
+      <h1>ניהול תוכן</h1>
+      <p>מערכת הניהול של קמפיין "עצרו את כביש 553". התחברו כדי לערוך את תוכן האתר.</p>
+      <div id="configMissing" class="notice hidden">
+        ⚠ <b>השרת עדיין לא מוגדר.</b> כדי להפעיל את מערכת הניהול יש לפרוס את השרת ל-Railway
+        ולמלא את כתובתו ב-<code>js/api-config.js</code>. ראו הוראות מלאות בקובץ <code>ADMIN-SETUP.md</code>.
+      </div>
+      <form id="loginForm">
+        <div class="field"><label for="loginEmail">אימייל</label><input type="email" id="loginEmail" autocomplete="username" required></div>
+        <div class="field"><label for="loginPass">סיסמה</label><input type="password" id="loginPass" autocomplete="current-password" required></div>
+        <button type="submit" class="btn btn-primary" id="loginBtn">התחברות</button>
+        <div class="err" id="loginErr"></div>
+        <div style="text-align:center;margin-top:.8rem;">
+          <button type="button" class="btn btn-ghost btn-sm" id="resetBtn">שכחתי סיסמה</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============ אפליקציית הניהול ============ -->
+  <div id="app" class="hidden">
+    <header class="topbar">
+      <span class="route">553</span>
+      <span class="title">ניהול תוכן</span>
+      <span class="dirty-dot hidden" id="dirtyDot" title="יש שינויים שלא נשמרו"></span>
+      <span class="spacer"></span>
+      <span class="who" id="whoami"></span>
+      <button class="btn btn-ghost btn-sm" id="logoutBtn">התנתקות</button>
+    </header>
+
+    <nav class="tabs">
+      <button data-tab="main" class="active">תוכן ראשי</button>
+      <button data-tab="faq">עמוד שו"ת</button>
+      <button data-tab="signups">נרשמים</button>
+      <button data-tab="users">משתמשים</button>
+    </nav>
+
+    <main class="wrap">
+      <div id="tab-main" class="tabpane">
+        <p class="panel-intro">עריכת כל הטקסטים בעמוד הראשי. לחצו "שמירה" בתחתית כדי לפרסם. השינויים מופיעים מיד באתר.</p>
+        <div id="mainEditor"></div>
+      </div>
+
+      <div id="tab-faq" class="tabpane hidden">
+        <p class="panel-intro">עריכת עמוד השאלות והתשובות המלא (faq.html). בתשובות מותר להשתמש בתגיות HTML פשוטות (כמו <code>&lt;strong&gt;</code>).</p>
+        <div id="faqEditor"></div>
+      </div>
+
+      <div id="tab-signups" class="tabpane hidden">
+        <div class="toolbar">
+          <button class="btn btn-ghost btn-sm" id="reloadSignups">🔄 רענון</button>
+          <button class="btn btn-ghost btn-sm" id="exportCsv">⬇ ייצוא לאקסל (CSV)</button>
+          <span class="grow"></span>
+          <span class="who" id="signupCount"></span>
+        </div>
+        <div id="signupsArea"><p class="empty">טוען…</p></div>
+      </div>
+
+      <div id="tab-users" class="tabpane hidden">
+        <div class="notice">
+          ℹ הוספת משתמש כאן יוצרת חשבון ניהול חדש (אימייל + סיסמה) שיכול לערוך את האתר.
+          מחיקה כאן מסירה את החשבון לגמרי מהמערכת. חייב להישאר לפחות מנהל אחד.
+          לאיפוס סיסמה של מנהל — פשוט הוסיפו אותו מחדש עם סיסמה חדשה.
+        </div>
+        <div class="users-add">
+          <div class="grp-label">➕ הוספת מנהל חדש</div>
+          <form id="addUserForm" class="row3">
+            <div class="fld" style="margin:0;"><label>שם</label><input type="text" id="nuName" placeholder="שם מלא"></div>
+            <div class="fld" style="margin:0;"><label>אימייל</label><input type="email" id="nuEmail" required></div>
+            <div class="fld" style="margin:0;"><label>סיסמה ראשונית</label><input type="text" id="nuPass" placeholder="לפחות 6 תווים" required></div>
+            <button type="submit" class="add-btn" style="height:42px;">הוספה</button>
+          </form>
+          <div class="err" id="addUserErr"></div>
+        </div>
+
+        <div class="users-add">
+          <div class="grp-label">🔑 שינוי הסיסמה שלי</div>
+          <form id="changePassForm" class="row3">
+            <div class="fld" style="margin:0;"><label>סיסמה נוכחית</label><input type="password" id="cpCur" autocomplete="current-password" required></div>
+            <div class="fld" style="margin:0;"><label>סיסמה חדשה</label><input type="password" id="cpNew" autocomplete="new-password" placeholder="לפחות 6 תווים" required></div>
+            <div></div>
+            <button type="submit" class="add-btn" style="height:42px;">עדכון</button>
+          </form>
+          <div class="err" id="changePassErr"></div>
+        </div>
+
+        <div id="usersArea"><p class="empty">טוען…</p></div>
+      </div>
+    </main>
+
+    <div class="savebar">
+      <span class="status" id="saveStatus">מוכן.</span>
+      <button class="btn btn-save" id="saveBtn" disabled>💾 שמירה ופרסום</button>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script type="module">
+    import {
+      API_ENABLED, DEFAULT_CONTENT,
+      onAuth, login, logout, sendReset, isAdmin, changeMyPassword,
+      getContent, saveContent,
+      listSignups, deleteSignup,
+      listAdmins, createAdminUser, removeAdmin,
+    } from './js/api.js';
+
+    const $ = (s, r = document) => r.querySelector(s);
+    const el = (tag, cls) => { const e = document.createElement(tag); if (cls) e.className = cls; return e; };
+
+    let currentUser = null;
+    let draft = null;        // עותק עבודה של התוכן
+    let dirty = false;
+
+    // ---------- toast ----------
+    let toastT;
+    function toast(msg, isErr) {
+      const t = $('#toast'); t.textContent = msg; t.classList.toggle('err', !!isErr); t.classList.add('show');
+      clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('show'), 2600);
+    }
+    function setDirty(v) {
+      dirty = v; $('#saveBtn').disabled = !v;
+      $('#dirtyDot').classList.toggle('hidden', !v);
+      $('#saveStatus').textContent = v ? 'יש שינויים שלא נשמרו.' : 'הכול שמור.';
+    }
+    window.addEventListener('beforeunload', (e) => { if (dirty) { e.preventDefault(); e.returnValue = ''; } });
+
+    // =====================================================================
+    //  עורך מבוסס-סכמה (רקורסיבי)
+    // =====================================================================
+    // סוגי שדות: text | textarea | html | group | list
+    function blankFromFields(fields) {
+      const o = {};
+      for (const f of fields) {
+        if (f.type === 'group') o[f.key] = blankFromFields(f.fields);
+        else if (f.type === 'list') o[f.key] = [];
+        else o[f.key] = '';
+      }
+      return o;
+    }
+
+    function renderLeaf(field, obj) {
+      const wrap = el('div', 'fld');
+      const lab = el('label'); lab.textContent = field.label; wrap.appendChild(lab);
+      const input = field.type === 'text' ? el('input') : el('textarea');
+      if (field.type === 'text') input.type = 'text';
+      if (field.type === 'html') input.rows = 4;
+      input.value = obj[field.key] ?? '';
+      input.addEventListener('input', () => { obj[field.key] = input.value; setDirty(true); });
+      wrap.appendChild(input);
+      if (field.type === 'html') {
+        const h = el('div', 'hint'); h.innerHTML = 'מותר HTML בסיסי: &lt;strong&gt;, &lt;br&gt;, &lt;a href&gt;, &lt;span class="tip"&gt;'; wrap.appendChild(h);
+      } else if (field.hint) {
+        const h = el('div', 'hint'); h.textContent = field.hint; wrap.appendChild(h);
+      }
+      return wrap;
+    }
+
+    function renderGroup(field, parentObj) {
+      if (!parentObj[field.key] || typeof parentObj[field.key] !== 'object') parentObj[field.key] = blankFromFields(field.fields);
+      const obj = parentObj[field.key];
+      // קבוצה ללא תווית = מעבר שקוף (בלי קופסה), כדי לא ליצור קינון מיותר
+      if (!field.label) {
+        const frag = document.createDocumentFragment();
+        for (const f of field.fields) frag.appendChild(renderField(f, obj));
+        return frag;
+      }
+      const box = el('div', 'grp');
+      const lab = el('div', 'grp-label'); lab.textContent = field.label; box.appendChild(lab);
+      for (const f of field.fields) box.appendChild(renderField(f, obj));
+      return box;
+    }
+
+    function renderList(field, parentObj) {
+      if (!Array.isArray(parentObj[field.key])) parentObj[field.key] = [];
+      const arr = parentObj[field.key];
+      const box = el('div', 'list');
+      const lab = el('div', 'list-label');
+      lab.innerHTML = `<span>${field.label}</span><span class="count">${arr.length}</span>`;
+      box.appendChild(lab);
+      const itemsWrap = el('div');
+      box.appendChild(itemsWrap);
+
+      function paint() {
+        itemsWrap.innerHTML = '';
+        lab.querySelector('.count').textContent = arr.length;
+        arr.forEach((item, i) => {
+          const itemBox = el('div', 'item');
+          const bar = el('div', 'item-bar');
+          const ix = el('span', 'ix'); ix.textContent = `${field.itemLabel || 'פריט'} ${i + 1}`;
+          bar.appendChild(ix);
+          bar.appendChild(el('span', 'sp'));
+          const up = el('button', 'iconbtn'); up.type = 'button'; up.textContent = '↑'; up.title = 'הזז למעלה';
+          up.onclick = () => { if (i > 0) { [arr[i - 1], arr[i]] = [arr[i], arr[i - 1]]; setDirty(true); paint(); } };
+          const down = el('button', 'iconbtn'); down.type = 'button'; down.textContent = '↓'; down.title = 'הזז למטה';
+          down.onclick = () => { if (i < arr.length - 1) { [arr[i + 1], arr[i]] = [arr[i], arr[i + 1]]; setDirty(true); paint(); } };
+          const del = el('button', 'iconbtn del'); del.type = 'button'; del.textContent = '🗑'; del.title = 'מחיקה';
+          del.onclick = () => { if (confirm('למחוק את הפריט?')) { arr.splice(i, 1); setDirty(true); paint(); } };
+          bar.appendChild(up); bar.appendChild(down); bar.appendChild(del);
+          itemBox.appendChild(bar);
+          for (const f of field.fields) itemBox.appendChild(renderField(f, item));
+          itemsWrap.appendChild(itemBox);
+        });
+      }
+      paint();
+
+      const add = el('button', 'add-btn'); add.type = 'button'; add.textContent = '➕ הוספה';
+      add.onclick = () => { arr.push(blankFromFields(field.fields)); setDirty(true); paint(); };
+      box.appendChild(add);
+      return box;
+    }
+
+    function renderField(field, obj) {
+      if (field.type === 'group') return renderGroup(field, obj);
+      if (field.type === 'list') return renderList(field, obj);
+      return renderLeaf(field, obj);
+    }
+
+    // קטע מתקפל ברמה העליונה
+    function renderSection(section, rootObj, mount) {
+      const sec = el('div', 'sec');
+      const head = el('div', 'sec-head');
+      const h = el('h3'); h.textContent = section.label; head.appendChild(h);
+      const chev = el('span', 'chev'); chev.textContent = '▾'; head.appendChild(chev);
+      head.onclick = () => sec.classList.toggle('collapsed');
+      sec.appendChild(head);
+      const body = el('div', 'sec-body');
+      for (const f of section.fields) body.appendChild(renderField(f, rootObj));
+      sec.appendChild(body);
+      sec.classList.add('collapsed');
+      mount.appendChild(sec);
+    }
+
+    // ---------- הגדרת הסכמה ----------
+    const T = (key, label, hint) => ({ type: 'text', key, label, hint });
+    const TA = (key, label) => ({ type: 'textarea', key, label });
+    const HTML = (key, label) => ({ type: 'html', key, label });
+
+    const MAIN_SECTIONS = [
+      { key:'hero', label:'כותרת ראשית (Hero)', fields:[
+        { type:'group', key:'hero', label:'Hero', fields:[
+          T('badge','באדג׳ עליון'), T('titleLine1','כותרת – שורה 1'), T('titleLine2','כותרת – שורה 2 (מודגשת)'),
+          TA('subtitle','תת-כותרת'), T('ctaPrimary','כפתור ראשי'), T('ctaSecondary','כפתור משני'),
+        ]},
+      ]},
+      { key:'stats', label:'סטטיסטיקות (פס המספרים)', fields:[
+        { type:'list', key:'stats', label:'נתונים', itemLabel:'נתון', fields:[ T('value','מספר/ערך'), T('label','תיאור') ] },
+      ]},
+      { key:'what', label:'מה מתכננים לנו', fields:[
+        { type:'group', key:'what', label:'כותרת המקטע', fields:[ T('title','כותרת'), T('subtitle','תת-כותרת'),
+          { type:'list', key:'cards', label:'כרטיסים', itemLabel:'כרטיס', fields:[ T('icon','אייקון (אמוג׳י)'), T('title','כותרת'), TA('text','טקסט') ] },
+        ]},
+      ]},
+    ];
+    MAIN_SECTIONS.push(
+      { key:'impact', label:'איך זה ישפיע עלינו', fields:[
+        { type:'group', key:'impact', label:'מקטע השפעות', fields:[ T('title','כותרת'), T('subtitle','תת-כותרת'),
+          { type:'list', key:'items', label:'פריטי השפעה', itemLabel:'השפעה', fields:[ T('title','כותרת'), TA('text','טקסט') ] },
+        ]},
+      ]},
+      { key:'arguments', label:'מה אומרים המומחים', fields:[
+        { type:'group', key:'arguments', label:'מקטע מומחים', fields:[ T('title','כותרת'), T('subtitle','תת-כותרת'),
+          { type:'list', key:'cards', label:'כרטיסי מומחים', itemLabel:'כרטיס', fields:[ T('tag','תגית'), T('title','כותרת'), TA('text','טקסט'), T('source','מקור') ] },
+        ]},
+      ]},
+      { key:'quotes', label:'ציטוטים מהדיונים', fields:[
+        { type:'group', key:'quotes', label:'מקטע ציטוטים', fields:[ T('title','כותרת'),
+          { type:'list', key:'items', label:'ציטוטים', itemLabel:'ציטוט', fields:[ TA('text','הציטוט'), T('author','שם'), T('role','תפקיד') ] },
+        ]},
+      ]},
+      { key:'timeline', label:'ציר הזמן', fields:[
+        { type:'group', key:'timeline', label:'מקטע ציר הזמן', fields:[ T('title','כותרת'), T('subtitle','תת-כותרת'),
+          { type:'list', key:'items', label:'אירועים', itemLabel:'אירוע', fields:[ T('date','תאריך'), T('title','כותרת'), TA('text','תיאור') ] },
+        ]},
+      ]},
+      { key:'faqHome', label:'שאלות ותשובות (בעמוד הראשי)', fields:[
+        { type:'group', key:'faqHome', label:'מקטע שו"ת', fields:[ T('title','כותרת'),
+          { type:'list', key:'items', label:'שאלות', itemLabel:'שאלה', fields:[ T('q','השאלה'), TA('a','התשובה') ] },
+        ]},
+      ]},
+      { key:'footer', label:'פוטר', fields:[
+        { type:'group', key:'footer', label:'פוטר', fields:[ T('line1','שורה 1 (לפני | מודגש)'), T('line2','שורה 2') ]},
+      ]},
+    );
+
+    const FAQ_SECTIONS = [
+      { key:'faqHero', label:'כותרת עמוד השו"ת', fields:[
+        { type:'group', key:'faqPage', label:'', fields:[
+          { type:'group', key:'hero', label:'Hero', fields:[ T('eyebrow','תווית עליונה'), T('titleLine1','כותרת – שורה 1'), T('titleLine2','כותרת – שורה 2 (צבעונית)'), TA('sub','תת-כותרת'), T('tagline','שורת תיוג') ]},
+        ]},
+      ]},
+      { key:'faqHighlight', label:'הדגשת הפקקים (Highlight)', fields:[
+        { type:'group', key:'faqPage', label:'', fields:[
+          { type:'group', key:'highlight', label:'Highlight', fields:[ T('icon','אייקון'), T('title','כותרת'), HTML('html','טקסט (HTML)') ]},
+        ]},
+      ]},
+      { key:'faqCats', label:'קטגוריות ושאלות', fields:[
+        { type:'group', key:'faqPage', label:'', fields:[
+          { type:'list', key:'categories', label:'קטגוריות', itemLabel:'קטגוריה', fields:[
+            T('id','מזהה לעוגן (אנגלית, ללא רווחים)'), T('icon','אייקון'), T('title','שם הקטגוריה'),
+            { type:'list', key:'items', label:'שאלות בקטגוריה', itemLabel:'שאלה', fields:[ T('q','השאלה'), HTML('a','התשובה (HTML)') ] },
+          ]},
+        ]},
+      ]},
+      { key:'faqEnd', label:'סיום: פס לב + קריאה לפעולה', fields:[
+        { type:'group', key:'faqPage', label:'', fields:[
+          { type:'group', key:'heartstrip', label:'פס הלב', fields:[ HTML('html','טקסט מרכזי (HTML)'), T('tagline','שורת תיוג') ]},
+          { type:'group', key:'cta', label:'קריאה לפעולה', fields:[ HTML('title','כותרת (HTML, מותר <br>)'), TA('text','טקסט') ]},
+        ]},
+      ]},
+    ];
+
+    function buildEditors() {
+      const mainMount = $('#mainEditor'); mainMount.innerHTML = '';
+      MAIN_SECTIONS.forEach((s) => renderSection(s, draft, mainMount));
+      const faqMount = $('#faqEditor'); faqMount.innerHTML = '';
+      FAQ_SECTIONS.forEach((s) => renderSection(s, draft, faqMount));
+    }
+
+    // =====================================================================
+    //  שמירה
+    // =====================================================================
+    $('#saveBtn').addEventListener('click', async () => {
+      const btn = $('#saveBtn'); btn.disabled = true; $('#saveStatus').textContent = 'שומר…';
+      try {
+        await saveContent(draft, currentUser?.email);
+        setDirty(false); toast('נשמר ופורסם בהצלחה ✓');
+      } catch (e) {
+        console.error(e); toast('שמירה נכשלה: ' + (e.message || e), true);
+        $('#saveStatus').textContent = 'שמירה נכשלה.'; btn.disabled = false;
+      }
+    });
+
+    // =====================================================================
+    //  טאבים
+    // =====================================================================
+    document.querySelectorAll('.tabs button').forEach((b) => {
+      b.addEventListener('click', () => {
+        document.querySelectorAll('.tabs button').forEach((x) => x.classList.toggle('active', x === b));
+        const tab = b.dataset.tab;
+        document.querySelectorAll('.tabpane').forEach((p) => p.classList.add('hidden'));
+        $('#tab-' + tab).classList.remove('hidden');
+        if (tab === 'signups') loadSignups();
+        if (tab === 'users') loadUsers();
+      });
+    });
+
+    // =====================================================================
+    //  נרשמים
+    // =====================================================================
+    let signupsCache = [];
+    async function loadSignups() {
+      const area = $('#signupsArea'); area.innerHTML = '<p class="empty">טוען…</p>';
+      try {
+        signupsCache = await listSignups();
+        $('#signupCount').textContent = `${signupsCache.length} נרשמים`;
+        if (!signupsCache.length) { area.innerHTML = '<p class="empty">עדיין אין נרשמים.</p>'; return; }
+        const helpLabels = { help_share:'שיתוף', help_objection:'התנגדות', help_events:'אירועים', help_professional:'מומחיות', help_donate:'תרומה' };
+        const locLabels = { ein_vered:'עין ורד', tel_mond:'תל מונד', kadima_zoran:'קדימה צורן', kochav_yair:'כוכב יאיר', tzur_yitzhak:'צור יצחק', eyal:'אייל', lev_hasharon:'לב השרון (אחר)', other:'אחר' };
+        const table = el('table');
+        table.innerHTML = `<thead><tr>
+          <th>תאריך</th><th>שם</th><th>אימייל</th><th>טלפון</th><th>יישוב</th><th>עזרה</th><th>הערות</th><th></th>
+        </tr></thead>`;
+        const tb = el('tbody');
+        signupsCache.forEach((s) => {
+          const tr = el('tr');
+          const date = fmtDate(s.createdAt);
+          const help = (s.help || []).map((h) => `<span class="tag-pill">${helpLabels[h] || h}</span>`).join('');
+          const td = (html) => { const d = el('td'); d.innerHTML = html; return d; };
+          tr.appendChild(td(date));
+          tr.appendChild(td(esc(`${s.firstName || ''} ${s.lastName || ''}`)));
+          tr.appendChild(td(esc(s.email || '')));
+          tr.appendChild(td(esc(s.phone || '')));
+          tr.appendChild(td(esc(locLabels[s.location] || s.location || '')));
+          tr.appendChild(td(help));
+          tr.appendChild(td(esc(s.notes || '')));
+          const delTd = el('td');
+          const db = el('button', 'iconbtn del'); db.textContent = '🗑'; db.title = 'מחיקה';
+          db.onclick = async () => {
+            if (!confirm('למחוק את ההרשמה?')) return;
+            try { await deleteSignup(s.id); toast('נמחק'); loadSignups(); } catch (e) { toast('מחיקה נכשלה', true); }
+          };
+          delTd.appendChild(db); tr.appendChild(delTd);
+          tb.appendChild(tr);
+        });
+        table.appendChild(tb);
+        area.innerHTML = ''; area.appendChild(table);
+      } catch (e) {
+        console.error(e); area.innerHTML = `<p class="empty">טעינת הנרשמים נכשלה: ${esc(e.message || e)}</p>`;
+      }
+    }
+    $('#reloadSignups').addEventListener('click', loadSignups);
+    $('#exportCsv').addEventListener('click', () => {
+      if (!signupsCache.length) { toast('אין נתונים לייצוא', true); return; }
+      const cols = ['createdAt','firstName','lastName','email','phone','location','help','notes'];
+      const head = ['תאריך','שם פרטי','שם משפחה','אימייל','טלפון','יישוב','איך לעזור','הערות'];
+      const rows = signupsCache.map((s) => cols.map((c) => {
+        let v = s[c];
+        if (c === 'createdAt') v = fmtDate(s.createdAt, true);
+        if (Array.isArray(v)) v = v.join('; ');
+        return `"${String(v ?? '').replace(/"/g, '""')}"`;
+      }).join(','));
+      const csv = '﻿' + [head.join(','), ...rows].join('\r\n');
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const a = el('a'); a.href = URL.createObjectURL(blob);
+      a.download = `signups-553-${new Date().toISOString().slice(0, 10)}.csv`;
+      a.click(); URL.revokeObjectURL(a.href);
+    });
+
+    // =====================================================================
+    //  משתמשים
+    // =====================================================================
+    async function loadUsers() {
+      const area = $('#usersArea'); area.innerHTML = '<p class="empty">טוען…</p>';
+      try {
+        const admins = await listAdmins();
+        if (!admins.length) { area.innerHTML = '<p class="empty">אין מנהלים רשומים. (ראו ADMIN-SETUP.md ליצירת המנהל הראשון.)</p>'; return; }
+        const table = el('table');
+        table.innerHTML = `<thead><tr><th>שם</th><th>אימייל</th><th>הרשאה</th><th></th></tr></thead>`;
+        const tb = el('tbody');
+        admins.forEach((u) => {
+          const tr = el('tr');
+          const td = (t) => { const d = el('td'); d.textContent = t; return d; };
+          tr.appendChild(td(u.name || '—'));
+          tr.appendChild(td(u.email || u.uid));
+          tr.appendChild(td(u.admin ? 'מנהל' : '—'));
+          const actTd = el('td');
+          if (u.uid === currentUser?.uid) {
+            actTd.innerHTML = '<span class="who">(אתה)</span>';
+          } else {
+            const rb = el('button', 'iconbtn del'); rb.textContent = '🗑'; rb.title = 'הסרת הרשאה';
+            rb.onclick = async () => {
+              if (!confirm(`להסיר הרשאת ניהול מ-${u.email}?`)) return;
+              try { await removeAdmin(u.uid); toast('ההרשאה הוסרה'); loadUsers(); } catch (e) { toast('הסרה נכשלה', true); }
+            };
+            actTd.appendChild(rb);
+          }
+          tr.appendChild(actTd);
+          tb.appendChild(tr);
+        });
+        table.appendChild(tb); area.innerHTML = ''; area.appendChild(table);
+      } catch (e) {
+        console.error(e); area.innerHTML = `<p class="empty">טעינת המשתמשים נכשלה: ${esc(e.message || e)}</p>`;
+      }
+    }
+    $('#addUserForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const errEl = $('#addUserErr'); errEl.textContent = '';
+      const name = $('#nuName').value.trim(), email = $('#nuEmail').value.trim(), pass = $('#nuPass').value;
+      if (pass.length < 6) { errEl.textContent = 'סיסמה חייבת להיות לפחות 6 תווים.'; return; }
+      try {
+        await createAdminUser(email, pass, name);
+        $('#nuName').value = ''; $('#nuEmail').value = ''; $('#nuPass').value = '';
+        toast('המנהל נוסף ✓'); loadUsers();
+      } catch (err) {
+        errEl.textContent = 'הוספה נכשלה: ' + (err.message || err);
+      }
+    });
+    $('#changePassForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const errEl = $('#changePassErr'); errEl.textContent = '';
+      const cur = $('#cpCur').value, nw = $('#cpNew').value;
+      if (nw.length < 6) { errEl.textContent = 'הסיסמה החדשה חייבת לפחות 6 תווים.'; return; }
+      try {
+        await changeMyPassword(cur, nw);
+        $('#cpCur').value = ''; $('#cpNew').value = '';
+        toast('הסיסמה עודכנה ✓');
+      } catch (err) {
+        errEl.textContent = err.message || 'עדכון נכשל';
+      }
+    });
+
+    function esc(s){return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+    // מקבל ISO string (מהשרת) או Date — ומחזיר תאריך מעוצב.
+    function fmtDate(v, withTime){
+      if(!v) return '';
+      const d = v.toDate ? v.toDate() : new Date(v);
+      if(isNaN(d)) return '';
+      return withTime ? d.toLocaleString('he-IL') : d.toLocaleDateString('he-IL');
+    }
+
+    // =====================================================================
+    //  התחברות / הרשאות
+    // =====================================================================
+    function showLogin() { $('#loginScreen').classList.remove('hidden'); $('#app').classList.add('hidden'); }
+    async function showApp() {
+      $('#loginScreen').classList.add('hidden'); $('#app').classList.remove('hidden');
+      $('#whoami').textContent = currentUser.email;
+      $('#saveStatus').textContent = 'טוען תוכן…';
+      draft = await getContent();
+      buildEditors();
+      setDirty(false);
+    }
+
+    $('#loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const errEl = $('#loginErr'); errEl.textContent = '';
+      const btn = $('#loginBtn'); btn.disabled = true; btn.textContent = 'מתחבר…';
+      try {
+        await login($('#loginEmail').value.trim(), $('#loginPass').value);
+        // onAuth יטפל בהמשך
+      } catch (err) {
+        errEl.textContent = err.message || 'ההתחברות נכשלה';
+      } finally { btn.disabled = false; btn.textContent = 'התחברות'; }
+    });
+    $('#logoutBtn').addEventListener('click', async () => {
+      if (dirty && !confirm('יש שינויים שלא נשמרו. להתנתק בכל זאת?')) return;
+      dirty = false; await logout();
+    });
+    $('#resetBtn').addEventListener('click', async () => {
+      const email = $('#loginEmail').value.trim();
+      if (!email) { $('#loginErr').textContent = 'הזינו אימייל בשדה למעלה, ואז לחצו שוב.'; return; }
+      try { await sendReset(email); toast('נשלח אימייל לאיפוס סיסמה'); }
+      catch (e) { $('#loginErr').textContent = 'שליחה נכשלה: ' + (e.code || e.message); }
+    });
+
+    // ---------- אתחול ----------
+    if (!API_ENABLED) {
+      $('#configMissing').classList.remove('hidden');
+      $('#loginForm').querySelectorAll('input,button').forEach((x) => x.disabled = true);
+    } else {
+      onAuth(async (user) => {
+        if (user) {
+          const ok = await isAdmin(user.uid);
+          if (ok) { currentUser = user; showApp(); }
+          else { currentUser = null; await logout(); showLogin(); $('#loginErr').textContent = 'למשתמש הזה אין הרשאת ניהול. פנו למנהל המערכת.'; }
+        } else {
+          currentUser = null; draft = null; showLogin();
+        }
+      });
+    }
+  </script>
+</body>
+</html>

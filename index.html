@@ -316,291 +316,44 @@
         <a href="designs.html" style="text-decoration:none;font-family:'Rubik',sans-serif;font-weight:800;font-size:.8rem;color:var(--accent-ink);background:var(--accent);padding:.34rem .9rem;border-radius:999px;margin-inline-start:.4rem;">🎨 כל העיצובים ←</a>
     </nav>
 
-    <!-- Hero -->
+    <!-- Hero (נטען דינמית מ-js/render-index.js) -->
     <section class="hero" id="home">
-        <div class="hero-content">
-            <div class="hero-badge">&#9888; עשרות אלפי רכבים ביום דרך הכפר שלנו? לא בשקט.</div>
-            <h1>
-                לא לכביש 553
-                <span>שמרו על הבית שלנו</span>
-            </h1>
-            <p class="subtitle">
-                רוצים לסלול כביש ארצי של 6-8 נתיבים עם עשרות אלפי רכבים ביום בלב האזור הכפרי שלנו.
-                זה יהרוס את אורח החיים, יפגע בביטחון האישי ויחסל את מה שנשאר מהשרון הירוק.
-                אנחנו אומרים: הכביש הזה לא צריך להיות כאן. נקודה.
-            </p>
-            <div class="hero-cta">
-                <a href="#signup" class="btn btn-primary">&#9997; הצטרפו למאבק</a>
-                <a href="#what" class="btn btn-outline">&#9432; מה קורה כאן?</a>
-            </div>
-        </div>
+        <div class="hero-content" id="heroContent"></div>
     </section>
 
     <!-- Stats -->
     <div class="stats-bar">
-        <div class="stats-container">
-            <div class="stat-item">
-                <h3>עשרות אלפי</h3>
-                <p>רכבים ביום יעברו דרך האזור הכפרי שלנו</p>
-            </div>
-            <div class="stat-item">
-                <h3>6-8</h3>
-                <p>נתיבים של כביש ארצי בלב מושבים וכפרים</p>
-            </div>
-            <div class="stat-item">
-                <h3>2 ק"מ</h3>
-                <p>מכביש 551 שנותן אותו מענה בדיוק</p>
-            </div>
-            <div class="stat-item">
-                <h3>0</h3>
-                <p>פעמים נשאלנו אם אנחנו רוצים את זה</p>
-            </div>
-        </div>
+        <div class="stats-container" id="statsContainer"></div>
     </div>
 
     <!-- What's Happening -->
     <section class="section what-section" id="what">
-        <div class="container">
-            <div class="section-title fade-in">
-                <h2>מה מתכננים לנו?</h2>
-                <div class="line"></div>
-                <p>הרחבת כביש 553 לאוטוסטרדה ארצית שתחבר בין כביש 4 לכביש 6</p>
-            </div>
-            <div class="what-grid">
-                <div class="what-card fade-in">
-                    <div class="icon">&#127793;</div>
-                    <h3>אזור כפרי הופך לצומת ארצי</h3>
-                    <p>אנחנו גרים באזור כפרי - מושבים, שדות, שקט. התכנית רוצה לדחוף דרכנו כביש של 6-8 נתיבים עם עשרות אלפי רכבים ביום. זה יהפוך את הכפר שלנו לכיכר דיזנגוף.</p>
-                </div>
-                <div class="what-card fade-in">
-                    <div class="icon">&#128296;</div>
-                    <h3>כביש מיותר - 551 כבר מתוכנן</h3>
-                    <p>כביש 551 מתוכנן 2 ק"מ משם ונותן את אותו חיבור בין כביש 6 לכביש 4 ו-2. גם התסקיר הסביבתי של התכנית עצמה מודה שהצורך הקריטי הוא דווקא ב-551, לא ב-553.</p>
-                </div>
-                <div class="what-card fade-in">
-                    <div class="icon">&#9888;</div>
-                    <h3>איום ביטחוני אמיתי</h3>
-                    <p>הכביש יקצר את זמן הנסיעה מכל אזור המשולש לתוך היישובים שלנו לדקות ספורות. בתקופה שבה אירועי טרור הם מציאות - זו סכנה ממשית לביטחון האישי של כולנו.</p>
-                </div>
-            </div>
-        </div>
+        <div class="container" id="whatContainer"></div>
     </section>
 
     <!-- Impact -->
     <section class="section impact-section" id="impact">
-        <div class="container">
-            <div class="section-title fade-in">
-                <h2>איך זה ישפיע עלינו?</h2>
-                <div class="line"></div>
-                <p>ההשלכות של כביש 553 על חיי היומיום שלנו</p>
-            </div>
-            <div class="impact-list">
-                <div class="impact-item fade-in">
-                    <div class="num">1</div>
-                    <div>
-                        <h4>סוף לאזור הכפרי</h4>
-                        <p>עשרות אלפי רכבים ביום בכביש של 6-8 נתיבים. המושבים והכפרים השקטים שלנו יהפכו לשוליים של כביש מהיר. אורח החיים הכפרי ייעלם לנצח.</p>
-                    </div>
-                </div>
-                <div class="impact-item fade-in">
-                    <div class="num">2</div>
-                    <div>
-                        <h4>סכנה ביטחונית</h4>
-                        <p>הכביש יחבר ישירות את אזור המשולש (טייבה, טירה, קלנסווה) ליישובים שלנו בנסיעה של דקות ספורות. בתקופה הנוכחית, זה איום ביטחוני שלא ניתן להתעלם ממנו.</p>
-                    </div>
-                </div>
-                <div class="impact-item fade-in">
-                    <div class="num">3</div>
-                    <div>
-                        <h4>פיצול יישובים</h4>
-                        <p>עין ורד תיחצה לשניים. תושבי דרום המועצה יאבדו גישה מערבה. קירות אקוסטיים במרחק מטרים מבתים. ילדים לא יוכלו לחצות את הכביש בבטחה.</p>
-                    </div>
-                </div>
-                <div class="impact-item fade-in">
-                    <div class="num">4</div>
-                    <div>
-                        <h4>רעש, זיהום ופגיעה בבריאות</h4>
-                        <p>עשרות אלפי רכבים ביום, משאיות, אוטובוסים. רעש 24/7, זיהום אוויר, חלקיקים עדינים. המחקרים ברורים: מגורים בסמוך לכביש ארצי פוגעים בבריאות.</p>
-                    </div>
-                </div>
-                <div class="impact-item fade-in">
-                    <div class="num">5</div>
-                    <div>
-                        <h4>הרס שטחים פתוחים ונחלים</h4>
-                        <p>שטחים ממסדרון אקולוגי ארצי ייגרעו. נחל אלכסנדר ונחל טירה ייפגעו. השטחים הירוקים האחרונים של השרון יוקרבו על מזבח כביש מיותר.</p>
-                    </div>
-                </div>
-                <div class="impact-item fade-in">
-                    <div class="num">6</div>
-                    <div>
-                        <h4>ירידת ערך נכסים</h4>
-                        <p>אנשים בחרו לגור כאן בגלל השקט, הירוק, הכפריות. כביש ארצי עם עשרות אלפי רכבים יהרוס את הערך של הנכס שלכם - ההשקעה של חייכם.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="container" id="impactContainer"></div>
     </section>
 
     <!-- Arguments from officials -->
     <section class="section arguments-section" id="arguments">
-        <div class="container">
-            <div class="section-title fade-in">
-                <h2>מה אומרים המומחים?</h2>
-                <div class="line"></div>
-                <p>מתוך הפרוטוקולים הרשמיים של המועצה הארצית לתכנון ולבנייה</p>
-            </div>
-            <div class="arg-grid">
-                <div class="arg-card fade-in">
-                    <div class="tag">ראש מועצה אזורית</div>
-                    <h3>"אף אחד לא שכנע אותי שצריך את הכביש"</h3>
-                    <p>עמיר ריטוב, ראש מועצה אזורית לב השרון: "כביש 551 נמצא 2 ק"מ משם. צריך לבדוק את נחיצות כביש 553 לאחר שיבוצע 551. זה כמו להכניס את אבן גבירול לתוך מושב. זה בנפשנו."</p>
-                    <div class="source">מקור: תמליל ישיבה 678, 13.9.2022</div>
-                </div>
-                <div class="arg-card fade-in">
-                    <div class="tag">החברה להגנת הטבע</div>
-                    <h3>"כל כביש חדש לא יעזור לנו"</h3>
-                    <p>דרור בוימל: "עקרונית אני לא חושב שצריך לקדם כבישים חדשים. כל מקום שפותחים כבישים הם נסתמים הרבה יותר מהר ממה שהמודלים חוזים. אנחנו צריכים תחבורה ציבורית בהיקפים אדירים."</p>
-                    <div class="source">מקור: תמליל ישיבה 678, 13.9.2022</div>
-                </div>
-                <div class="arg-card fade-in">
-                    <div class="tag">התסקיר עצמו</div>
-                    <h3>הצורך הקריטי הוא בכביש 551, לא 553</h3>
-                    <p>התסקיר הסביבתי של התכנית עצמה (עמוד 25) מעיד שהצורך המהותי הוא דווקא בכביש 551. אז למה דוחפים דווקא את 553 דרך האזור הכפרי שלנו?</p>
-                    <div class="source">מקור: חוות דעת תנועתית שהוגשה לתיק התכנית</div>
-                </div>
-                <div class="arg-card fade-in">
-                    <div class="tag">המשרד להגנת הסביבה</div>
-                    <h3>"ההצגה של נתיבי ישראל הייתה מוטה"</h3>
-                    <p>נציגת המשרד להגנת הסביבה קבעה שהמצגת של נתיבי ישראל הייתה "מאוד לא סבירה" וכי כמעט כל קריטריון סביבתי הוצג הפוך מהמציאות. אם ככה מקדמים את התכנית - יש סיבה לדאגה.</p>
-                    <div class="source">מקור: תמליל ישיבה 678, 13.9.2022</div>
-                </div>
-            </div>
-        </div>
+        <div class="container" id="argumentsContainer"></div>
     </section>
 
     <!-- Quotes -->
     <section class="section quotes-section">
-        <div class="container">
-            <div class="section-title fade-in">
-                <h2>מה אמרו בדיונים?</h2>
-                <div class="line"></div>
-            </div>
-            <div class="quotes-grid">
-                <div class="quote-card fade-in">
-                    <p>"כביש 551 נמצא 2 קילומטר משם ונותן מענה דומה. כמה כבישים אנחנו צריכים? צריך לבדוק את נחיצות ביצוע כביש 553 וכל זאת לאחר שיבוצע כביש 551."</p>
-                    <div class="author">עמיר ריטוב</div>
-                    <div class="role">ראש מועצה אזורית לב השרון, ישיבה 678</div>
-                </div>
-                <div class="quote-card fade-in">
-                    <p>"עקרונית אני לא חושב שצריך לקדם כבישים חדשים. אנחנו ממשיכים לעשות אותן טעויות - כל מקום שפותחים כבישים חדשים הם נסתמים הרבה יותר מהר."</p>
-                    <div class="author">דרור בוימל</div>
-                    <div class="role">החברה להגנת הטבע, ישיבה 678</div>
-                </div>
-                <div class="quote-card fade-in">
-                    <p>"עצם בחירת החלופות ועצם הקריטריונים שלפיהן נבחרו הייתה מגמתית. לא נבחנו בכלל היבטים תחבורתיים. ההשפעה התחבורתית של כל החלופות שהוצגו היא קטסטרופה."</p>
-                    <div class="author">שלי רוזטל</div>
-                    <div class="role">נציגת ועד עין ורד, ישיבה 678</div>
-                </div>
-            </div>
-        </div>
+        <div class="container" id="quotesContainer"></div>
     </section>
 
     <!-- Timeline -->
     <section class="section timeline-section" id="timeline">
-        <div class="container">
-            <div class="section-title fade-in">
-                <h2>ציר הזמן</h2>
-                <div class="line"></div>
-                <p>ההתפתחויות העיקריות בתכנית</p>
-            </div>
-            <div class="timeline">
-                <div class="timeline-item fade-in">
-                    <div class="date">1995</div>
-                    <h4>אישור מחלף אלכסנדר בתמ"א 31/א/15</h4>
-                    <p>המחלף אושר סטטוטורית אך מעולם לא נבנה בפועל.</p>
-                </div>
-                <div class="timeline-item fade-in">
-                    <div class="date">2019</div>
-                    <h4>תחילת קידום התכנית המעודכנת</h4>
-                    <p>משרד התחבורה מתחיל לקדם תכנית משולבת למחלף, כביש 444 וכביש 553.</p>
-                </div>
-                <div class="timeline-item fade-in">
-                    <div class="date">יוני 2021</div>
-                    <h4>ועדת עורכים - בחירת חלופה מועדפת</h4>
-                    <p>הוועדה המשותפת לתחבורה יבשתית דנה בחלופות ובחרה בשיקוע לדרך 553.</p>
-                </div>
-                <div class="timeline-item fade-in">
-                    <div class="date">ספטמבר 2022</div>
-                    <h4>דיון במועצה הארצית - ישיבה 678</h4>
-                    <p>המועצה הארצית דוחה את חלופת המנהור ב-553. הצבעה: 10 בעד הצעת היו"ר, 4 נגד.</p>
-                </div>
-                <div class="timeline-item fade-in">
-                    <div class="date">ינואר 2023</div>
-                    <h4>אישור הנחיות לתסקיר פרקים ג-ה</h4>
-                    <p>המועצה הארצית מאשרת הנחיות להמשך התסקיר הסביבתי.</p>
-                </div>
-                <div class="timeline-item fade-in">
-                    <div class="date">2025-2026</div>
-                    <h4>&#9888; הפקדה והתנגדויות צפויות</h4>
-                    <p><strong>זה החלון להתנגד! עד שהתכנית לא הופקדה - אפשר להשפיע.</strong></p>
-                </div>
-            </div>
-        </div>
+        <div class="container" id="timelineContainer"></div>
     </section>
 
     <!-- FAQ -->
     <section class="section faq-section" id="faq">
-        <div class="container">
-            <div class="section-title fade-in">
-                <h2>שאלות ותשובות</h2>
-                <div class="line"></div>
-            </div>
-            <div class="faq-list">
-                <div class="faq-item" onclick="this.classList.toggle('active')">
-                    <div class="faq-question">למה אתם מתנגדים לכביש ולא רק מבקשים מנהרה?</div>
-                    <div class="faq-answer">כי הכביש הזה מיותר. כביש 551 מתוכנן 2 ק"מ מכאן ונותן את אותו חיבור בדיוק. גם התסקיר הסביבתי של התכנית עצמה מודה שהצורך הקריטי הוא ב-551. מעבר לכך, הכביש מהווה איום ביטחוני אמיתי - הוא מקצר את הנסיעה מאזור המשולש ליישובים שלנו לדקות ספורות. ומנהרה? גם היא לא פותרת את בעיית עשרות אלפי הרכבים שיעברו דרך האזור הכפרי שלנו.</div>
-                </div>
-                <div class="faq-item" onclick="this.classList.toggle('active')">
-                    <div class="faq-question">חיבור לכביש 6 זה לא דבר טוב? זה לא יקצר לנו את הפקקים?</div>
-                    <div class="faq-answer">זו השאלה הכי חשובה - והתשובה המקצועית היא: לא. כביש רחב כל כך מייצר "ביקוש מושרה" - הוא מושך אליו נהגים מכל רחבי השרון שמחפשים לעקוף פקקים אחרים. במקום חיבור מהיר, נקבל את "הפקק של המדינה" בלב האזור הכפרי שלנו - ונמצא את עצמנו תקועים מאחורי רכבים מכל האזור שמשתמשים ב"חצר האחורית" שלנו כמעקף בדרך לכביש 6. כביש רחב יותר לא פותר פקקים - הוא רק מושך אליו עוד תנועה.</div>
-                </div>
-                <div class="faq-item" onclick="this.classList.toggle('active')">
-                    <div class="faq-question">אז אם עוצרים את 553 - נישאר בפקק לנצח?</div>
-                    <div class="faq-answer">ממש לא. אנחנו דורשים מהמדינה להשקיע בפתרונות של המאה ה-21 ולא בבטון של המאה הקודמת - קידום המטרו, מתחמי "חנה וסע" וייעול קווי הרכבת. הפתרון האמיתי הוא להוציא רכבים מהכביש, לא להוסיף עוד אספלט שמביא עומס חדש. וכביש 551, המתוכנן 2 ק"מ מכאן, נותן את המענה התחבורתי הארצי - בלי להחריב את הבית שלנו.</div>
-                </div>
-                <div class="faq-item" onclick="this.classList.toggle('active')">
-                    <div class="faq-question">מה זה "איום ה-Waze" בתוך היישובים?</div>
-                    <div class="faq-answer">ברגע שהכביש המורחב ייפקק (והוא ייפקק), אפליקציות הניווט ינתבו אלפי נהגים עצבניים לתוך הרחובות הצרים של עין ורד, תל מונד ופורת. השכונות השקטות שלנו יהפכו לנתיבי עוקף מסוכנים - סכנה לילדים בדרך לבית הספר, וקושי יומיומי פשוט לצאת מהחניה בבוקר.</div>
-                </div>
-                <div class="faq-item" onclick="this.classList.toggle('active')">
-                    <div class="faq-question">מה הבעיה הביטחונית?</div>
-                    <div class="faq-answer">כביש 553 המורחב יחבר ישירות את ערי המשולש (טייבה, טירה, קלנסווה) ליישובים הכפריים שלנו בנסיעה של דקות ספורות. אנחנו חיים באזור כפרי, ללא גדרות וללא אבטחה. בתקופה שבה אירועי טרור מהשטחים ומתוך ישראל הם מציאות יומיומית, יצירת ציר גישה מהיר כזה מסכנת את חיי התושבים.</div>
-                </div>
-                <div class="faq-item" onclick="this.classList.toggle('active')">
-                    <div class="faq-question">אבל אין צורך בכביש רוחב באזור?</div>
-                    <div class="faq-answer">כביש 551 המתוכנן עונה על הצורך הזה בדיוק. הוא מחבר בין כביש 6 לכביש 4 ו-2, עובר באזור פחות מאוכלס ופחות רגיש, ולא חוצה יישובים קיימים. גם ראש מועצה אזורית לב השרון אמר בדיון: "צריך לבדוק את נחיצות 553 רק אחרי שיבוצע 551."</div>
-                </div>
-                <div class="faq-item" onclick="this.classList.toggle('active')">
-                    <div class="faq-question">מה זה יעשה לאופי הכפרי של האזור?</div>
-                    <div class="faq-answer">יהרוס אותו. אנשים בחרו לגור כאן בגלל השקט, השדות, האוויר הנקי, הקהילה. כביש ארצי של 6-8 נתיבים עם עשרות אלפי רכבים ביום זה הקץ לכל זה. אי אפשר לגור ליד אבן גבירול ולקרוא לזה כפר. ערך הנכסים יצנח, האנשים יעזבו, הקהילה תתפרק.</div>
-                </div>
-                <div class="faq-item" onclick="this.classList.toggle('active')">
-                    <div class="faq-question">האם עוד אפשר להשפיע?</div>
-                    <div class="faq-answer">כן! התכנית עדיין לא הופקדה. אנחנו בשלב התסקיר הסביבתי - עוד יש חלון לפעול. ככל שנהיה יותר אנשים, יותר מאורגנים, עם יותר נתונים ומומחים - ההשפעה גדלה. כשהתכנית תופקד תיפתח תקופת התנגדויות רשמיות - וזה הזמן להציף את המערכת בהתנגדויות.</div>
-                </div>
-                <div class="faq-item" onclick="this.classList.toggle('active')">
-                    <div class="faq-question">אילו יישובים מושפעים?</div>
-                    <div class="faq-answer">עין ורד, עין שריד, תל מונד, פורת, יעף, יעבץ, עזריאל, בני דרור, כפר הס, חרות, משמרת וקדימה. כל מושבי וכפרי גוש תל מונד ולב השרון. כל מי שבחר לגור באזור כפרי ושקט ירגיש את ההשפעה.</div>
-                </div>
-                <div class="faq-item" onclick="this.classList.toggle('active')">
-                    <div class="faq-question">מה אני יכול/ה לעשות?</div>
-                    <div class="faq-answer">1) הירשמו למאגר שלנו כאן למטה - זה הצעד הראשון. 2) שתפו את האתר עם כל שכן, חבר ומכר באזור. 3) הגיעו למפגשי המידע שנקיים. 4) כשתיפתח תקופת ההתנגדויות - הגישו התנגדות (נכין טפסים מוכנים). 5) דברו עם חברי מועצה, ראשי רשויות ונבחרי ציבור. 6) אם יש לכם מומחיות רלוונטית - צרו קשר!</div>
-                </div>
-            </div>
-            <div style="text-align:center; margin-top:2.5rem;">
-                <a href="faq.html" class="btn btn-primary">&#10067; לעמוד השאלות והתשובות המלא</a>
-            </div>
-        </div>
+        <div class="container" id="faqContainer"></div>
     </section>
 
     <!-- Signup Form -->
@@ -609,7 +362,7 @@
             <h2>&#9997; הצטרפו למאבק - עצרו את הכביש</h2>
             <p>השאירו פרטים ונעדכן אתכם בכל התפתחות. יחד נגן על הבית שלנו, על השקט שלנו, על הביטחון שלנו.</p>
 
-            <form class="signup-form" id="contactForm" onsubmit="handleSubmit(event)">
+            <form class="signup-form" id="contactForm">
                 <div class="form-row">
                     <div class="form-group">
                         <label for="firstName">שם פרטי *</label>
@@ -688,18 +441,8 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <p><strong>המאבק נגד כביש 553</strong> | מטה תושבי תל מונד ולב השרון</p>
-        <p style="margin-top: 0.5rem;">כל המידע באתר מבוסס על פרוטוקולים רשמיים של המועצה הארצית לתכנון ולבנייה</p>
-        <div class="footer-links">
-            <a href="#home">ראשי</a>
-            <a href="#what">מה קורה?</a>
-            <a href="#arguments">מה אומרים המומחים</a>
-            <a href="faq.html">שאלות ותשובות</a>
-            <a href="#signup">הצטרפות</a>
-        </div>
-    </footer>
+    <!-- Footer (נטען דינמית) -->
+    <footer id="siteFooter"></footer>
 
     <!-- Mobile Nav -->
     <nav class="mobile-nav">
@@ -710,61 +453,7 @@
         <a href="#signup" class="cta-nav"><span class="nav-icon">&#9997;</span>הצטרפות</a>
     </nav>
 
-    <script>
-        // Scroll animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-        // Form handling
-        function handleSubmit(e) {
-            e.preventDefault();
-            const form = document.getElementById('contactForm');
-            const formData = new FormData(form);
-            const data = {};
-            formData.forEach((value, key) => data[key] = value);
-            data.help = [];
-            document.querySelectorAll('input[type="checkbox"]:checked').forEach(cb => {
-                data.help.push(cb.id);
-            });
-            const submissions = JSON.parse(localStorage.getItem('r553_signups') || '[]');
-            data.timestamp = new Date().toISOString();
-            submissions.push(data);
-            localStorage.setItem('r553_signups', JSON.stringify(submissions));
-            form.style.display = 'none';
-            document.getElementById('successMessage').style.display = 'block';
-            console.log('New signup:', data);
-        }
-
-        // Smooth scrolling for in-page anchors
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    e.preventDefault();
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-
-        // Design / theme switcher
-        var THEME_KEY = 'faq553_theme';
-        var btns = document.querySelectorAll('.theme-switch button');
-        function setTheme(t) {
-            document.body.setAttribute('data-theme', t);
-            try { localStorage.setItem(THEME_KEY, t); } catch (e) {}
-            btns.forEach(function (b) { b.classList.toggle('active', b.dataset.set === t); });
-        }
-        btns.forEach(function (b) { b.addEventListener('click', function () { setTheme(b.dataset.set); }); });
-        var saved = 'brand';
-        try { saved = localStorage.getItem(THEME_KEY) || 'brand'; } catch (e) {}
-        setTheme(saved);
-    </script>
+    <!-- כל הלוגיקה (רינדור תוכן, בורר עיצוב, אקורדיון, טופס) במודול -->
+    <script type="module" src="js/render-index.js"></script>
 </body>
 </html>
