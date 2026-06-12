@@ -144,6 +144,9 @@ function renderFooter(c) {
       <a href="#arguments">מה אומרים המומחים</a>
       <a href="faq.html">שאלות ותשובות</a>
       <a href="#signup">הצטרפות</a>
+    </div>
+    <div style="margin-top:1rem;">
+      <a href="admin.html" style="opacity:.5;font-size:.78rem;text-decoration:none;color:var(--band-ink-soft);">🔒 ניהול</a>
     </div>`;
 }
 
